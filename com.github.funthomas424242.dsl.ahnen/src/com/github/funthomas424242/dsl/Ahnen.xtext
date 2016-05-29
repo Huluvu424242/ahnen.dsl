@@ -1,0 +1,9 @@
+grammar com.github.funthomas424242.dsl.Ahnen with org.eclipse.xtext.common.Terminals
+
+generate ahnen "http://www.github.com/funthomas424242/dsl/Ahnen"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
