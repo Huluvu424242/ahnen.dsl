@@ -80,7 +80,7 @@
 				<configuration>
 					<target>
 						<artifact>
-							<groupId>com.github.funthomas424242.dsl.ahnen</groupId>
+							<groupId>${project.groupId}</groupId>
 							<artifactId>com.github.funthomas424242.dsl.ahnen.target</artifactId>
 							<version>${project.version}</version>
 						</artifact>
