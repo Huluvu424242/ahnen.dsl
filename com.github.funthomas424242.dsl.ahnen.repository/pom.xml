@@ -8,6 +8,9 @@
 	</parent>
 	<artifactId>com.github.funthomas424242.dsl.ahnen.repository</artifactId>
 	<packaging>eclipse-repository</packaging>
+	<properties>
+		<maven.deploy.skip>false</maven.deploy.skip>
+	</properties>
 
 	<build>
 		<pluginManagement>
