@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-	<feature id="com.github.funthomas424242.dsl.ahnen.feature" version="0.0.0">
-		<category name="main"/>
-	</feature>
-	<feature id="com.github.funthomas424242.dsl.ahnen.feature.source" version="0.0.0">
-		<category name="main.source"/>
-	</feature>
-	<category-def name="main" label="Ahnen"/>
-	<category-def name="main.source" label="Ahnen (Sources)"/>
+   <feature id="com.github.funthomas424242.dsl.ahnen.feature" version="0.0.0">
+      <category name="funthomas424242"/>
+      <category name="dsl"/>
+   </feature>
+   <category-def name="funthomas424242" label="FunThomas424242"/>
+   <category-def name="dsl" label="DSLs"/>
 </site>
