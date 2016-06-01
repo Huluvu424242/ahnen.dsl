@@ -8,7 +8,7 @@ import org.eclipse.xtext.common.services.DefaultTerminalConverters;
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverter;
 
-public class MyTerminalConverters extends DefaultTerminalConverters {
+public class AhnenTerminalConverters extends DefaultTerminalConverters {
 	
 	
     @Inject

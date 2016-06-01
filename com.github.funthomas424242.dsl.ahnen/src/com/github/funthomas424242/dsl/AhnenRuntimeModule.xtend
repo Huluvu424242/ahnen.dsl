@@ -11,6 +11,6 @@ import org.eclipse.xtext.conversion.IValueConverterService
 class AhnenRuntimeModule extends AbstractAhnenRuntimeModule {
 
 	override  Class<? extends IValueConverterService> bindIValueConverterService() {		
-		return MyTerminalConverters;
+		return AhnenTerminalConverters;
 	}
 }
