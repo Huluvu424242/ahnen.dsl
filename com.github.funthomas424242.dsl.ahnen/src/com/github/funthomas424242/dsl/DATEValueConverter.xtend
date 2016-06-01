@@ -10,24 +10,24 @@ import org.eclipse.xtext.parser.ParseException;
 
 public class DATEValueConverter extends AbstractLexerBasedConverter<Date> {
 
-	@Override
+	override
 	public String toEscapedString(Date value) {
 		return value.toString();
 	}
 
-	@Override
+	override
 	protected void assertValidValue(Date value) {
 		super.assertValidValue(value);
 	}
 
-	@Override
+	override
 	public Date toValue(String string, INode node) {
 		// val String stripped = string.substring(1, string.length() - 1);
-		final String stripped = string;
+		val String stripped = string;
 		try {
 			return new SimpleDateFormat("dd.MM.yyyy").parse(stripped);
-		} catch (ParseException | java.text.ParseException e) {
-			System.out.println("HIER");
+		} catch (ParseException e) {
+			//System.out.println("HIER");
 			throw new ValueConverterException(string, node, e);
 		}
 	}

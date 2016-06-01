@@ -22,7 +22,7 @@ generate ahnen "http://www.github.com/funthomas424242/dsl/Ahnen"
  		"Vorname:" vorname=STRING "."
  		"Nachname:" nachname=STRING "."
  		"Mittelname:" mittelname=STRING "."
- 		'Geburtsdatum:' geburtsDatum=DATE "."
+ 		'Geburtsdatum:' geburtsDatum=DATUM "."
  		"Todesdatum:" todesDatum = DATUM "."
  		"Vater:" vater=[Person|STRING] "."
  	"}"
@@ -34,19 +34,9 @@ generate ahnen "http://www.github.com/funthomas424242/dsl/Ahnen"
 
 
 
-DATUM  : DATE;
-
-//terminal DATE returns ecore::EDate: STRING;
-
-//terminal DATUM :
-//	('0'..'9')('0'..'9')('0'..'9')('0'..'9')'-'('0'..'9')('0'..'9')'-'('0'..'9')('0'..'9')
-//;
-
-
-//terminal DATE returns ecore::EDate:
-//	('0'..'9')('0'..'9')('0'..'9')('0'..'9')'-'('0'..'9')('0'..'9')'-'('0'..'9')('0'..'9')
-//	','(' ')*('0'..'9')('0'..'9')':'?('0'..'9')('0'..'9');
-
+DATUM  : 
+	DATE
+;
  
  terminal  DATE returns ecore::EDate :
  	('0'..'9') ('0'..'9') '.' ('0'..'9') ('0'..'9') '.' ('0'..'9') ('0'..'9')('0'..'9') ('0'..'9')
