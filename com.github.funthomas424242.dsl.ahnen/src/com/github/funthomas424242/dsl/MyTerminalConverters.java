@@ -1,21 +1,22 @@
-package com.github.funthomas424242.dsl.validation;
+package com.github.funthomas424242.dsl;
 
 import java.util.Date;
 
 import javax.inject.Inject;
 
+import org.eclipse.xtext.common.services.DefaultTerminalConverters;
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverter;
 
-public class MyTerminalConverters {
-
+public class MyTerminalConverters extends DefaultTerminalConverters {
 	
-	@Inject
+	
+    @Inject
     private DATEValueConverter dateValueConverter;
     
     @ValueConverter(rule = "DATE")
     public IValueConverter<Date> DATE() {
-            return (IValueConverter<Date>) dateValueConverter;
+            return dateValueConverter;
     }
-	
+
 }

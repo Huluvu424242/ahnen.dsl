@@ -23,6 +23,7 @@ generate ahnen "http://www.github.com/funthomas424242/dsl/Ahnen"
  		"Nachname:" nachname=STRING "."
  		"Mittelname:" mittelname=STRING "."
  		'Geburtsdatum:' geburtsDatum=DATE "."
+ 		"Todesdatum:" todesDatum = DATUM "."
  		"Vater:" vater=[Person|STRING] "."
  	"}"
  ;
@@ -33,7 +34,7 @@ generate ahnen "http://www.github.com/funthomas424242/dsl/Ahnen"
 
 
 
-DATE returns ecore::EDate: DATUM;
+DATUM  : DATE;
 
 //terminal DATE returns ecore::EDate: STRING;
 
@@ -47,6 +48,6 @@ DATE returns ecore::EDate: DATUM;
 //	','(' ')*('0'..'9')('0'..'9')':'?('0'..'9')('0'..'9');
 
  
- terminal DATUM :
+ terminal  DATE returns ecore::EDate :
  	('0'..'9') ('0'..'9') '.' ('0'..'9') ('0'..'9') '.' ('0'..'9') ('0'..'9')('0'..'9') ('0'..'9')
  ;
