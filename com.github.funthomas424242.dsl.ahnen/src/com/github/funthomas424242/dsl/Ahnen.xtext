@@ -16,20 +16,28 @@ Familie:
 Person:
 	{Person}
 	"Person" name=STRING "{"
-		"Vorname:" vorname=STRING? "."
-		"Nachname:" nachname=STRING? "."
-		"Mittelname:" mittelname=STRING? "."
-		'Geburtsdatum:' geburtsDatum=DATUM? "."
-		"Todesdatum:" todesDatum=DATUM? "."
-		"Vater:" vater=[Person|STRING]? "."
-		"Mutter:" mutter=[Person|STRING]? "."
-		"Kinder:" kinder=Kinder? "."
+		"Vorname:" (vorname=STRING? | "unbekannt" ) "."
+		"Nachname:" (nachname=STRING? | "unbekannt") "."
+		"Geburtsname:" (geburtsname=STRING? | "unbekannt") "."
+		"Mittelname:" (mittelname=STRING? | "unbekannt" | "-" ) "."
+		"Geschlecht:" geschlecht=Geschlecht?  "."
+		"Geburtsdatum:" (geburtsDatum=DATUM? | "unbekannt" ) "."
+		"Todesdatum:" (todesDatum=DATUM? | "unbekannt" | "lebend" | "vermisst" )"."
+		"Vater:" (vater=[Person|STRING]? | "unbekannt" | "unerfasst") "."
+		"Mutter:" (mutter=[Person|STRING]? | "unbekannt" | "unerfasst") "."
+		"Kinder:" (kinder=Kinder? | "keine") "."
 	"}";
 
 Kinder:
-	kind=[Person|STRING] ("," next=Kinder)?
+	{Kinder}
+	(kind=[Person|STRING] | "unbekannt" |"unerfasst") ("," next=Kinder)?
 ;
 
+enum Geschlecht:
+	unbekannt='unbekannt'
+ 	| maennlich='männlich'
+ 	| weiblich='weiblich'
+;
 
 Buch:
 	"Buch" name=STRING;
