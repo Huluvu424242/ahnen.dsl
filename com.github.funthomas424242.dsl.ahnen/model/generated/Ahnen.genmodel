@@ -25,9 +25,10 @@
     <genClasses ecoreClass="Ahnen.ecore#//Person">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Person/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Person/vorname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Person/mittelname"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Person/nachname"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Person/geburtsname"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Person/mittelname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Person/rufname"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Person/geschlecht"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Person/geburtsDatum"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Person/todesDatum"/>

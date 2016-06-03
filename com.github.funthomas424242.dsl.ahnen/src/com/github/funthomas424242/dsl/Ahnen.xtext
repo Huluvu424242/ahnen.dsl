@@ -17,9 +17,10 @@ Person:
 	{Person}
 	"Person" name=STRING "{"
 		"Vorname:" (vorname=STRING? | "unbekannt" ) "."
+		"Mittelname:" (mittelname=STRING? | "unbekannt" | "-" ) "."
 		"Nachname:" (nachname=STRING? | "unbekannt") "."
 		"Geburtsname:" (geburtsname=STRING? | "unbekannt") "."
-		"Mittelname:" (mittelname=STRING? | "unbekannt" | "-" ) "."
+		"Rufname:" (rufname=STRING? | "unbekannt") "."
 		"Geschlecht:" geschlecht=Geschlecht?  "."
 		"Geburtsdatum:" (geburtsDatum=DATUM? | "unbekannt" ) "."
 		"Todesdatum:" (todesDatum=DATUM? | "unbekannt" | "lebend" | "vermisst" )"."
@@ -41,7 +42,6 @@ Beziehung:
 	"von:" (vonDatum=DATUM? | "unbekannt") "bis:" (bisDatum=DATUM? | "unbekannt" | "andauernd") "."
 	"Hochzeit:" (hochzeitstag=DATUM? | "unbekannt" | "-") "." 
     "Scheidung:" (scheidungstag=DATUM? | "unbekannt" | "unabsehbar" | "demnächst" | "-") "."
-	
 ;
 
 
