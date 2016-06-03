@@ -29,7 +29,30 @@ Person:
 		"Kinder:" (kinder=Kinder? | "keine") "."
 		"Stiefkinder:" (stiefkinder=Kinder? | "keine") "."
 		"Beziehungen:" "{"(beziehungen+=Beziehung+ | "keine") "}"
+		"Ereignisse:" "{" 
+			(ereignisse+=Ereignis+ | "keine" "bekannt")
+		"}"
 	"}";
+	
+Ereignis:
+	 Schulausbildung |  Taetigkeit // | Lehre | Armeedienst | Unfall | Krankheit | NeueAdresse
+;
+
+Schulausbildung:
+	{Schulausbildung}
+	"Schulausbildung:" "von" (von=DATUM? | "unbekannt" ) "bis" (bis=DATUM? | "unbekannt" ) 
+		"Abschluss:" (abschluss=STRING? | "ohne" | "abgebrochen")
+		"."
+;
+
+Taetigkeit:
+	{Taetigkeit}
+	"Tätigkeit:" "als" (beruf=STRING? | "unbekannt") 
+		"bei" (arbeitgeber=STRING? | "unbekannt")
+		"in" (ort=STRING? | "unbekannt")
+		"von" (von=DATUM? | "unbekannt") "bis" (bis=DATUM? | "unbekannt" ) "."
+;
+
 
 Kinder:
 	{Kinder}

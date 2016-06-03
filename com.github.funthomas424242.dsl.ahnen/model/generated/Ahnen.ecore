@@ -34,6 +34,20 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="beziehungen" upperBound="-1"
         eType="#//Beziehung" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ereignisse" upperBound="-1"
+        eType="#//Ereignis" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Ereignis">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="von" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bis" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Schulausbildung" eSuperTypes="#//Ereignis">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="abschluss" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Taetigkeit" eSuperTypes="#//Ereignis">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="beruf" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="arbeitgeber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Kinder">
     <eStructuralFeatures xsi:type="ecore:EReference" name="kind" eType="#//Person"/>
