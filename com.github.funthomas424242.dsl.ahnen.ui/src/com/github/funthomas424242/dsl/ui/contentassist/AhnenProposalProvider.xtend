@@ -23,5 +23,13 @@ class AhnenProposalProvider extends AbstractAhnenProposalProvider {
 		val ICompletionProposal completeProposal = createCompletionProposal("31.12.2001", context);
 		acceptor.accept(completeProposal);
 	}
+	
+	override complete_VERSION(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		super.complete_VERSION(model, ruleCall, context, acceptor)
+		
+		val ICompletionProposal completeProposal = createCompletionProposal("1.0.0", context);
+		acceptor.accept(completeProposal);
+		
+	}
 
 }

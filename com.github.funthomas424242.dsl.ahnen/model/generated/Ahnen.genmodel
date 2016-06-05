@@ -62,8 +62,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Beziehung/hochzeitstag"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Beziehung/scheidungstag"/>
     </genClasses>
-    <genClasses ecoreClass="Ahnen.ecore#//Buch">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Buch/name"/>
+    <genClasses ecoreClass="Ahnen.ecore#//Familienbuch">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familienbuch/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familienbuch/familie"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Familienbuch/person"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familienbuch/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familienbuch/titel"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

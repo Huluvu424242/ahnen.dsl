@@ -3,6 +3,7 @@
  */
 package com.github.funthomas424242.dsl.generator
 
+import com.github.funthomas424242.dsl.ahnen.Familienbuch
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
@@ -16,10 +17,9 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class AhnenGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(typeof(Greeting))
-//				.map[name]
-//				.join(', '))
+		for (buch : resource.allContents.toIterable.filter(Familienbuch)) {
+			fsa.generateFile(POMGenerator.getPOMFileName(buch), POMGenerator.createPOMContent(buch))
+			//fsa.generateFile(getDbkFileName(buch, "book.dbk"), BookGenerator.createBookContent(fsa, buch))
+		}
 	}
 }

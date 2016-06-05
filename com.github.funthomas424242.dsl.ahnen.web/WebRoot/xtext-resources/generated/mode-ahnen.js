@@ -1,6 +1,6 @@
 define(["ace/lib/oop", "ace/mode/text", "ace/mode/text_highlight_rules"], function(oop, mText, mTextHighlightRules) {
 	var HighlightRules = function() {
-		var keywords = "Buch|Familie|Person|abgebrochen|als|andauernd|bei|bekannt|bis|in|keine|lebend|mit|ohne|unabsehbar|unbekannt|unerfasst|vermisst|von|weiblich";
+		var keywords = "Familie|Familienbuch|Person|abgebrochen|als|andauernd|bei|bekannt|bis|in|keine|lebend|mit|ohne|unabsehbar|unbekannt|unerfasst|vermisst|von|weiblich";
 		this.$rules = {
 			"start": [
 				{token: "comment", regex: "\\/\\/.*$"},

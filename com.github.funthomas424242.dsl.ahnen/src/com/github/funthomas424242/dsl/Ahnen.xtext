@@ -7,7 +7,7 @@ Model:
 	datei=Dateiart;
 
 Dateiart:
-	buch=Buch | familie=Familie;
+	buch=Familienbuch | familie=Familie;
 
 Familie:
 	"Familie" name=ID ";"
@@ -67,6 +67,14 @@ Beziehung:
     "Scheidung:" (scheidungstag=DATUM? | "unbekannt" | "unabsehbar" | "demnächst" | "-") "."
 ;
 
+Familienbuch:
+	"Familienbuch" name=ID ";"
+	"Familie:" familie=STRING "."
+	"Person:" person=[Person|STRING] "."
+	"Version:" version=VERSION "."
+	"Titel:" titel=STRING "."
+;
+
 
 enum Geschlecht:
 	unbekannt='unbekannt'
@@ -74,8 +82,9 @@ enum Geschlecht:
  	| weiblich='weiblich'
 ;
 
-Buch:
-	"Buch" name=STRING;
+VERSION:
+	INT "." INT "." INT 
+;
 
 DATUM:
 	DATE;

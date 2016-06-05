@@ -7,7 +7,8 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Dateiart">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="buch" eType="#//Buch" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="buch" eType="#//Familienbuch"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="familie" eType="#//Familie"
         containment="true"/>
   </eClassifiers>
@@ -61,12 +62,16 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hochzeitstag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scheidungstag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Familienbuch">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="familie" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="person" eType="#//Person"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="titel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Geschlecht">
     <eLiterals name="unbekannt" literal="unbekannt"/>
     <eLiterals name="maennlich" value="1" literal="männlich"/>
     <eLiterals name="weiblich" value="2" literal="weiblich"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Buch">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>
