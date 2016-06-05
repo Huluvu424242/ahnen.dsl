@@ -17,6 +17,7 @@ Familie:
 Person:
 	{Person}
 	"Person" name=STRING "{"
+		"Letzte" "Änderung:" letzteAenderung=DATUM "."
 		"Vorname:" (vorname=STRING? | "unbekannt" ) "."
 		"Mittelname:" (mittelname=STRING? | "unbekannt" | "-" ) "."
 		"Nachname:" (nachname=STRING? | "unbekannt") "."

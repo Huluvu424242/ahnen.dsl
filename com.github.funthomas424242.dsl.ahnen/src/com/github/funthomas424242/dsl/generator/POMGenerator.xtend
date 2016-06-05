@@ -11,7 +11,7 @@ class POMGenerator{
 	
 	
 	def static getPOMFileName(Familienbuch buch) {
-		return "familienbuch#"+buch.name+"/pom.xml";
+		return "familienbuch_"+buch.name+"/pom.xml";
 	}
 	
 	
@@ -115,7 +115,7 @@ class POMGenerator{
 					<paperType>A4</paperType>
 					<doubleSided>true</doubleSided>
 					<fop1Extensions>1</fop1Extensions>
-					<foCustomization>src/main/resources/stylesheets/fo/docbook.xsl</foCustomization>
+«««					<foCustomization>src/main/resources/stylesheets/fo/docbook.xsl</foCustomization>
 					<partAutolabel>0</partAutolabel>
 					<chapterAutolabel>0</chapterAutolabel>
 					<sectionAutolabel>true</sectionAutolabel>
@@ -136,6 +136,13 @@ class POMGenerator{
 						<configuration>
 							<targetDirectory>${project.build.directory}/site/${project.artifactId}</targetDirectory>
 						</configuration>
+					</execution>
+					<execution>
+						<id>generate-pdf</id>
+						<phase>pre-site</phase>
+						<goals>
+							<goal>generate-pdf</goal>
+						</goals>
 					</execution>
 					<execution>
 						<id>generate-epub</id>

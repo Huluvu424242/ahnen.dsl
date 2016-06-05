@@ -47,9 +47,10 @@ class BookGenerator {
 		<toc/>
 		
 		«FOR curFamilie : buch.familien»			
-			«val importIndex = buch.familien.indexOf(curFamilie)»
-			«FamilienGenerator.createPart(fsa,buch,curFamilie.familie,importIndex)»
+			«val familienIndex = buch.familien.indexOf(curFamilie)»
+			«FamilienGenerator.createPart(fsa,buch,curFamilie.familie,familienIndex)»
 		«ENDFOR»
+	</book>
 	'''
 	
 	def static createXmlHeader() '''

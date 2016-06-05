@@ -3,6 +3,8 @@
  */
 package com.github.funthomas424242.dsl.ui.contentassist
 
+import java.text.SimpleDateFormat
+import java.util.Calendar
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.jface.text.contentassist.ICompletionProposal
 import org.eclipse.xtext.RuleCall
@@ -19,8 +21,10 @@ class AhnenProposalProvider extends AbstractAhnenProposalProvider {
 		ICompletionProposalAcceptor acceptor) {
 
 		super.complete_DATUM(model, ruleCall, context, acceptor)
-
-		val ICompletionProposal completeProposal = createCompletionProposal("31.12.2001", context);
+		val SimpleDateFormat simpleDateFormat =  new SimpleDateFormat("dd.MM.yyyy");
+		val toolTipp=simpleDateFormat.format(Calendar.getInstance().getTime());
+		
+		val ICompletionProposal completeProposal = createCompletionProposal(toolTipp, context);
 		acceptor.accept(completeProposal);
 	}
 	

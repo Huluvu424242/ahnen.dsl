@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 class Helper {
 
 	def static getDbkFileName(Familienbuch buch, String fileName) {
-		return buch.familie + "." + buch.person.vorname + "/src/main/docbkx/" + fileName;
+		return "familienbuch_" + buch.name + "/src/main/docbkx/" + fileName;
 	}
 
 	def static stripQuotes(String text) {
