@@ -10,6 +10,7 @@ Dateiart:
 	buch=Familienbuch | familie=Familie;
 
 Familie:
+	{Familie}
 	"Familie" name=ID ";"
 	(personen+=Person)+;
 
@@ -73,6 +74,21 @@ Familienbuch:
 	"Person:" person=[Person|STRING] "."
 	"Version:" version=VERSION "."
 	"Titel:" titel=STRING "."
+	"Vorwort:" "{" vorwort=STRING "}" 
+	"Autor:" "{" autor= Autor "}" 
+	"Familien:" "{"
+		familien+=FamilienImport+
+	"}"
+;
+
+FamilienImport:
+ 	"import" "familie" familie=[Familie|ID] '.'	
+ ;
+
+Autor:
+	"Vorname:" vorname=STRING "."
+	"Name:" nachname=STRING "."
+	"Organisation" organisationsName=STRING? "."	
 ;
 
 

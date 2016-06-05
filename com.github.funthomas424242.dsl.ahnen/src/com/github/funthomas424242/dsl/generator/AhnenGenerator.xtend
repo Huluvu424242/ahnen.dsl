@@ -19,7 +19,7 @@ class AhnenGenerator extends AbstractGenerator {
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		for (buch : resource.allContents.toIterable.filter(Familienbuch)) {
 			fsa.generateFile(POMGenerator.getPOMFileName(buch), POMGenerator.createPOMContent(buch))
-			//fsa.generateFile(getDbkFileName(buch, "book.dbk"), BookGenerator.createBookContent(fsa, buch))
+			fsa.generateFile(Helper.getDbkFileName(buch, "book.dbk"), BookGenerator.createBookContent(fsa, buch))
 		}
 	}
 }

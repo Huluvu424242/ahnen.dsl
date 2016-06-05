@@ -68,6 +68,19 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="person" eType="#//Person"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="titel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vorwort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="autor" eType="#//Autor"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="familien" upperBound="-1"
+        eType="#//FamilienImport" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FamilienImport">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="familie" eType="#//Familie"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Autor">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vorname" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nachname" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="organisationsName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Geschlecht">
     <eLiterals name="unbekannt" literal="unbekannt"/>
