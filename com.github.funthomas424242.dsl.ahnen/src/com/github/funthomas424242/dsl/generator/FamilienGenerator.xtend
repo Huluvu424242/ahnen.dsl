@@ -15,7 +15,7 @@ class FamilienGenerator {
 	def static createPart(IFileSystemAccess fsa, Familienbuch buch, Familie familie, int parentIndex) 
 '''		
 		<part>
-		    <title>«familie.name»</title>
+		    <title>Familie «familie.name»</title>
 		    
 «««		    <partintro>
 «««		    «IF familie.zitat != null»
@@ -62,10 +62,26 @@ class FamilienGenerator {
  	<pubdate>«person.letzteAenderung» </pubdate>
  </chapterinfo>
  
-<title>«person.vorname+person.mittelname+person.nachname»</title>
-«IF person.rufname != null»
-	<subtitle>«"*"+person.geburtsDatum+" +"+person.todesDatum»</subtitle>
+<title>
+«IF ! person.vorname.nullOrEmpty»
+	«person.vorname»
 «ENDIF»
+«IF ! person.mittelname.nullOrEmpty»
+	«person.mittelname»
+«ENDIF»
+«IF ! person.nachname.nullOrEmpty»
+	«person.nachname»
+«ENDIF»
+</title>
+
+<subtitle>
+«IF ! person.geburtsDatum.nullOrEmpty»
+	«"*"+person.geburtsDatum»
+«ENDIF»
+«IF ! person.todesDatum.nullOrEmpty»
+	«" +"+person.todesDatum»
+«ENDIF»
+</subtitle>
 
 <formalpara>
 	<title>Personendetails</title>
