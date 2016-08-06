@@ -20,6 +20,7 @@ class AhnenGenerator extends AbstractGenerator {
 		for (buch : resource.allContents.toIterable.filter(Familienbuch)) {
 			fsa.generateFile(POMGenerator.getPOMFileName(buch), POMGenerator.createPOMContent(buch))
 			fsa.generateFile(Helper.getDbkFileName(buch, "book.dbk"), BookGenerator.createBookContent(fsa, buch))
+		    fsa.generateFile(Helper.getGrampsFileName(buch),Helper.createTarGZContent(Helper.getGeneratedBookDirectory(buch),"tmp.tar.gz"));
 		}
 	}
 }
