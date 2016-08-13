@@ -10,9 +10,7 @@ import com.github.funthomas424242.dsl.ahnen.Familienbuch
 class POMGenerator{
 	
 	
-	def static getPOMFileName(Familienbuch buch) {
-		return "familienbuch_"+buch.name+"/pom.xml";
-	}
+	
 	
 	
 	

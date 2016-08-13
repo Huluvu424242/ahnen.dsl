@@ -23,8 +23,12 @@ import org.apache.commons.compress.utils.IOUtils
  */
 class Helper {
 
+    def static getPOMFileName(Familienbuch buch) {
+        return "familienbuch_"+buch.name+"/docbook/pom.xml";
+    }
+
     def static getDbkFileName(Familienbuch buch, String fileName) {
-        return "familienbuch_" + buch.name + "/src/main/docbkx/" + fileName;
+        return "familienbuch_" + buch.name + "/docbook/src/main/docbkx/" + fileName;
     }
 
     def static getGeneratedBookDirectory(Familienbuch buch){
@@ -32,7 +36,7 @@ class Helper {
     }
 
     def static getGrampsFileName(Familienbuch buch) {
-        return "generatedBooks/" + buch.name + ".dpkg";
+        return "familienbuch_" + buch.name + "/gramps/"+buch.name+".dpkg";
     }
 
     def static stripQuotes(String text) {
