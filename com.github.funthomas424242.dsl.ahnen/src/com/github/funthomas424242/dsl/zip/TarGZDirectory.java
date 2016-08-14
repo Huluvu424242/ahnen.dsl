@@ -28,8 +28,13 @@ public class TarGZDirectory {
             final String dirPath = quellDirectoryPath;
             //final String dirPath = "parent/childDirToCompress/";
             final String tarGzPath = targetFilePath;
-            //final String tarGzPath = "archive.tar.gz";
-            fOut = new FileOutputStream(new File(tarGzPath));
+            final File tarGzFile = new File(tarGzPath);
+            final File targetFolder = tarGzFile.getParentFile();
+            targetFolder.mkdirs();
+            if (!tarGzFile.exists()) {
+                tarGzFile.createNewFile();
+            }
+            fOut = new FileOutputStream(tarGzFile);
             bOut = new BufferedOutputStream(fOut);
             gzOut = new GzipCompressorOutputStream(bOut);
             tOut = new TarArchiveOutputStream(gzOut);
