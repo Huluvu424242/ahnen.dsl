@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: com.github.funthomas424242.dsl.ahnen.ide
+Bundle-SymbolicName: com.github.funthomas424242.dsl.ahnen.ide;singleton:=true
+Bundle-Version: 0.0.1.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: com.github.funthomas424242.dsl.ide.contentassist.antlr,
+ com.github.funthomas424242.dsl.ide.contentassist.antlr.internal
+

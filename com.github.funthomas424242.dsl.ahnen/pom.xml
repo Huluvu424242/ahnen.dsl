@@ -16,7 +16,7 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.7.2</version>
 				<configuration>
-					<workingDirectory>test/java</workingDirectory>
+					<workingDirectory>tests</workingDirectory>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -35,7 +35,7 @@
 				<configuration>
 					<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
 					<arguments>
-						<argument>/${project.basedir}/src/com/github/funthomas424242/dsl/GenerateAhnen.mwe2</argument>
+						<argument>/${project.basedir}/src/main/java/com/github/funthomas424242/dsl/GenerateAhnen.mwe2</argument>
 						<argument>-p</argument>
 						<argument>rootPath=/${project.basedir}/..</argument>
 					</arguments>
