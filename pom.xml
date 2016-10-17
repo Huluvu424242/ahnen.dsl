@@ -149,11 +149,11 @@
 					<configuration>
 						<filesets>
 							<fileset>
-								<directory>${basedir}/xtend-gen</directory>
+								<directory>${basedir}/xtext-gen</directory>
 								<includes>
 									<include>**/*</include>
 								</includes>
-								<directory>${basedir}/xtend-gen</directory>
+								<directory>${basedir}/xtext-gen</directory>
 								<includes>
 									<include>**/*</include>
 								</includes>
