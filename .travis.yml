@@ -7,5 +7,4 @@ jdk:
     - oraclejdk8
 
 after_success:
-  - cd com.github.funthomas424242.dsl.ahnen.tests;bash <(curl -s https://codecov.io/bash)
-  - cd ../com.github.funthomas424242.dsl.ahnen.ui.tests;bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash) -f **/target/coverage-reports/jacoco-unit.exec
