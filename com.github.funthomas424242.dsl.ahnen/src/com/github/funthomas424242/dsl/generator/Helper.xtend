@@ -7,7 +7,6 @@ import java.io.FileNotFoundException
 import java.io.IOException
 import java.util.logging.Level
 import java.util.logging.Logger
-import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.Path
 import org.eclipse.emf.common.util.URI
@@ -44,42 +43,14 @@ class Helper {
         return "familienbuch_" + buch.name + "/gramps/"+buch.name + ".dpkg";
     }
 
-//    def static getGrampsArchiveFile(Familienbuch buch, IFileSystemAccess2 fsa) {
-//        
-//        val platformString = buch.eResource.URI.toPlatformString(true);
-//        val myFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
-//        
-//        val proj = myFile.getProject();
-//        var URI grampsFolder = fsa.getURI("familienbuch_" + buch.name + "/gramps/");
-//        val IFolder grampsFolderFolder = proj.getFolder(grampsFolder.path());
-//        logger.log(Level.INFO,"Resource: "+grampsFolderFolder.getFullPath().toOSString());
-//        
-//        var File grampsFolderFile=grampsFolderFolder.getFullPath().toFile();
-//        grampsFolderFile.mkdirs();
-//        var File grampsArchiveFile = new File(grampsFolderFile, buch.name + ".dpkg");
-//        logger.log(Level.INFO,"GrampsArchiveFile: "+grampsArchiveFile.getAbsolutePath());
-//        return grampsArchiveFile;
-//    }
-
     def static File convertURI2File(Familienbuch buch, URI uri) {
         
-        logger.log(Level.INFO,"Convert URI: "+uri.toString());
-        var URI resolvedURI = uri.resolve(buch.eResource.URI);
-        logger.log(Level.INFO,"Resolved URI: "+resolvedURI.toPlatformString(true));
-        val uriXFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(resolvedURI.toPlatformString(true)));
-        logger.log(Level.INFO,"Resolved Location: "+uriXFile.getLocation());
-        logger.log(Level.INFO,"Resolved FilePath: "+uriXFile.getLocation().toFile().getAbsolutePath());
-//        //buch.eResource.getEObject(uri.fragment).eResource.get;
-//        
-        //val platformString = buch.eResource.URI.toPlatformString(true);
-//        logger.log(Level.INFO,"Platform: "+platformString);
-        //val buchFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
-       // val project = buchFile.getProject();
-//         logger.log(Level.INFO,"Project: "+project.getName());
-        
-        //val IFile uriIFile = project.getFile(uri.path());
-        var File uriFile=uriXFile.getLocation().toFile();
-        logger.log(Level.INFO,"to File: "+uriFile.getAbsolutePath());
+        logger.log(Level.FINEST,"Convert URI: "+uri.toString());
+        val uriIFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(uri.toPlatformString(true)));
+        logger.log(Level.FINEST,"Resolved Location: "+uriIFile.getLocation());
+        logger.log(Level.FINEST,"Resolved FilePath: "+uriIFile.getLocation().toFile().getAbsolutePath());
+        var File uriFile=uriIFile.getLocation().toFile();
+        logger.log(Level.FINEST,"to File: "+uriFile.getAbsolutePath());
         return uriFile;
     }
 
@@ -127,55 +98,8 @@ class Helper {
         logger.log(Level.INFO,"GrampsFile: "+grampsDBFile.getAbsolutePath());
         logger.log(Level.INFO,"MediaFolder: "+mediaFolderFile.getAbsolutePath());
 
-
         var GrampsExporter exporter = new GrampsExporter("ahnen", grampsDBFile, targetFile, mediaFolderFile);
         exporter.createExportfile();
-
-//        var FileOutputStream fOut = null;
-//        var BufferedOutputStream bOut = null;
-//        var GzipCompressorOutputStream gzOut = null;
-//        var TarArchiveOutputStream tOut = null;
-//        try {
-//            System.out.println("LOG:" + new File(".").getAbsolutePath());
-//            var String dirPath = quellDirectoryPath;
-//            // final String dirPath = "parent/childDirToCompress/";
-//            var String tarGzPath = targetFilePath;
-//            // final String tarGzPath = "archive.tar.gz";
-//            fOut = new FileOutputStream(new File(tarGzPath));
-//            bOut = new BufferedOutputStream(fOut);
-//            gzOut = new GzipCompressorOutputStream(bOut);
-//            tOut = new TarArchiveOutputStream(gzOut);
-//            addFileToTarGz(tOut, dirPath, "");
-//        } finally {
-//            tOut.finish();
-//            tOut.close();
-//            gzOut.close();
-//            bOut.close();
-//            fOut.close();
-//        }
     }
     
-   
-
-//    def static void addFileToTarGz(TarArchiveOutputStream tOut, String path, String base) throws IOException {
-//        var File f = new File(path);
-//        System.out.println("LOG:" + f.exists());
-//        var String entryName = base + f.getName();
-//        var TarArchiveEntry tarEntry = new TarArchiveEntry(f, entryName);
-//        tOut.putArchiveEntry(tarEntry);
-//
-//        if (f.isFile()) {
-//            IOUtils.copy(new FileInputStream(f), tOut);
-//            tOut.closeArchiveEntry();
-//        } else {
-//            tOut.closeArchiveEntry();
-//            var File[] children = f.listFiles();
-//            if (children != null) {
-//                for (File child : children) {
-//                    System.out.println(child.getName());
-//                    addFileToTarGz(tOut, child.getAbsolutePath(), entryName + "/");
-//                }
-//            }
-//        }
-//    }
 }
