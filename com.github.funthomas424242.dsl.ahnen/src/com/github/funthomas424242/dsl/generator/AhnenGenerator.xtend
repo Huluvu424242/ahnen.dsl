@@ -5,6 +5,8 @@ package com.github.funthomas424242.dsl.generator
 
 import com.github.funthomas424242.dsl.ahnen.Familienbuch
 import java.io.File
+import java.io.FileInputStream
+import java.nio.file.Files
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
@@ -22,13 +24,15 @@ class AhnenGenerator extends AbstractGenerator {
 		for (buch : resource.allContents.toIterable.filter(Familienbuch)) {
 			fsa.generateFile(Helper.getPOMFileName(buch), POMGenerator.createPOMContent(buch))
 			fsa.generateFile(Helper.getGrampsDBFileName(buch),DataXMLGenerator.createGrampsDBContent(buch));
-			var URI grampsArchivefileURI = fsa.getURI(Helper.getGrampsArchiveFileName(buch));
-			var File grampsArchivefileFile = Helper.convertURI2File(buch,grampsArchivefileURI);
 			var URI grampsDbfileURI=fsa.getURI(Helper.getGrampsDBFileName(buch));
 			var File grampsDbfileFile = Helper.convertURI2File(buch,grampsDbfileURI);
 			var URI mediaFolderURI=fsa.getURI(Helper.getGeneratedBookDirectory(buch)+"/media/");
 			var File mediaFolderFile = Helper.convertURI2File(buch,mediaFolderURI);
-		    Helper.createTarGZ(grampsArchivefileFile, grampsDbfileFile ,mediaFolderFile);
+			mediaFolderFile.mkdirs();
+			var File grampsArchiveFileTmp = Files.createTempFile("gramps",null).toFile();
+		    Helper.createTarGZ(grampsArchiveFileTmp, grampsDbfileFile ,mediaFolderFile);
+		    var FileInputStream fIn = new FileInputStream(grampsArchiveFileTmp);
+		    fsa.generateFile(Helper.getGrampsArchiveFileName(buch),fIn);
 			fsa.generateFile(Helper.getDbkFileName(buch, "book.dbk"), BookGenerator.createBookContent(fsa, buch))
 		}
 	}

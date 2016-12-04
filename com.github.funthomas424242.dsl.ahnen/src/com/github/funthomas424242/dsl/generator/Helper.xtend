@@ -64,12 +64,21 @@ class Helper {
     def static File convertURI2File(Familienbuch buch, URI uri) {
         
         logger.log(Level.INFO,"Convert URI: "+uri.toString());
-        val platformString = buch.eResource.URI.toPlatformString(true);
-        val buchFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
-        val project = buchFile.getProject();
+        var URI resolvedURI = uri.resolve(buch.eResource.URI);
+        logger.log(Level.INFO,"Resolved URI: "+resolvedURI.toPlatformString(true));
+        val uriXFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(resolvedURI.toPlatformString(true)));
+        logger.log(Level.INFO,"Resolved Location: "+uriXFile.getLocation());
+        logger.log(Level.INFO,"Resolved FilePath: "+uriXFile.getLocation().toFile().getAbsolutePath());
+//        //buch.eResource.getEObject(uri.fragment).eResource.get;
+//        
+        //val platformString = buch.eResource.URI.toPlatformString(true);
+//        logger.log(Level.INFO,"Platform: "+platformString);
+        //val buchFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
+       // val project = buchFile.getProject();
+//         logger.log(Level.INFO,"Project: "+project.getName());
         
-        val IFile uriIFile = project.getFile(uri.path());
-        var File uriFile=uriIFile.getFullPath().toFile();
+        //val IFile uriIFile = project.getFile(uri.path());
+        var File uriFile=uriXFile.getLocation().toFile();
         logger.log(Level.INFO,"to File: "+uriFile.getAbsolutePath());
         return uriFile;
     }
