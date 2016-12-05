@@ -25,7 +25,7 @@ class AhnenGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		for (buch : resource.allContents.toIterable.filter(Familienbuch)) {
-			fsa.generateFile(Helper.getPOMFileName(buch), POMGenerator.createPOMContent(buch))
+		    // generate gramps database
 			fsa.generateFile(Helper.getGrampsDBFileName(buch),DataXMLGenerator.createGrampsDBContent(buch));
 			var URI grampsDbfileURI=fsa.getURI(Helper.getGrampsDBFileName(buch));
 			var File grampsDbfileFile = Helper.convertURI2File(buch,grampsDbfileURI);
@@ -35,6 +35,8 @@ class AhnenGenerator extends AbstractGenerator {
 		    Helper.createTarGZ(grampsArchiveFileTmp, grampsDbfileFile ,mediaFolderFile);
 		    var FileInputStream fIn = new FileInputStream(grampsArchiveFileTmp);
 		    fsa.generateFile(Helper.getGrampsArchiveFileName(buch),fIn);
+		    // generate docbook project
+			fsa.generateFile(Helper.getPOMFileName(buch), POMGenerator.createPOMContent(buch))
 			fsa.generateFile(Helper.getDbkFileName(buch, "book.dbk"), BookGenerator.createBookContent(fsa, buch))
 		}
 	}
