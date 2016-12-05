@@ -74,6 +74,7 @@ Familienbuch:
 	"Familie:" familie=STRING "."
 	"Person:" person=[Person|STRING] "."
 	"Version:" version=VERSION "."
+	"Media-Verzeichnis:" mediaFolder=STRING "."
 	"Titel:" titel=STRING "."
 	"Vorwort:" "{" vorwort=STRING "}" 
 	"Autor:" "{" autor= Autor "}" 

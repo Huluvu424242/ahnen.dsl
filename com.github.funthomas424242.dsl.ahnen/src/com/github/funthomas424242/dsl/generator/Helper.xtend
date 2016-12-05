@@ -13,6 +13,7 @@ import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.xtext.generator.IFileSystemAccess2
 
 /**
  * Generates code from your model files on save.
@@ -43,6 +44,12 @@ class Helper {
         return "familienbuch_" + buch.name + "/gramps/"+buch.name + ".dpkg";
     }
 
+    def static File getMediaFolderFile(Familienbuch buch, IFileSystemAccess2 fsa) {
+        var URI mediaFolderURI=fsa.getURI(".."+File.separator+buch.mediaFolder);
+        return convertURI2File(buch,mediaFolderURI);
+    }
+
+
     def static File convertURI2File(Familienbuch buch, URI uri) {
         
         logger.log(Level.FINEST,"Convert URI: "+uri.toString());
@@ -50,7 +57,7 @@ class Helper {
         logger.log(Level.FINEST,"Resolved Location: "+uriIFile.getLocation());
         logger.log(Level.FINEST,"Resolved FilePath: "+uriIFile.getLocation().toFile().getAbsolutePath());
         var File uriFile=uriIFile.getLocation().toFile();
-        logger.log(Level.FINEST,"to File: "+uriFile.getAbsolutePath());
+        logger.log(Level.INFO,"to File: "+uriFile.getAbsolutePath());
         return uriFile;
     }
 

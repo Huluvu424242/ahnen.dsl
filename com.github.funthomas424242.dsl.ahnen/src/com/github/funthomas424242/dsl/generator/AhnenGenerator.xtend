@@ -26,8 +26,7 @@ class AhnenGenerator extends AbstractGenerator {
 			fsa.generateFile(Helper.getGrampsDBFileName(buch),DataXMLGenerator.createGrampsDBContent(buch));
 			var URI grampsDbfileURI=fsa.getURI(Helper.getGrampsDBFileName(buch));
 			var File grampsDbfileFile = Helper.convertURI2File(buch,grampsDbfileURI);
-			var URI mediaFolderURI=fsa.getURI(Helper.getGeneratedBookDirectory(buch)+"/media/");
-			var File mediaFolderFile = Helper.convertURI2File(buch,mediaFolderURI);
+			var File mediaFolderFile = Helper.getMediaFolderFile(buch,fsa);
 			mediaFolderFile.mkdirs();
 			var File grampsArchiveFileTmp = Files.createTempFile("gramps",null).toFile();
 		    Helper.createTarGZ(grampsArchiveFileTmp, grampsDbfileFile ,mediaFolderFile);
