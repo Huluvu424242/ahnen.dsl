@@ -1,4 +1,4 @@
-package com.github.funthomas424242.dsl.generator
+package com.github.funthomas424242.dsl.generator.docbook
 
 import com.github.funthomas424242.dsl.ahnen.Autor
 import com.github.funthomas424242.dsl.ahnen.Familienbuch

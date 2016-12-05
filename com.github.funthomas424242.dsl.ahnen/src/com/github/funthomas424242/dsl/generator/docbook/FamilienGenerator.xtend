@@ -1,8 +1,9 @@
-package com.github.funthomas424242.dsl.generator
+package com.github.funthomas424242.dsl.generator.docbook
 
 import com.github.funthomas424242.dsl.ahnen.Familie
 import com.github.funthomas424242.dsl.ahnen.Familienbuch
 import com.github.funthomas424242.dsl.ahnen.Person
+import com.github.funthomas424242.dsl.generator.Helper
 import org.eclipse.xtext.generator.IFileSystemAccess
 
 /**

@@ -1,4 +1,4 @@
-package com.github.funthomas424242.dsl.generator
+package com.github.funthomas424242.dsl.generator.docbook
 
 import com.github.funthomas424242.dsl.ahnen.Familienbuch
 
@@ -7,9 +7,14 @@ import com.github.funthomas424242.dsl.ahnen.Familienbuch
  * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
-class DataXMLGenerator{
+class POMGenerator{
 	
-	def static createGrampsDBContent(Familienbuch buch) '''
+	
+	
+	
+	
+	
+	def static createPOMContent(Familienbuch buch) '''
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">

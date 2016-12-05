@@ -4,6 +4,9 @@
 package com.github.funthomas424242.dsl.generator
 
 import com.github.funthomas424242.dsl.ahnen.Familienbuch
+import com.github.funthomas424242.dsl.generator.database.DataXMLGenerator
+import com.github.funthomas424242.dsl.generator.docbook.BookGenerator
+import com.github.funthomas424242.dsl.generator.docbook.POMGenerator
 import java.io.File
 import java.io.FileInputStream
 import java.nio.file.Files
