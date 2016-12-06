@@ -1,6 +1,7 @@
 package com.github.funthomas424242.dsl.generator.database
 
 import com.github.funthomas424242.dsl.ahnen.Familienbuch
+import com.github.funthomas424242.dsl.generator.Helper
 
 /**
  * Generates code from your model files on save.
@@ -15,11 +16,11 @@ class HeaderGenerator{
 	
 	def static String createHeaderContent(Familienbuch buch) '''
   <header>
-    <created date="2016-08-31" version="5.0.0"/>
+    <created date="«Helper.getCurrentStandardDate()»" version="«buch.version»"/>
     <researcher>
-      <resname>Alex Roitman,,,</resname>
+      <resname>«buch.autor.vorname+" "+buch.autor.nachname»</resname>
     </researcher>
-    <mediapath>{GRAMPS_RESOURCES}/example/gramps</mediapath>
+    <mediapath>{GRAMPS_RESOURCES}/«buch.mediaFolder»</mediapath>
   </header>
  '''
 }

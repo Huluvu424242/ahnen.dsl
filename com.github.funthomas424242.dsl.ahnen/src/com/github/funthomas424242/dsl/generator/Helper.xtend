@@ -5,6 +5,7 @@ import com.github.funthomas424242.files2gramps.GrampsExporter
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.IOException
+import java.text.SimpleDateFormat
 import java.util.logging.Level
 import java.util.logging.Logger
 import org.eclipse.core.resources.ResourcesPlugin
@@ -107,6 +108,11 @@ class Helper {
 
         var GrampsExporter exporter = new GrampsExporter("ahnen", grampsDBFile, targetFile, mediaFolderFile);
         exporter.createExportfile();
+    }
+    
+    def static String getCurrentStandardDate() {
+        var SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        return formatter.format(System.currentTimeMillis());
     }
     
 }
