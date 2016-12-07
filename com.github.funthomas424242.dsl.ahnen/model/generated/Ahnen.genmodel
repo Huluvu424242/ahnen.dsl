@@ -7,9 +7,9 @@
   <genPackages prefix="Ahnen" basePackage="com.github.funthomas424242.dsl" disposableProviderFactory="true"
       fileExtensions="ahnen" ecorePackage="Ahnen.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Ahnen.ecore#//Geschlecht">
-      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Geschlecht/unbekannt"/>
-      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Geschlecht/maennlich"/>
-      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Geschlecht/weiblich"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Geschlecht/U"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Geschlecht/M"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Geschlecht/F"/>
     </genEnums>
     <genClasses ecoreClass="Ahnen.ecore#//Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Model/datei"/>

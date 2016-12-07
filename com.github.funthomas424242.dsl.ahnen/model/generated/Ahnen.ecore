@@ -85,8 +85,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="organisationsName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Geschlecht">
-    <eLiterals name="unbekannt" literal="unbekannt"/>
-    <eLiterals name="maennlich" value="1" literal="männlich"/>
-    <eLiterals name="weiblich" value="2" literal="weiblich"/>
+    <eLiterals name="U" literal="unbekannt"/>
+    <eLiterals name="M" value="1" literal="männlich"/>
+    <eLiterals name="F" value="2" literal="weiblich"/>
   </eClassifiers>
 </ecore:EPackage>

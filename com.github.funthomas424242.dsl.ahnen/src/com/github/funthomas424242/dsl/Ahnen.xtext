@@ -93,11 +93,11 @@ Autor:
 	"Organisation" organisationsName=STRING? "."	
 ;
 
-
+// U,M,F values of gramps database format
 enum Geschlecht:
-	unbekannt='unbekannt'
- 	| maennlich='männlich'
- 	| weiblich='weiblich'
+	U ='unbekannt'
+ 	| M ='männlich'
+ 	| F ='weiblich'
 ;
 
 VERSION:
