@@ -13,7 +13,7 @@ import com.github.funthomas424242.dsl.ahnen.Person
 class PeopleGenerator {
 
     def static createContent(Familienbuch buch) '''
-	<people home="_GNUJQCL9MD64AM56OH">	
+	<people>	
 	«FOR FamilienImport familieImport : buch.familien »
 	   «val Familie familie = familieImport.familie»
 	   «FOR person : familie.personen»
@@ -24,7 +24,7 @@ class PeopleGenerator {
 	'''
 	
 	def static createPerson(Familie familie, Person person) '''
-    <person handle="«familie.name»#«person.name»" change="1185438865" id="I0552">
+    <person handle="«familie.name»#«person.name»" change="1185438865">
        <gender>«person.geschlecht.getName»</gender>
        <name type="Birth Name">
          <first>«person.vorname»</first>

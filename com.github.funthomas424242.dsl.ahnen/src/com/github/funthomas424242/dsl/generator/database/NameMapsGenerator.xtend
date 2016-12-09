@@ -10,8 +10,11 @@ import com.github.funthomas424242.dsl.ahnen.Familienbuch
 class NameMapsGenerator{
 	
 	def static createContent(Familienbuch buch) '''
-  <namemaps>
-    <map type="group_as" key="Fernández" value="Fernandez"/>
-  </namemaps>
+    <namemaps></namemaps>
 	'''
-	}
+}
+
+//
+// <namemaps>
+//    <map type="group_as" key="Fernández" value="Fernandez"/>
+//  </namemaps>

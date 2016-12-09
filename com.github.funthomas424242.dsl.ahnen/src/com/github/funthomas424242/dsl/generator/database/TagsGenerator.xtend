@@ -10,8 +10,7 @@ import com.github.funthomas424242.dsl.ahnen.Familienbuch
 class TagsGenerator{
 	
 	def static createContent(Familienbuch buch) '''
-  <tags>
-  </tags>
+  <tags></tags>
 	'''
 //    def static createContent(Familienbuch buch) '''
 //  <tags>
