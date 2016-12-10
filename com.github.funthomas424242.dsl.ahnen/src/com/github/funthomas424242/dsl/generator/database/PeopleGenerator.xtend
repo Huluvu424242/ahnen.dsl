@@ -13,11 +13,12 @@ import com.github.funthomas424242.dsl.ahnen.Person
 class PeopleGenerator {
 
     def static createContent(Familienbuch buch) '''
-	<people>	
+    «val Familie pFamilie=buch.person.eContainer as Familie»
+	<people home="«pFamilie.name»#«buch.person.name»">	
 	«FOR FamilienImport familieImport : buch.familien »
 	   «val Familie familie = familieImport.familie»
 	   «FOR person : familie.personen»
-	       «createPerson(familie,person)»
+	       «createPerson( familie,person)»
 	   «ENDFOR»
 	«ENDFOR»
 	</people>
