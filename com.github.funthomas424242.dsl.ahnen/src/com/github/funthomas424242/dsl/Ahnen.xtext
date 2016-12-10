@@ -12,7 +12,10 @@ Dateiart:
 Familie:
 	{Familie}
 	"Familie" name=ID ";"
-	(personen+=Person)+;
+	"Vater" "{" (vater=Person)? "}"
+	"Mutter" "{" (mutter=Person)? "}"
+	"Kinder" "{" (kinder+=Person)* "}"
+	"Sonstige" "{" (personen+=Person)* "}";
 
 Person:
 	{Person}

@@ -20,6 +20,9 @@
     </genClasses>
     <genClasses ecoreClass="Ahnen.ecore#//Familie">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familie/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Familie/vater"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Familie/mutter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Familie/kinder"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Familie/personen"/>
     </genClasses>
     <genClasses ecoreClass="Ahnen.ecore#//Person">
