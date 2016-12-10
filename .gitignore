@@ -1,10 +1,19 @@
-.settings/
+# IntelliJ
+.idea/
+*.iml
+
+# Eclipse
+.settings
+.project
+.classpath
+
+# Maven
 target/
+
+# Xtext
 src-gen/
 xtend-gen/
 xtext-gen/
-.project
-.classpath
-*_gen
 
+*_gen
 
