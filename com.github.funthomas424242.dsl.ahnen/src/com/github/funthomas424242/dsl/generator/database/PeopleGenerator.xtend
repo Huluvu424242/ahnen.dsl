@@ -39,12 +39,13 @@ class PeopleGenerator {
        </name>
        «IF person.mutter != null»
        «val Familie mFamilie = person.mutter.eContainer as Familie»
-       <parentin hlink="«mFamilie.name»#«person.mutter.name»"/>
+       <childof hlink="«mFamilie.name»"/>
        «ENDIF»
        «IF person.vater != null»
        «val Familie mFamilie = person.vater.eContainer as Familie»
-       <parentin hlink="«mFamilie.name»#«person.vater.name»"/>
+       <childof hlink="«mFamilie.name»"/>
        «ENDIF»
+       <parentin hlink="«familie.name»"/>
 «««       <citationref hlink="undefined"/>
     </person>
 	'''
