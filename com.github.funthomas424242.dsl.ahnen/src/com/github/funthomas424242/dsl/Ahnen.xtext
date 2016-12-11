@@ -31,8 +31,6 @@ Person:
 		"Todesdatum:" (todesDatum=DATUM? | "unbekannt" | "lebend" | "vermisst" )"."
 		"Vater:" (vater=[Person|STRING]? | "unbekannt" | "unerfasst") "."
 		"Mutter:" (mutter=[Person|STRING]? | "unbekannt" | "unerfasst") "."
-		"Kinder:" (kinder=Kinder? | "keine") "."
-		"Stiefkinder:" (stiefkinder=Kinder? | "keine") "."
 		"Beziehungen:" "{"(beziehungen+=Beziehung+ | "keine") "}"
 		"Ereignisse:" "{" 
 			(ereignisse+=Ereignis+ | "keine" "bekannt")
@@ -70,6 +68,8 @@ Beziehung:
 	"von:" (vonDatum=DATUM? | "unbekannt") "bis:" (bisDatum=DATUM? | "unbekannt" | "andauernd") "."
 	"Hochzeit:" (hochzeitstag=DATUM? | "unbekannt" | "-") "." 
     "Scheidung:" (scheidungstag=DATUM? | "unbekannt" | "unabsehbar" | "demnächst" | "-") "."
+    "Kinder:" (kinder=Kinder? | "keine") "."
+    "Stiefkinder:" (stiefkinder=Kinder? | "keine") "."
 ;
 
 Familienbuch:

@@ -34,10 +34,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="todesDatum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="vater" eType="#//Person"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mutter" eType="#//Person"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="kinder" eType="#//Kinder"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="stiefkinder" eType="#//Kinder"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="beziehungen" upperBound="-1"
         eType="#//Beziehung" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ereignisse" upperBound="-1"
@@ -66,6 +62,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="bisDatum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hochzeitstag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scheidungstag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="kinder" eType="#//Kinder"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stiefkinder" eType="#//Kinder"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Familienbuch">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
