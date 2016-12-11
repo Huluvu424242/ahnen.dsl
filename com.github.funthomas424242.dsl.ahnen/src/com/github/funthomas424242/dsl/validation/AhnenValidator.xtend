@@ -3,6 +3,12 @@
  */
 package com.github.funthomas424242.dsl.validation
 
+import com.github.funthomas424242.dsl.ahnen.AhnenPackage
+import com.github.funthomas424242.dsl.ahnen.Beziehung
+import com.github.funthomas424242.dsl.ahnen.Familie
+import com.github.funthomas424242.dsl.ahnen.Kinder
+import com.github.funthomas424242.dsl.ahnen.Person
+import org.eclipse.xtext.validation.Check
 
 /**
  * This class contains custom validation rules. 
@@ -10,6 +16,37 @@ package com.github.funthomas424242.dsl.validation
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 class AhnenValidator extends AbstractAhnenValidator {
+	
+	
+	@Check
+	def void checkFamilyConsistence(Familie familie){
+	    var Kinder kinder = familie.kinder;
+	    while(kinder.kind != null){
+	        checkKindBackRefToFamily(familie,kinder.kind);
+	        kinder=kinder.next;
+	    }
+	}
+	
+    def void checkKindBackRefToFamily(Familie familie, Person kind){
+        info("CHECK für "+familie.name +" "+kind.name,AhnenPackage.Literals.FAMILIE__KINDER);
+         var boolean hasBackLink = false;
+         for( Beziehung beziehung: kind.beziehungen){
+            if( beziehung.beziehung.name ==  familie.name){
+                hasBackLink = true;
+                info("HAS LINK für "+beziehung.beziehung.name +" "+kind.name,AhnenPackage.Literals.FAMILIE__KINDER);
+            } 
+         }
+         if( hasBackLink ){
+           info("Person: "+kind.name+" hat eine Beziehung zur Familie: "+familie.name
+               ,AhnenPackage.Literals.FAMILIE__KINDER
+           );
+         }else{
+          info("Person: "+kind.name+" benötigt eine Beziehung zur Familie: "+familie.name
+               ,AhnenPackage.Literals.FAMILIE__KINDER
+           );
+         }
+    }
+	
 	
 //	public static val INVALID_NAME = 'invalidName'
 //
