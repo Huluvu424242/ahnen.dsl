@@ -31,15 +31,14 @@ class AhnenValidator extends AbstractAhnenValidator {
         
         if( kind.beziehungen == null || kind.beziehungen.empty){
          warning("Person: "+kind.name+" benötigt eine Beziehung zur Familie: "+familie.name
-               ,AhnenPackage.Literals.FAMILIE__KINDER
+               ,kind
+               ,AhnenPackage.Literals.PERSON__NAME
          );
          return;
         }
          var boolean hasBackLink = false;
          for( Beziehung beziehung: kind.beziehungen){
             if( beziehung.beziehung != null &&
-                beziehung.beziehung != "unbekannt" &&
-                beziehung.beziehung != "unerfasst" &&
                 beziehung.beziehung instanceof Familie && 
                 beziehung.beziehung.name.equals(familie.name)
             ){
@@ -48,7 +47,8 @@ class AhnenValidator extends AbstractAhnenValidator {
          }
          if( !hasBackLink ){
            warning("Person: "+kind.name+" benötigt eine Beziehung zur Familie: "+familie.name
-               ,AhnenPackage.Literals.FAMILIE__KINDER
+               ,kind
+               ,AhnenPackage.Literals.PERSON__NAME
            );
          }
     }
