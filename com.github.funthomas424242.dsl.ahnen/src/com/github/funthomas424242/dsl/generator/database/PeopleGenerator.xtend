@@ -1,9 +1,11 @@
 package com.github.funthomas424242.dsl.generator.database
 
+import com.github.funthomas424242.dsl.ahnen.Beziehung
 import com.github.funthomas424242.dsl.ahnen.Familie
 import com.github.funthomas424242.dsl.ahnen.FamilienImport
 import com.github.funthomas424242.dsl.ahnen.Familienbuch
 import com.github.funthomas424242.dsl.ahnen.Person
+import com.github.funthomas424242.dsl.ahnen.Beziehungsrolle
 
 /**
  * Generates code from your model files on save.
@@ -37,15 +39,18 @@ class PeopleGenerator {
          <call>«person.rufname»</call>
          <surname>«person.nachname»</surname>
        </name>
-       «IF person.mutter != null»
-       «val Familie mFamilie = person.mutter.eContainer as Familie»
-       <childof hlink="«mFamilie.name»"/>
-       «ENDIF»
-       «IF person.vater != null»
-       «val Familie mFamilie = person.vater.eContainer as Familie»
-       <childof hlink="«mFamilie.name»"/>
-       «ENDIF»
-       <parentin hlink="«familie.name»"/>
+       «FOR Beziehung beziehung : person.beziehungen»
+           «IF beziehung.beziehung != null 
+            && beziehung.beziehung != 'unbekannt'
+            && beziehung.beziehung != 'unerfasst'
+            »
+               «IF beziehung.role == Beziehungsrolle.K»
+                    <childof hlink="«beziehung.beziehung.name»"/>
+               «ELSE»
+                    <parentin hlink="«beziehung.beziehung.name»"/>
+               «ENDIF»
+           «ENDIF»
+       «ENDFOR»
 «««       <citationref hlink="undefined"/>
     </person>
 	'''

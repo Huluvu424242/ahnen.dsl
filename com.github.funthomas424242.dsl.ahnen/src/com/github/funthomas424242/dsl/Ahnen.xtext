@@ -67,7 +67,7 @@ Kinder:
 
 Beziehung:
 	{Beziehung}
-	("Vater" | "Mutter" | "Kind") "in" "Familie:" (beziehung=[Familie|STRING] | "unbekannt" | "unerfasst") "."
+	(role=Beziehungsrolle) "in" "Familie:" (beziehung=[Familie|STRING] | "unbekannt" | "unerfasst") "."
 ;
 
 Familienbuch:
@@ -110,6 +110,12 @@ enum Rolle:
     |Foster = "Gefördert"
     |Other = "Sonstige"
     |Unknown ="unbekannt"
+;
+
+enum Beziehungsrolle:
+    V="Vater"
+    | M="Mutter"
+    | K="Kind"
 ;
 
 VERSION:

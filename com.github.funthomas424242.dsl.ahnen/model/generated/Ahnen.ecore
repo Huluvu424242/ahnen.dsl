@@ -63,6 +63,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Beziehung">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="role" eType="#//Beziehungsrolle"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="beziehung" eType="#//Familie"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Familienbuch">
@@ -99,5 +100,10 @@
     <eLiterals name="Foster" value="4" literal="Gefördert"/>
     <eLiterals name="Other" value="5" literal="Sonstige"/>
     <eLiterals name="Unknown" value="6" literal="unbekannt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Beziehungsrolle">
+    <eLiterals name="V" literal="Vater"/>
+    <eLiterals name="M" value="1" literal="Mutter"/>
+    <eLiterals name="K" value="2" literal="Kind"/>
   </eClassifiers>
 </ecore:EPackage>
