@@ -1,10 +1,12 @@
 package com.github.funthomas424242.dsl.generator.database
 
+import com.github.funthomas424242.dsl.ahnen.Beziehung
 import com.github.funthomas424242.dsl.ahnen.Familie
 import com.github.funthomas424242.dsl.ahnen.Familienbuch
 import com.github.funthomas424242.dsl.ahnen.Kinder
 import com.github.funthomas424242.dsl.ahnen.Person
 import com.github.funthomas424242.dsl.ahnen.Rolle
+import org.eclipse.xtext.validation.Check
 
 /**
  * Generates code from your model files on save.
@@ -19,15 +21,18 @@ class FamiliesGenerator {
                  «val Familie familie = FamilienImport.familie»
                  <family handle="«familie.name»" change="1185438865">
                    «IF familie.vater != null»
-                   <father hlink="«familie.name»#«familie.vater.name»"/>
+                   «val Familie fFamilie = familie.vater.eContainer as Familie»
+                   <father hlink="«fFamilie.name»#«familie.vater.name»"/>
                    «ENDIF»
                    «IF familie.mutter != null»
-                   <mother hlink="«familie.name»#«familie.mutter.name»"/>
+                   «val Familie mFamilie = familie.mutter.eContainer as Familie»
+                   <mother hlink="«mFamilie.name»#«familie.mutter.name»"/>
                    «ENDIF»
                    «var Kinder kinder = familie.kinder»
                    «var String content=""»
                    «while (kinder !=null){
                        content = content + addChild(kinder,kinder.kind);
+                       //checkKindBackRefToFamily(familie,kinder.kind);
                        kinder = kinder.next
                    }»
                    «content»
@@ -49,6 +54,10 @@ class FamiliesGenerator {
             />
         «ENDIF»
     '''
+    
+    
+    
+   
 }
 
 
