@@ -1,12 +1,10 @@
 package com.github.funthomas424242.dsl.generator.database
 
-import com.github.funthomas424242.dsl.ahnen.Beziehung
 import com.github.funthomas424242.dsl.ahnen.Familie
 import com.github.funthomas424242.dsl.ahnen.Familienbuch
 import com.github.funthomas424242.dsl.ahnen.Kinder
 import com.github.funthomas424242.dsl.ahnen.Person
 import com.github.funthomas424242.dsl.ahnen.Rolle
-import org.eclipse.xtext.validation.Check
 
 /**
  * Generates code from your model files on save.
@@ -32,7 +30,6 @@ class FamiliesGenerator {
                    «var String content=""»
                    «while (kinder !=null){
                        content = content + addChild(kinder,kinder.kind);
-                       //checkKindBackRefToFamily(familie,kinder.kind);
                        kinder = kinder.next
                    }»
                    «content»
