@@ -30,9 +30,9 @@ class DataXMLGenerator {
     
      def static createDatabaseBeginTag() '''
      <?xml version="1.0" encoding="UTF-8"?>
-     <!DOCTYPE database PUBLIC "-//Gramps//DTD Gramps XML 1.7.1//EN"
-     "http://gramps-project.org/xml/1.7.1/grampsxml.dtd">
-     <database xmlns="http://gramps-project.org/xml/1.7.1/">
+     <!DOCTYPE database PUBLIC "-//Gramps//DTD Gramps XML 1.6.0//EN"
+     "http://gramps-project.org/xml/1.6.0/grampsxml.dtd">
+     <database xmlns="http://gramps-project.org/xml/1.6.0/">
      '''
      
      
