@@ -11,6 +11,15 @@
       <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Geschlecht/M"/>
       <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Geschlecht/F"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Ahnen.ecore#//Rolle">
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Rolle/Birth"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Rolle/Adopted"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Rolle/Stepchild"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Rolle/Sponsored"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Rolle/Foster"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Rolle/Other"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Rolle/Unknown"/>
+    </genEnums>
     <genClasses ecoreClass="Ahnen.ecore#//Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Model/datei"/>
     </genClasses>
@@ -22,7 +31,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familie/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Familie/vater"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Familie/mutter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familie/vonDatum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familie/bisDatum"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Familie/kinder"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familie/hochzeitstag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familie/scheidungstag"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Familie/personen"/>
     </genClasses>
     <genClasses ecoreClass="Ahnen.ecore#//Person">
@@ -55,16 +68,12 @@
     </genClasses>
     <genClasses ecoreClass="Ahnen.ecore#//Kinder">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Kinder/kind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Kinder/vaterRelation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Kinder/mutterRelation"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Kinder/next"/>
     </genClasses>
     <genClasses ecoreClass="Ahnen.ecore#//Beziehung">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Beziehung/beziehung"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Beziehung/vonDatum"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Beziehung/bisDatum"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Beziehung/hochzeitstag"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Beziehung/scheidungstag"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Beziehung/kinder"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Beziehung/stiefkinder"/>
     </genClasses>
     <genClasses ecoreClass="Ahnen.ecore#//Familienbuch">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familienbuch/name"/>

@@ -14,7 +14,10 @@ Familie:
 	"Familie" name=ID ";"
 	"Vater:" (vater=[Person|STRING]? | "unbekannt" | "unerfasst") "."
 	"Mutter:" (mutter=[Person|STRING]? | "unbekannt" | "unerfasst") "."
+	"von:" (vonDatum=DATUM? | "unbekannt") "bis:" (bisDatum=DATUM? | "unbekannt" | "andauernd") "."
 	"Kinder:" (kinder=Kinder? | "keine") "."
+    "Hochzeit:" (hochzeitstag=DATUM? | "unbekannt" | "-") "." 
+    "Scheidung:" (scheidungstag=DATUM? | "unbekannt" | "unabsehbar" | "demnächst" | "-") "."
 	"Familienangehörige" "{" (personen+=Person)* "}";
 
 Person:
@@ -59,17 +62,12 @@ Taetigkeit:
 
 Kinder:
 	{Kinder}
-	(kind=[Person|STRING] | "unbekannt" |"unerfasst") ("," next=Kinder)?
+	(kind=[Person|STRING] ("Vaterrolle:" vaterRelation=Rolle)? ("Mutterrolle:" mutterRelation=Rolle)? | "unbekannt" |"unerfasst") ("," next=Kinder)?
 ;
 
 Beziehung:
 	{Beziehung}
-	"Beziehung:" "mit" (beziehung=[Person|STRING] | "unbekannt" | "unerfasst") "."
-	"von:" (vonDatum=DATUM? | "unbekannt") "bis:" (bisDatum=DATUM? | "unbekannt" | "andauernd") "."
-	"Hochzeit:" (hochzeitstag=DATUM? | "unbekannt" | "-") "." 
-    "Scheidung:" (scheidungstag=DATUM? | "unbekannt" | "unabsehbar" | "demnächst" | "-") "."
-    "Kinder:" (kinder=Kinder? | "keine") "."
-    "Stiefkinder:" (stiefkinder=Kinder? | "keine") "."
+	("Vater" | "Mutter" | "Kind") "in" "Familie:" (beziehung=[Familie|STRING] | "unbekannt" | "unerfasst") "."
 ;
 
 Familienbuch:
@@ -101,6 +99,17 @@ enum Geschlecht:
 	U ='unbekannt'
  	| M ='männlich'
  	| F ='weiblich'
+;
+
+// (None|Birth|Adopted|Stepchild|Sponsored|Foster|Other|Unknown) gramps values
+enum Rolle:
+    Birth = "Leiblich"
+    |Adopted = "Adoptiert"
+    |Stepchild ="Stiefkind"
+    |Sponsored = "Sponsored"
+    |Foster = "Gefördert"
+    |Other = "Sonstige"
+    |Unknown ="unbekannt"
 ;
 
 VERSION:

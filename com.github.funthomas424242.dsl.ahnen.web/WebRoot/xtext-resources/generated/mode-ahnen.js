@@ -1,6 +1,6 @@
 define(["ace/lib/oop", "ace/mode/text", "ace/mode/text_highlight_rules"], function(oop, mText, mTextHighlightRules) {
 	var HighlightRules = function() {
-		var keywords = "Familie|Familienbuch|Letzte|Organisation|Person|abgebrochen|als|andauernd|bei|bekannt|bis|familie|import|in|keine|lebend|mit|ohne|unabsehbar|unbekannt|unerfasst|vermisst|von|weiblich";
+		var keywords = "Adoptiert|Familie|Familienbuch|Kind|Leiblich|Letzte|Mutter|Organisation|Person|Sonstige|Sponsored|Stiefkind|Vater|abgebrochen|als|andauernd|bei|bekannt|bis|familie|import|in|keine|lebend|ohne|unabsehbar|unbekannt|unerfasst|vermisst|von|weiblich";
 		this.$rules = {
 			"start": [
 				{token: "comment", regex: "\\/\\/.*$"},
