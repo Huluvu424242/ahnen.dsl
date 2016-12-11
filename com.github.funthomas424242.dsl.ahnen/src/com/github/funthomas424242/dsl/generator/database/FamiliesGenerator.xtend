@@ -2,6 +2,8 @@ package com.github.funthomas424242.dsl.generator.database
 
 import com.github.funthomas424242.dsl.ahnen.Familie
 import com.github.funthomas424242.dsl.ahnen.Familienbuch
+import com.github.funthomas424242.dsl.ahnen.Kinder
+import com.github.funthomas424242.dsl.ahnen.Person
 
 /**
  * Generates code from your model files on save.
@@ -21,11 +23,30 @@ class FamiliesGenerator {
                    «IF familie.mutter != null»
                    <mother hlink="«familie.name»#«familie.mutter.name»"/>
                    «ENDIF»
+                   «var Kinder kinder = familie.kinder»
+                   «var String content=""»
+                   «while (kinder !=null){
+                       content = content + addChild(kinder.kind);
+                       kinder = kinder.next
+                   }»
+                   «content»
                  </family>
              «ENDFOR»
            </families>
     '''
+
+    def static addChild(Person kind) '''
+        «IF kind != null»
+            «val Familie familie = kind.eContainer as Familie»
+            <childref hlink="«familie.name»#«kind.name»"/>
+        «ENDIF»
+    '''
 }
+
+
+
+
+
 //
 //<families>
 //    <family handle="_03GKQCH37C1SL9C5B3" change="1185438865" id="F0372">
