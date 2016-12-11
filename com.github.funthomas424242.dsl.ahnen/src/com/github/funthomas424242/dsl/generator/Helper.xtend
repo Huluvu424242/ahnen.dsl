@@ -110,7 +110,7 @@ class Helper {
         exporter.createExportfile();
     }
     
-    def static String getCurrentStandardDate() {
+    def static String getGrampsStandardDate() {
         var SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         return formatter.format(System.currentTimeMillis());
     }

@@ -12,6 +12,7 @@
       <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Geschlecht/F"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Ahnen.ecore#//Rolle">
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Rolle/None"/>
       <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Rolle/Birth"/>
       <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Rolle/Adopted"/>
       <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Rolle/Stepchild"/>

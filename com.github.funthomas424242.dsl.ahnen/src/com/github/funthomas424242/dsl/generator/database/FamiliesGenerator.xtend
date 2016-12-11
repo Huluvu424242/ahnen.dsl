@@ -4,6 +4,7 @@ import com.github.funthomas424242.dsl.ahnen.Familie
 import com.github.funthomas424242.dsl.ahnen.Familienbuch
 import com.github.funthomas424242.dsl.ahnen.Kinder
 import com.github.funthomas424242.dsl.ahnen.Person
+import com.github.funthomas424242.dsl.ahnen.Rolle
 
 /**
  * Generates code from your model files on save.
@@ -26,7 +27,7 @@ class FamiliesGenerator {
                    «var Kinder kinder = familie.kinder»
                    «var String content=""»
                    «while (kinder !=null){
-                       content = content + addChild(kinder.kind);
+                       content = content + addChild(kinder,kinder.kind);
                        kinder = kinder.next
                    }»
                    «content»
@@ -35,10 +36,17 @@ class FamiliesGenerator {
            </families>
     '''
 
-    def static addChild(Person kind) '''
+    def static addChild(Kinder kinder, Person kind) '''
         «IF kind != null»
             «val Familie familie = kind.eContainer as Familie»
-            <childref hlink="«familie.name»#«kind.name»"/>
+            <childref hlink="«familie.name»#«kind.name»"
+            «IF kinder.vaterRelation != null && kinder.vaterRelation != Rolle.NONE»
+            frel="«kinder.vaterRelation.name().toLowerCase.toFirstUpper»"
+            «ENDIF»
+            «IF kinder.mutterRelation !=null && kinder.mutterRelation != Rolle.NONE»
+            mrel="«kinder.mutterRelation.name().toLowerCase.toFirstUpper»"
+            «ENDIF»
+            />
         «ENDIF»
     '''
 }

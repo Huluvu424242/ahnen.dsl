@@ -103,7 +103,8 @@ enum Geschlecht:
 
 // (None|Birth|Adopted|Stepchild|Sponsored|Foster|Other|Unknown) gramps values
 enum Rolle:
-    Birth = "Leiblich"
+    None = "Keine"
+    |Birth = "Leiblich"
     |Adopted = "Adoptiert"
     |Stepchild ="Stiefkind"
     |Sponsored = "Sponsored"

@@ -93,13 +93,14 @@
     <eLiterals name="F" value="2" literal="weiblich"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Rolle">
-    <eLiterals name="Birth" literal="Leiblich"/>
-    <eLiterals name="Adopted" value="1" literal="Adoptiert"/>
-    <eLiterals name="Stepchild" value="2" literal="Stiefkind"/>
-    <eLiterals name="Sponsored" value="3" literal="Sponsored"/>
-    <eLiterals name="Foster" value="4" literal="Gefördert"/>
-    <eLiterals name="Other" value="5" literal="Sonstige"/>
-    <eLiterals name="Unknown" value="6" literal="unbekannt"/>
+    <eLiterals name="None" literal="Keine"/>
+    <eLiterals name="Birth" value="1" literal="Leiblich"/>
+    <eLiterals name="Adopted" value="2" literal="Adoptiert"/>
+    <eLiterals name="Stepchild" value="3" literal="Stiefkind"/>
+    <eLiterals name="Sponsored" value="4" literal="Sponsored"/>
+    <eLiterals name="Foster" value="5" literal="Gefördert"/>
+    <eLiterals name="Other" value="6" literal="Sonstige"/>
+    <eLiterals name="Unknown" value="7" literal="unbekannt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Beziehungsrolle">
     <eLiterals name="V" literal="Vater"/>

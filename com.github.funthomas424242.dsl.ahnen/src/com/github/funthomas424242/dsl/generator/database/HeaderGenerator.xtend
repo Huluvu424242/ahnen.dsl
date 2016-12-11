@@ -16,7 +16,7 @@ class HeaderGenerator{
 	
 	def static String createHeaderContent(Familienbuch buch) '''
   <header>
-    <created date="«Helper.getCurrentStandardDate()»" version="«buch.version»"/>
+    <created date="«Helper.getGrampsStandardDate()»" version="«buch.version»"/>
     <researcher>
       <resname>«buch.autor.vorname+" "+buch.autor.nachname»</resname>
     </researcher>
