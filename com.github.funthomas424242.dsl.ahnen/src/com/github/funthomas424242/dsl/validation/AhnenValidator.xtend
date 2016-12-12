@@ -30,27 +30,28 @@ class AhnenValidator extends AbstractAhnenValidator {
     def void checkKindBackRefToFamily(Familie familie, Person kind){
         
         if( kind.beziehungen == null || kind.beziehungen.empty){
-         warning("Person: "+kind.name+" benötigt eine Beziehung zur Familie: "+familie.name
-               ,kind
-               ,AhnenPackage.Literals.PERSON__NAME
-         );
+           warning("Person: "+kind.name+" benötigt eine Beziehung zur Familie: "+familie.name,
+                AhnenPackage.Literals.FAMILIE__KINDER
+           );
          return;
         }
-         var boolean hasBackLink = false;
-         for( Beziehung beziehung: kind.beziehungen){
+        var boolean hasBackLink = false;
+        for( Beziehung beziehung: kind.beziehungen){
             if( beziehung.beziehung != null &&
                 beziehung.beziehung instanceof Familie && 
                 beziehung.beziehung.name.equals(familie.name)
             ){
                 hasBackLink = true;
             } 
-         }
-         if( !hasBackLink ){
-           warning("Person: "+kind.name+" benötigt eine Beziehung zur Familie: "+familie.name
-               ,kind
-               ,AhnenPackage.Literals.PERSON__NAME
-           );
-         }
+        }
+        
+        if( !hasBackLink ){
+          if( kind.beziehungen != null && !kind.beziehungen.empty ){
+             warning("Person: "+kind.name+" benötigt eine Beziehung zur Familie: "+familie.name,
+                 AhnenPackage.Literals.FAMILIE__KINDER
+             );
+          }
+        }
     }
 	
 	
