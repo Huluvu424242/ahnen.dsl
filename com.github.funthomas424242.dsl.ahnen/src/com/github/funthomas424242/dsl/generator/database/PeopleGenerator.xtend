@@ -1,11 +1,12 @@
 package com.github.funthomas424242.dsl.generator.database
 
 import com.github.funthomas424242.dsl.ahnen.Beziehung
+import com.github.funthomas424242.dsl.ahnen.Beziehungsrolle
 import com.github.funthomas424242.dsl.ahnen.Familie
 import com.github.funthomas424242.dsl.ahnen.FamilienImport
 import com.github.funthomas424242.dsl.ahnen.Familienbuch
 import com.github.funthomas424242.dsl.ahnen.Person
-import com.github.funthomas424242.dsl.ahnen.Beziehungsrolle
+import java.util.HashSet
 
 /**
  * Generates code from your model files on save.
@@ -14,19 +15,19 @@ import com.github.funthomas424242.dsl.ahnen.Beziehungsrolle
  */
 class PeopleGenerator {
 
-    def static createContent(Familienbuch buch) '''
+    def static createContent(Familienbuch buch, HashSet<String> familien) '''
     «val Familie pFamilie=buch.person.eContainer as Familie»
 	<people home="«pFamilie.name»#«buch.person.name»">	
 	«FOR FamilienImport familieImport : buch.familien »
 	   «val Familie familie = familieImport.familie»
 	   «FOR person : familie.personen»
-	       «createPerson( familie,person)»
+	       «createPerson(familien, familie,person)»
 	   «ENDFOR»
 	«ENDFOR»
 	</people>
 	'''
 	
-	def static createPerson(Familie familie, Person person) '''
+	def static createPerson(HashSet<String> familien,Familie familie, Person person) '''
     <person handle="«familie.name»#«person.name»" change="1185438865">
        <gender>«person.geschlecht.getName»</gender>
        <name type="Birth Name">
@@ -44,11 +45,14 @@ class PeopleGenerator {
             && beziehung.beziehung != 'unbekannt'
             && beziehung.beziehung != 'unerfasst'
             »
+«««         Nur Beziehungen zu im Buch bekannten Lebensgemeinschaften werden aufgenommen
+            «IF (familien.contains(beziehung.beziehung.name))»
                «IF beziehung.role == Beziehungsrolle.K»
                     <childof hlink="«beziehung.beziehung.name»"/>
                «ELSE»
                     <parentin hlink="«beziehung.beziehung.name»"/>
                «ENDIF»
+            «ENDIF»
            «ENDIF»
        «ENDFOR»
 «««       <citationref hlink="undefined"/>

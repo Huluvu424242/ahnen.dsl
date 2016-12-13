@@ -6,8 +6,11 @@ package com.github.funthomas424242.dsl.validation
 import com.github.funthomas424242.dsl.ahnen.AhnenPackage
 import com.github.funthomas424242.dsl.ahnen.Beziehung
 import com.github.funthomas424242.dsl.ahnen.Familie
+import com.github.funthomas424242.dsl.ahnen.FamilienImport
+import com.github.funthomas424242.dsl.ahnen.Familienbuch
 import com.github.funthomas424242.dsl.ahnen.Kinder
 import com.github.funthomas424242.dsl.ahnen.Person
+import java.util.HashSet
 import org.eclipse.xtext.validation.Check
 
 /**
@@ -54,16 +57,19 @@ class AhnenValidator extends AbstractAhnenValidator {
         }
     }
 	
-	
-//	public static val INVALID_NAME = 'invalidName'
-//
 //	@Check
-//	def checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.name.charAt(0))) {
-//			warning('Name should start with a capital', 
-//					AhnenPackage.Literals.GREETING__NAME,
-//					INVALID_NAME)
-//		}
+//	def void checkBuch(Familienbuch buch){
+//	    // Alle im Buch bekannten Familien ermitteln
+//	    var HashSet<String> familien = new HashSet<String>();
+//	    for( FamilienImport familienImport:buch.familien){
+//	        familien.add(familienImport.familie.name);
+//	    }
+//	    // Im Buch fehlende Familien markieren
+//	    for( buch.)
 //	}
+	
+	
+
+	
 	
 }
