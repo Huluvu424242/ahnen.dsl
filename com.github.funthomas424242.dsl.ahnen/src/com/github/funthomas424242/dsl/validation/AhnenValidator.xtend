@@ -6,11 +6,8 @@ package com.github.funthomas424242.dsl.validation
 import com.github.funthomas424242.dsl.ahnen.AhnenPackage
 import com.github.funthomas424242.dsl.ahnen.Beziehung
 import com.github.funthomas424242.dsl.ahnen.Familie
-import com.github.funthomas424242.dsl.ahnen.FamilienImport
-import com.github.funthomas424242.dsl.ahnen.Familienbuch
 import com.github.funthomas424242.dsl.ahnen.Kinder
 import com.github.funthomas424242.dsl.ahnen.Person
-import java.util.HashSet
 import org.eclipse.xtext.validation.Check
 
 /**
@@ -56,6 +53,14 @@ class AhnenValidator extends AbstractAhnenValidator {
           }
         }
     }
+	
+	
+	@Check
+	def void checkPersonPflichtfelder(Person person){
+	    if( person.geschlecht == null){
+	        error("Für Person "+person.name+" wurde keine Geschlecht ausgewählt.",AhnenPackage.Literals.PERSON__GESCHLECHT);
+	    }
+	}
 	
 //	@Check
 //	def void checkBuch(Familienbuch buch){
