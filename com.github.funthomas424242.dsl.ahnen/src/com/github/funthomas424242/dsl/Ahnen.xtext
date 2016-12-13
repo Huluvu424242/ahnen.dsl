@@ -120,7 +120,9 @@ enum Beziehungsrolle:
 ;
 
 enum RelationTyp:
-    Lebensgemeinschaft = "Lebensgemeinschaft"
+    Unknown = "Unbekannt"
+    | CivilUnion = "Gesetzliche Partnerschaft"
+    | Unmarried = "Unverheiratet"
     | Married = "Familie"
 ;
 

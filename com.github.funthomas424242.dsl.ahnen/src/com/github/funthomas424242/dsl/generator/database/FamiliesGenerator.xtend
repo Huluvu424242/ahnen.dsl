@@ -19,8 +19,10 @@ class FamiliesGenerator {
              «FOR FamilienImport : buch.familien»
                  «val Familie familie = FamilienImport.familie»
                  <family handle="«familie.name»" change="1185438865">
-                   «IF familie.rel.equals(RelationTyp.MARRIED)»
-                   <rel type="Married"/>
+                   «IF familie.rel.equals(RelationTyp.CIVIL_UNION)»
+                   <rel type="Civil Union"/>
+                   «ELSE»
+                   <rel type="«familie.rel.name().toLowerCase.toFirstUpper»"/>
                    «ENDIF»
                    «IF familie.vater != null»
                    «val Familie fFamilie = familie.vater.eContainer as Familie»

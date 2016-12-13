@@ -109,7 +109,9 @@
     <eLiterals name="K" value="2" literal="Kind"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="RelationTyp">
-    <eLiterals name="Lebensgemeinschaft" literal="Lebensgemeinschaft"/>
-    <eLiterals name="Married" value="1" literal="Familie"/>
+    <eLiterals name="Unknown" literal="Unbekannt"/>
+    <eLiterals name="CivilUnion" value="1" literal="Gesetzliche Partnerschaft"/>
+    <eLiterals name="Unmarried" value="2" literal="Unverheiratet"/>
+    <eLiterals name="Married" value="3" literal="Familie"/>
   </eClassifiers>
 </ecore:EPackage>

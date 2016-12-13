@@ -27,7 +27,9 @@
       <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Beziehungsrolle/K"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Ahnen.ecore#//RelationTyp">
-      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//RelationTyp/Lebensgemeinschaft"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//RelationTyp/Unknown"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//RelationTyp/CivilUnion"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//RelationTyp/Unmarried"/>
       <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//RelationTyp/Married"/>
     </genEnums>
     <genClasses ecoreClass="Ahnen.ecore#//Model">
