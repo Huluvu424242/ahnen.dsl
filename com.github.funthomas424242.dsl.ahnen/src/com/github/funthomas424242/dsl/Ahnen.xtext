@@ -11,7 +11,7 @@ Dateiart:
 
 Familie:
 	{Familie}
-	"Familie" name=ID ";"
+	(rel=RelationTyp) name=ID ";"
 	"Vater:" (vater=[Person|STRING]? | "unbekannt" | "unerfasst") "."
 	"Mutter:" (mutter=[Person|STRING]? | "unbekannt" | "unerfasst") "."
 	"von:" (vonDatum=DATUM? | "unbekannt") "bis:" (bisDatum=DATUM? | "unbekannt" | "andauernd") "."
@@ -85,7 +85,7 @@ Familienbuch:
 ;
 
 FamilienImport:
- 	"import" "familie" familie=[Familie|ID] '.'	
+ 	"import" "lebensgemeinschaft" familie=[Familie|ID] '.'	
  ;
 
 Autor:
@@ -117,6 +117,11 @@ enum Beziehungsrolle:
     V="Vater"
     | M="Mutter"
     | K="Kind"
+;
+
+enum RelationTyp:
+    Lebensgemeinschaft = "Lebensgemeinschaft"
+    | Married = "Familie"
 ;
 
 VERSION:

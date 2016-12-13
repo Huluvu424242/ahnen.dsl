@@ -4,6 +4,7 @@ import com.github.funthomas424242.dsl.ahnen.Familie
 import com.github.funthomas424242.dsl.ahnen.Familienbuch
 import com.github.funthomas424242.dsl.ahnen.Kinder
 import com.github.funthomas424242.dsl.ahnen.Person
+import com.github.funthomas424242.dsl.ahnen.RelationTyp
 import com.github.funthomas424242.dsl.ahnen.Rolle
 
 /**
@@ -18,6 +19,9 @@ class FamiliesGenerator {
              «FOR FamilienImport : buch.familien»
                  «val Familie familie = FamilienImport.familie»
                  <family handle="«familie.name»" change="1185438865">
+                   «IF familie.rel.equals(RelationTyp.MARRIED)»
+                   <rel type="Married"/>
+                   «ENDIF»
                    «IF familie.vater != null»
                    «val Familie fFamilie = familie.vater.eContainer as Familie»
                    <father hlink="«fFamilie.name»#«familie.vater.name»"/>

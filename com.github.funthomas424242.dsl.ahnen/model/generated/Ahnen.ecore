@@ -13,6 +13,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Familie">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rel" eType="#//RelationTyp"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="vater" eType="#//Person"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mutter" eType="#//Person"/>
@@ -106,5 +107,9 @@
     <eLiterals name="V" literal="Vater"/>
     <eLiterals name="M" value="1" literal="Mutter"/>
     <eLiterals name="K" value="2" literal="Kind"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RelationTyp">
+    <eLiterals name="Lebensgemeinschaft" literal="Lebensgemeinschaft"/>
+    <eLiterals name="Married" value="1" literal="Familie"/>
   </eClassifiers>
 </ecore:EPackage>
