@@ -47,7 +47,7 @@ class AhnenValidator extends AbstractAhnenValidator {
         
         if( !hasBackLink ){
           if( kind.beziehungen != null && !kind.beziehungen.empty ){
-             warning("Person: "+kind.name+" benötigt eine Beziehung zur Familie: "+familie.name,
+             warning("Person: "+kind.name+" benötigt eine Beziehung zu "+familie.rel+": "+familie.name,
                  AhnenPackage.Literals.FAMILIE__KINDER
              );
           }
