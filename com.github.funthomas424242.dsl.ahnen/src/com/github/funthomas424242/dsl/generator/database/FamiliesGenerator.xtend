@@ -6,6 +6,8 @@ import com.github.funthomas424242.dsl.ahnen.Kinder
 import com.github.funthomas424242.dsl.ahnen.Person
 import com.github.funthomas424242.dsl.ahnen.RelationTyp
 import com.github.funthomas424242.dsl.ahnen.Rolle
+import java.text.SimpleDateFormat
+import java.util.Date
 
 /**
  * Generates code from your model files on save.
@@ -15,10 +17,12 @@ import com.github.funthomas424242.dsl.ahnen.Rolle
 class FamiliesGenerator {
 
     def static createContent(Familienbuch buch) '''
+        «val SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy")»
         <families>
              «FOR FamilienImport : buch.familien»
                  «val Familie familie = FamilienImport.familie»
-                 <family handle="«familie.name»" change="1185438865">
+                 «val Date changeDate = sdf.parse(familie.letzteAenderung)»
+                 <family handle="«familie.name»" change="«changeDate.time»">
                    «IF familie.rel.equals(RelationTyp.CIVIL_UNION)»
                    <rel type="Civil Union"/>
                    «ELSE»

@@ -6,6 +6,8 @@ import com.github.funthomas424242.dsl.ahnen.Familie
 import com.github.funthomas424242.dsl.ahnen.FamilienImport
 import com.github.funthomas424242.dsl.ahnen.Familienbuch
 import com.github.funthomas424242.dsl.ahnen.Person
+import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.HashSet
 
 /**
@@ -28,18 +30,20 @@ class PeopleGenerator {
 	'''
 	
 	def static createPerson(HashSet<String> familien,Familie familie, Person person) '''
-    <person handle="«familie.name»#«person.name»" change="1185438865">
-       <gender>«person.geschlecht.getName»</gender>
-       <name type="Birth Name">
-         <first>«person.vorname»</first>
-         <call>«person.rufname»</call>
-         <surname>«person.geburtsname»</surname>
-       </name>
-       <name type="Also Know As">
-         <first>«person.vorname»</first>
-         <call>«person.rufname»</call>
-         <surname>«person.nachname»</surname>
-       </name>
+	«val SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy")»
+    «val Date changeDate = sdf.parse(person.letzteAenderung)»
+	<person handle="«familie.name»#«person.name»" change="«changeDate.time»">
+	<gender>«person.geschlecht.getName»</gender>
+    	<name type="Birth Name">
+        	<first>«person.vorname»</first>
+        	<call>«person.rufname»</call>
+        	<surname>«person.geburtsname»</surname>
+    	</name>
+    	<name type="Also Know As">
+        	<first>«person.vorname»</first>
+        	<call>«person.rufname»</call>
+        	<surname>«person.nachname»</surname>
+    	</name>
        «FOR Beziehung beziehung : person.beziehungen»
            «IF beziehung.beziehung != null 
             && beziehung.beziehung != 'unbekannt'

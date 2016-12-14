@@ -12,6 +12,7 @@ Dateiart:
 Familie:
 	{Familie}
 	(rel=RelationTyp) name=ID ";"
+	"Letzte" "Änderung:" letzteAenderung=DATUM "."
 	"Vater:" (vater=[Person|STRING]? | "unbekannt" | "unerfasst") "."
 	"Mutter:" (mutter=[Person|STRING]? | "unbekannt" | "unerfasst") "."
 	"von:" (vonDatum=DATUM? | "unbekannt") "bis:" (bisDatum=DATUM? | "unbekannt" | "andauernd") "."
