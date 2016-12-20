@@ -16,4 +16,5 @@ xtend-gen/
 xtext-gen/
 
 *_gen
+*.log
 
