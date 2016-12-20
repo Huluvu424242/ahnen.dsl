@@ -69,7 +69,67 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- angularjs project infrastructure -->
+			<plugin>
+				<groupId>com.github.searls</groupId>
+				<artifactId>jasmine-maven-plugin</artifactId>
+				<version>2.2</version>
+				<executions>
+					<execution>
+						<goals>
+							<!-- <goal>generateManualRunner</goal> <goal>resources</goal> <goal>testResources</goal> -->
+							<goal>test</goal>
+							<!-- <goal>preparePackage</goal> -->
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<jsSrcDir>WebRoot/javascript</jsSrcDir>
+					<jsTestSrcDir>test/javascript</jsTestSrcDir>
+					<preloadSources>
+						<source>webjars/jquery.js</source>
+					</preloadSources>
+				</configuration>
+			</plugin>
 		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											com.github.searls
+										</groupId>
+										<artifactId>
+											jasmine-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.0.1-beta-6,)
+										</versionRange>
+										<goals>
+											<goal>
+												generateManualRunner
+											</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 
 	<dependencies>
