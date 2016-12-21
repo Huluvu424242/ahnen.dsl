@@ -143,8 +143,12 @@
 					<jsSrcDir>WebRoot/javascript</jsSrcDir>
 					<jsTestSrcDir>test/javascript</jsTestSrcDir>
 					<preloadSources>
+						<!-- libraries and frameworks here -->
 						<source>webjars/jquery.js</source>
 					</preloadSources>
+					<sourceIncludes>
+						<!-- AngularJS components here -->
+					</sourceIncludes>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -231,6 +235,25 @@
 			</plugin>
 		</plugins>
 	</reporting>
-
+	
+	
+	<profiles>
+		<profile>
+			<id>jasmine-spec-runner</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.github.searls</groupId>
+						<artifactId>jasmine-maven-plugin</artifactId>
+						<configuration>
+							<preloadSources combine.children="append">
+								<source>${project.basedir}/test/javascript/lib/jasmine-jquery-settings/jasmine_spec_runner_fixtures_path.js</source>
+							</preloadSources>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>
