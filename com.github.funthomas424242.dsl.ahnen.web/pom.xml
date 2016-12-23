@@ -63,12 +63,86 @@
 			<version>1.7.21</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jboss.arquillian.junit/arquillian-junit-container -->
+		<dependency>
+			<groupId>org.jboss.arquillian.junit</groupId>
+			<artifactId>arquillian-junit-container</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.as</groupId>
+			<artifactId>jboss-as-arquillian-container-remote</artifactId>
+			<version>7.1.1.Final</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jboss.arquillian.container/arquillian-weld-ee-embedded-1.1 -->
+		<!-- <dependency> <groupId>org.jboss.arquillian.container</groupId> <artifactId>arquillian-weld-ee-embedded-1.1</artifactId> 
+			<version>1.0.0.CR9</version> <scope>test</scope> </dependency> <dependency> 
+			<groupId>org.jboss.weld</groupId> <artifactId>weld-core</artifactId> <version>2.3.5.Final</version> 
+			<scope>test</scope> </dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.jboss/jboss-common-core -->
+		<dependency>
+			<groupId>org.jboss</groupId>
+			<artifactId>jboss-common-core</artifactId>
+			<version>2.5.0.Final</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-simple</artifactId> 
+			<version>1.6.4</version> <scope>test</scope> </dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.webdriver/webdriver-common -->
+		<dependency>
+			<groupId>org.seleniumhq.webdriver</groupId>
+			<artifactId>webdriver-common</artifactId>
+			<version>0.9.7376</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-support</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/net.sourceforge.htmlunit/webdriver -->
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>webdriver</artifactId>
+			<version>2.6</version>
+			<scope>test</scope>
+		</dependency>
+
+
 	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jboss.spec</groupId>
+				<artifactId>jboss-javaee-7.0</artifactId>
+				<version>1.0.3.Final</version>
+				<type>pom</type>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.arquillian</groupId>
+				<artifactId>arquillian-bom</artifactId>
+				<version>1.1.11.Final</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 
 
 	<build>
 		<sourceDirectory>src</sourceDirectory>
+		<testSourceDirectory>test/java</testSourceDirectory>
 		<resources>
 			<resource>
 				<directory>src</directory>
@@ -134,22 +208,41 @@
 				<version>2.2</version>
 				<executions>
 					<execution>
+						<id>jasmine-test</id>
 						<goals>
 							<goal>test</goal>
 						</goals>
+						<configuration>
+							<jsSrcDir>WebRoot/javascript</jsSrcDir>
+							<jsTestSrcDir>test/javascript/unit</jsTestSrcDir>
+							<preloadSources>
+								<!-- libraries and frameworks here -->
+								<source>webjars/jquery.js</source>
+							</preloadSources>
+							<sourceIncludes>
+								<!-- AngularJS components here -->
+							</sourceIncludes>
+						</configuration>
 					</execution>
+					<!-- <execution>
+						<id>jasmine-bdd</id>
+						<goals>
+							<goal>bdd</goal>
+						</goals>
+						<configuration>
+							<jsSrcDir>WebRoot/javascript</jsSrcDir>
+							<jsTestSrcDir>test/javascript</jsTestSrcDir>
+							<preloadSources>
+								libraries and frameworks here
+								<source>webjars/jquery.js</source>
+								<source>${project.basedir}/test/javascript/lib/jasmine-jquery-settings/jasmine_spec_runner_fixtures_path.js</source>
+							</preloadSources>
+							<sourceIncludes>
+								AngularJS components here
+							</sourceIncludes>
+						</configuration>
+					</execution> -->
 				</executions>
-				<configuration>
-					<jsSrcDir>WebRoot/javascript</jsSrcDir>
-					<jsTestSrcDir>test/javascript</jsTestSrcDir>
-					<preloadSources>
-						<!-- libraries and frameworks here -->
-						<source>webjars/jquery.js</source>
-					</preloadSources>
-					<sourceIncludes>
-						<!-- AngularJS components here -->
-					</sourceIncludes>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>net.alchim31.maven</groupId>
@@ -235,25 +328,5 @@
 			</plugin>
 		</plugins>
 	</reporting>
-	
-	
-	<profiles>
-		<profile>
-			<id>jasmine-spec-runner</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>com.github.searls</groupId>
-						<artifactId>jasmine-maven-plugin</artifactId>
-						<configuration>
-							<preloadSources combine.children="append">
-								<source>${project.basedir}/test/javascript/lib/jasmine-jquery-settings/jasmine_spec_runner_fixtures_path.js</source>
-							</preloadSources>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 
 </project>

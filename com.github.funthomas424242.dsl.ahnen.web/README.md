@@ -4,7 +4,7 @@
 # Aufrufmöglichkeiten
 
  * mvn jetty:run -> startet die Webanwendung auf http://localhost:8080
- * mvn jasmine:bdd -> startet eine Testserverinstance auf http://localhost:8234/
+ * mvn jasmine:bdd -P jasmine-spec-runner -> startet eine Testserverinstance auf http://localhost:8234/
  * 
   
 
