@@ -224,14 +224,14 @@
 							</sourceIncludes>
 						</configuration>
 					</execution>
-					<!-- <execution>
+					<execution>
 						<id>jasmine-bdd</id>
 						<goals>
 							<goal>bdd</goal>
 						</goals>
 						<configuration>
 							<jsSrcDir>WebRoot/javascript</jsSrcDir>
-							<jsTestSrcDir>test/javascript</jsTestSrcDir>
+							<jsTestSrcDir>test/javascript/e2e</jsTestSrcDir>
 							<preloadSources>
 								libraries and frameworks here
 								<source>webjars/jquery.js</source>
@@ -241,7 +241,7 @@
 								AngularJS components here
 							</sourceIncludes>
 						</configuration>
-					</execution> -->
+					</execution>
 				</executions>
 			</plugin>
 			<plugin>
