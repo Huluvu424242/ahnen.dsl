@@ -299,11 +299,16 @@
 						<tagNameFormat>@{project.version}-RELEASE</tagNameFormat>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-versions-plugin</artifactId>
+					<version>${tycho-version}</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
-	
-	
+
+
 	<repositories>
 		<repository>
 			<id>codehaus-snapshots</id>
