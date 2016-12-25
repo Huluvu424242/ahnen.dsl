@@ -7,13 +7,14 @@
 	</parent>
 	<artifactId>com.github.funthomas424242.dsl.ahnen.repository</artifactId>
 	<packaging>eclipse-repository</packaging>
-	
-	
+
+
 	<properties>
+		<maven.install.skip>false</maven.install.skip>
 		<maven.deploy.skip>false</maven.deploy.skip>
 	</properties>
 
-	<build>
+	<!-- <build>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -48,8 +49,6 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-	</build>
+	</build> -->
 
-	<dependencies>
-	</dependencies>
 </project>
