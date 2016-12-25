@@ -28,7 +28,7 @@
 				</dependencies>
 				<configuration>
 					<tagNamePattern>@{project.version}-RELEASE</tagNamePattern>
-					<workflowDescriptor>${basedir}/src/main/resources/unleash.workflow</workflowDescriptor>
+					<workflowDescriptor>${project.basedir}/src/main/resources/unleash.workflow</workflowDescriptor>
 				</configuration>
 			</plugin>
 		</plugins>
