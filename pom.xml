@@ -300,8 +300,6 @@
 					</dependencies>
 					<configuration>
 						<tagNamePattern>@{project.version}-RELEASE</tagNamePattern>
-						<scmUsername>${github.userame}</scmUsername>
-						<scmPassword>${github.password}</scmPassword>
 					</configuration>
 				</plugin>
 				<plugin>
