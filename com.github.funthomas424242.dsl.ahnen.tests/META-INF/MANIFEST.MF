@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: com.github.funthomas424242.dsl.ahnen.tests
 Bundle-Vendor: FunThomas424242
-Bundle-Version: 1.0.1.qualifier
+Bundle-Version: 1.0.2.qualifier
 Bundle-SymbolicName: com.github.funthomas424242.dsl.ahnen.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: com.github.funthomas424242.dsl.ahnen,
