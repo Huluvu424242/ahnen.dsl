@@ -9,7 +9,7 @@ Die Definition der DSL Ahnen - Einsatzgebiet Generalogie.
 ### Release bauen
 
 ```shell
-\# start the ssh-agent in the background
+# start the ssh-agent in the background
 >eval "$(ssh-agent -s)"
 Agent pid 59566
 
@@ -17,7 +17,7 @@ Agent pid 59566
 
 >mvn -B unleash:perform-tycho
 
-\# kill the agent
+# kill the agent
 >ssh-agent -k
 ```
 
