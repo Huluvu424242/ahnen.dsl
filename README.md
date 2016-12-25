@@ -4,6 +4,15 @@ Die Definition der DSL Ahnen - Einsatzgebiet Generalogie.
 [![Build Status](https://travis-ci.org/FunThomas424242/ahnen.dsl.svg?branch=master)](https://travis-ci.org/FunThomas424242/ahnen.dsl)
 [![codecov](https://codecov.io/gh/FunThomas424242/ahnen.dsl/branch/master/graph/badge.svg)](https://codecov.io/gh/FunThomas424242/ahnen.dsl)
 
+## Developer Info
+
+
+\# start the ssh-agent in the background
+eval "$(ssh-agent -s)"
+Agent pid 59566
+
+\# kill the agent
+ssh-agent -k
 
 ## Nützliche Quellen
 
