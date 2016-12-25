@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.github.funthomas424242</groupId>
 		<artifactId>com.github.funthomas424242.dsl.ahnen.parent</artifactId>
-		<version>1.0.3-SNAPSHOT</version>
+		<version>1.0.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>com.github.funthomas424242.dsl.ahnen.repository</artifactId>
 	<packaging>eclipse-repository</packaging>
@@ -14,41 +14,27 @@
 		<maven.deploy.skip>false</maven.deploy.skip>
 	</properties>
 
-	<!-- <build>
+	<build>
 		<pluginManagement>
 			<plugins>
 				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
+					<groupId>com.itemis.maven.plugins</groupId>
+					<artifactId>unleash-maven-plugin</artifactId>
+					<version>2.2.2</version>
+					<dependencies>
+						<dependency>
+							<groupId>com.itemis.maven.plugins</groupId>
+							<artifactId>unleash-scm-provider-git</artifactId>
+							<version>2.0.2</version>
+						</dependency>
+					</dependencies>
 					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.apache.maven.plugins
-										</groupId>
-										<artifactId>
-											maven-clean-plugin
-										</artifactId>
-										<versionRange>
-											[2.5,)
-										</versionRange>
-										<goals>
-											<goal>clean</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore/>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
+						<tagNamePattern>@{project.version}-RELEASE</tagNamePattern>
+						<workflowDescriptor>src/main/resources/unleash.workflow</workflowDescriptor>
 					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
-	</build> -->
+	</build>
 
 </project>
