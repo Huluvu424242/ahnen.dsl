@@ -12,6 +12,11 @@
 	<properties>
 		<maven.install.skip>false</maven.install.skip>
 		<maven.deploy.skip>false</maven.deploy.skip>
+		<!-- Control of deployment and publishing to bintray -->
+        <groupId>${project.groupId}</groupId>
+        <artifactId>${project.artifactId}</artifactId>
+        <version>${project.version}</version>
+        <updateReleaseInfo>true</updateReleaseInfo>
 	</properties>
 
 	<build>
