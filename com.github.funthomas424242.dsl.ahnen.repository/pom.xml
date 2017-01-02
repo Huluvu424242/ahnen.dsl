@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.github.funthomas424242</groupId>
 		<artifactId>com.github.funthomas424242.dsl.ahnen.parent</artifactId>
-		<version>1.0.11-SNAPSHOT</version>
+		<version>1.0.11</version>
 	</parent>
 	<artifactId>com.github.funthomas424242.dsl.ahnen.repository</artifactId>
 	<packaging>eclipse-repository</packaging>
@@ -16,6 +16,7 @@
         <groupId>${project.groupId}</groupId>
         <artifactId>${project.artifactId}</artifactId>
         <version>${project.version}</version>
+        <packaging>${project.packaging}</packaging>
         <updateReleaseInfo>true</updateReleaseInfo>
 	</properties>
 
