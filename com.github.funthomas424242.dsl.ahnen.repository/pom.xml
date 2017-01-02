@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.github.funthomas424242</groupId>
 		<artifactId>com.github.funthomas424242.dsl.ahnen.parent</artifactId>
-		<version>1.0.9-SNAPSHOT</version>
+		<version>1.0.9</version>
 	</parent>
 	<artifactId>com.github.funthomas424242.dsl.ahnen.repository</artifactId>
 	<packaging>eclipse-repository</packaging>
@@ -17,19 +17,26 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>com.itemis.maven.plugins</groupId>
-				<artifactId>unleash-maven-plugin</artifactId>
-				<dependencies>
-					<dependency>
-						<groupId>com.itemis.maven.plugins</groupId>
-						<artifactId>unleash-scm-provider-git</artifactId>
-						<version>2.0.2</version>
-					</dependency>
-				</dependencies>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
 				<configuration>
-					<tagNamePattern>@{project.version}-RELEASE</tagNamePattern>
-					<workflowDescriptor>${project.basedir}/src/main/resources/unleash.workflow</workflowDescriptor>
+					<file>${project.build.directory}/${project.build.finalName}.jar</file>
+					<repositoryId>bintray-funthomas424242-releases</repositoryId>
 				</configuration>
+				<executions>
+					<execution>
+						<id>funthomas424242-p2-repositories@bintray</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>
+                                deploy-file
+                            </goal>
+						</goals>
+						<configuration>
+							<url>https://api.bintray.com/maven/funthomas424242/funthomas424242-p2-repositories/${project.artifactId}/;publish=0</url>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
