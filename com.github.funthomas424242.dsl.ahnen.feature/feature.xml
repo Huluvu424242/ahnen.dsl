@@ -2,7 +2,7 @@
 <feature
       id="com.github.funthomas424242.dsl.ahnen.feature"
       label="Ahnen Feature "
-      version="1.0.10.qualifier"
+      version="1.0.10"
       provider-name="FunThomas424242">
 
    <description>
