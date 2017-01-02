@@ -1,0 +1,138 @@
+grammar com.github.funthomas424242.dsl.Ahnen with org.eclipse.xtext.common.Terminals
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+generate ahnen "http://www.github.com/funthomas424242/dsl/Ahnen"
+
+Model:
+	datei=Dateiart;
+
+Dateiart:
+	buch=Familienbuch | familie=Familie;
+
+Familie:
+	{Familie}
+	(rel=RelationTyp) name=ID ";"
+	"Letzte" "Änderung:" letzteAenderung=DATUM "."
+	"Vater:" (vater=[Person|STRING]? | "unbekannt" | "unerfasst") "."
+	"Mutter:" (mutter=[Person|STRING]? | "unbekannt" | "unerfasst") "."
+	"von:" (vonDatum=DATUM? | "unbekannt") "bis:" (bisDatum=DATUM? | "unbekannt" | "andauernd") "."
+	"Kinder:" (kinder=Kinder? | "keine") "."
+    "Hochzeit:" (hochzeitstag=DATUM? | "unbekannt" | "-") "." 
+    "Scheidung:" (scheidungstag=DATUM? | "unbekannt" | "unabsehbar" | "demnächst" | "-") "."
+	"Familienangehörige" "{" (personen+=Person)* "}";
+
+Person:
+	{Person}
+	"Person" name=STRING "{"
+		"Letzte" "Änderung:" letzteAenderung=DATUM "."
+		"Vorname:" (vorname=STRING? | "unbekannt" ) "."
+		"Mittelname:" (mittelname=STRING? | "unbekannt" | "-" ) "."
+		"Nachname:" (nachname=STRING? | "unbekannt") "."
+		"Geburtsname:" (geburtsname=STRING? | "unbekannt") "."
+		"Rufname:" (rufname=STRING? | "unbekannt") "."
+		"Geschlecht:" geschlecht=Geschlecht?  "."
+		"Geburtsdatum:" (geburtsDatum=DATUM? | "unbekannt" ) "."
+		"Todesdatum:" (todesDatum=DATUM? | "unbekannt" | "lebend" | "vermisst" )"."
+		"Vater:" (vater=[Person|STRING]? | "unbekannt" | "unerfasst") "."
+		"Mutter:" (mutter=[Person|STRING]? | "unbekannt" | "unerfasst") "."
+		"Beziehungen:" "{"(beziehungen+=Beziehung+ | "keine") "}"
+		"Ereignisse:" "{" 
+			(ereignisse+=Ereignis+ | "keine" "bekannt")
+		"}"
+	"}";
+	
+Ereignis:
+	 Schulausbildung |  Taetigkeit // | Lehre | Armeedienst | Unfall | Krankheit | NeueAdresse
+;
+
+Schulausbildung:
+	{Schulausbildung}
+	"Schulausbildung:" "von" (von=DATUM? | "unbekannt" ) "bis" (bis=DATUM? | "unbekannt" ) 
+		"Abschluss:" (abschluss=STRING? | "ohne" | "abgebrochen")
+		"."
+;
+
+Taetigkeit:
+	{Taetigkeit}
+	"Tätigkeit:" "als" (beruf=STRING? | "unbekannt") 
+		"bei" (arbeitgeber=STRING? | "unbekannt")
+		"in" (ort=STRING? | "unbekannt")
+		"von" (von=DATUM? | "unbekannt") "bis" (bis=DATUM? | "unbekannt" ) "."
+;
+
+
+Kinder:
+	{Kinder}
+	(kind=[Person|STRING] ("Vaterrolle:" vaterRelation=Rolle)? ("Mutterrolle:" mutterRelation=Rolle)? | "unbekannt" |"unerfasst") ("," next=Kinder)?
+;
+
+Beziehung:
+	{Beziehung}
+	(role=Beziehungsrolle) "in" "Familie:" (beziehung=[Familie|STRING] | "unbekannt" | "unerfasst") "."
+;
+
+Familienbuch:
+	"Familienbuch" name=ID ";"
+	"Familie:" familie=STRING "."
+	"Person:" person=[Person|STRING] "."
+	"Version:" version=VERSION "."
+	"Media-Verzeichnis:" mediaFolder=STRING "."
+	"Titel:" titel=STRING "."
+	"Vorwort:" "{" vorwort=STRING "}" 
+	"Autor:" "{" autor= Autor "}" 
+	"Familien:" "{"
+		familien+=FamilienImport+
+	"}"
+;
+
+FamilienImport:
+ 	"import" "lebensgemeinschaft" familie=[Familie|ID] '.'	
+ ;
+
+Autor:
+	"Vorname:" vorname=STRING "."
+	"Name:" nachname=STRING "."
+	"Organisation" organisationsName=STRING? "."	
+;
+
+// U,M,F values of gramps database format
+enum Geschlecht:
+	U ='unbekannt'
+ 	| M ='männlich'
+ 	| F ='weiblich'
+;
+
+// (None|Birth|Adopted|Stepchild|Sponsored|Foster|Other|Unknown) gramps values
+enum Rolle:
+    None = "Keine"
+    |Birth = "Leiblich"
+    |Adopted = "Adoptiert"
+    |Stepchild ="Stiefkind"
+    |Sponsored = "Sponsored"
+    |Foster = "Gefördert"
+    |Other = "Sonstige"
+    |Unknown ="unbekannt"
+;
+
+enum Beziehungsrolle:
+    V="Vater"
+    | M="Mutter"
+    | K="Kind"
+;
+
+enum RelationTyp:
+    Unknown = "Unbekannt"
+    | CivilUnion = "Gesetzliche Partnerschaft"
+    | Unmarried = "Unverheiratet"
+    | Married = "Familie"
+;
+
+VERSION:
+	INT "." INT "." INT 
+;
+
+DATUM:
+	DATE;
+
+terminal DATE returns ecore::EDate:
+	('0'..'9') ('0'..'9') '.' ('0'..'9') ('0'..'9') '.' ('0'..'9') ('0'..'9') ('0'..'9') ('0'..'9');

@@ -1,0 +1,37 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: com.github.funthomas424242.dsl.ahnen
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.1.qualifier
+Bundle-SymbolicName: com.github.funthomas424242.dsl.ahnen; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib,
+ org.antlr.runtime,
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib,
+ org.eclipse.emf.common,
+ org.apache.commons.compress,
+ org.junit,
+ com.github.funthomas424242.files2gramps,
+ org.eclipse.core.resources,
+ org.eclipse.core.runtime,
+ org.eclipse.xtext.common.types,
+ org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: com.github.funthomas424242.dsl.validation,
+ com.github.funthomas424242.dsl.parser.antlr,
+ com.github.funthomas424242.dsl.services,
+ com.github.funthomas424242.dsl.ahnen,
+ com.github.funthomas424242.dsl.ahnen.impl,
+ com.github.funthomas424242.dsl.parser.antlr.internal,
+ com.github.funthomas424242.dsl.scoping,
+ com.github.funthomas424242.dsl.ahnen.util,
+ com.github.funthomas424242.dsl,
+ com.github.funthomas424242.dsl.serializer,
+ com.github.funthomas424242.dsl.generator,
+ com.github.funthomas424242.dsl.formatting2
+Import-Package: org.apache.log4j

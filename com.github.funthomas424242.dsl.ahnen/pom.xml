@@ -1,13 +1,17 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.github.funthomas424242</groupId>
 		<artifactId>com.github.funthomas424242.dsl.ahnen.parent</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.0.12</version>
 	</parent>
 	<artifactId>com.github.funthomas424242.dsl.ahnen</artifactId>
 	<packaging>eclipse-plugin</packaging>
+
+	<properties>
+		<maven.install.skip>true</maven.install.skip>
+		<maven.deploy.skip>true</maven.deploy.skip>
+	</properties>
 
 	<build>
 		<plugins>
@@ -114,8 +118,10 @@
 				</configuration>
 			</plugin>
 		</plugins>
+
 		<pluginManagement>
 			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -132,14 +138,14 @@
 											exec-maven-plugin
 										</artifactId>
 										<versionRange>
-											[1.2.1,)
+											[1.4.0,)
 										</versionRange>
 										<goals>
 											<goal>java</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
+										<ignore/>
 									</action>
 								</pluginExecution>
 							</pluginExecutions>

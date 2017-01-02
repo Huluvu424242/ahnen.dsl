@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.github.funthomas424242</groupId>
+		<artifactId>com.github.funthomas424242.dsl.ahnen.parent</artifactId>
+		<version>1.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>com.github.funthomas424242.dsl.ahnen.web</artifactId>
+	<packaging>war</packaging>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>com.github.funthomas424242.dsl.ahnen</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>com.github.funthomas424242.dsl.ahnen.ide</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.xbase.web</artifactId>
+			<version>${xtextVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext.web.servlet</artifactId>
+			<version>${xtextVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtend</groupId>
+			<artifactId>org.eclipse.xtend.lib</artifactId>
+			<version>${xtextVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>requirejs</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>2.2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>ace</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-annotations</artifactId>
+			<version>9.3.8.v20160314</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.7.21</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jboss.arquillian.junit/arquillian-junit-container -->
+		<dependency>
+			<groupId>org.jboss.arquillian.junit</groupId>
+			<artifactId>arquillian-junit-container</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.as</groupId>
+			<artifactId>jboss-as-arquillian-container-remote</artifactId>
+			<version>7.1.1.Final</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jboss.arquillian.container/arquillian-weld-ee-embedded-1.1 -->
+		<!-- <dependency> <groupId>org.jboss.arquillian.container</groupId> <artifactId>arquillian-weld-ee-embedded-1.1</artifactId> 
+			<version>1.0.0.CR9</version> <scope>test</scope> </dependency> <dependency> 
+			<groupId>org.jboss.weld</groupId> <artifactId>weld-core</artifactId> <version>2.3.5.Final</version> 
+			<scope>test</scope> </dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.jboss/jboss-common-core -->
+		<dependency>
+			<groupId>org.jboss</groupId>
+			<artifactId>jboss-common-core</artifactId>
+			<version>2.5.0.Final</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-simple</artifactId> 
+			<version>1.6.4</version> <scope>test</scope> </dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.webdriver/webdriver-common -->
+		<dependency>
+			<groupId>org.seleniumhq.webdriver</groupId>
+			<artifactId>webdriver-common</artifactId>
+			<version>0.9.7376</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-support</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/net.sourceforge.htmlunit/webdriver -->
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>webdriver</artifactId>
+			<version>2.6</version>
+			<scope>test</scope>
+		</dependency>
+
+
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jboss.spec</groupId>
+				<artifactId>jboss-javaee-7.0</artifactId>
+				<version>1.0.3.Final</version>
+				<type>pom</type>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.arquillian</groupId>
+				<artifactId>arquillian-bom</artifactId>
+				<version>1.1.11.Final</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+
+
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<testSourceDirectory>test/java</testSourceDirectory>
+		<resources>
+			<resource>
+				<directory>src</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+					<exclude>**/*.xtend</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>xtend-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<warSourceDirectory>WebRoot</warSourceDirectory>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.2.13.v20150730</version>
+				<configuration>
+					<webAppSourceDirectory>WebRoot</webAppSourceDirectory>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.9.1</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>add-source</goal>
+							<goal>add-resource</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src-gen</source>
+							</sources>
+							<resources>
+								<resource>
+									<directory>src-gen</directory>
+									<excludes>
+										<exclude>**/*.java</exclude>
+									</excludes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- angularjs project infrastructure -->
+			<plugin>
+				<groupId>com.github.searls</groupId>
+				<artifactId>jasmine-maven-plugin</artifactId>
+				<version>2.2</version>
+				<executions>
+					<execution>
+						<id>jasmine-test</id>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<jsSrcDir>WebRoot/javascript</jsSrcDir>
+							<jsTestSrcDir>test/javascript/unit</jsTestSrcDir>
+							<preloadSources>
+								<!-- libraries and frameworks here -->
+								<source>webjars/jquery.js</source>
+							</preloadSources>
+							<sourceIncludes>
+								<!-- AngularJS components here -->
+							</sourceIncludes>
+						</configuration>
+					</execution>
+					<execution>
+						<id>jasmine-bdd</id>
+						<goals>
+							<goal>bdd</goal>
+						</goals>
+						<configuration>
+							<jsSrcDir>WebRoot/javascript</jsSrcDir>
+							<jsTestSrcDir>test/javascript/e2e</jsTestSrcDir>
+							<preloadSources>
+								libraries and frameworks here
+								<source>webjars/jquery.js</source>
+								<source>${project.basedir}/test/javascript/lib/jasmine-jquery-settings/jasmine_spec_runner_fixtures_path.js</source>
+							</preloadSources>
+							<sourceIncludes>
+								AngularJS components here
+							</sourceIncludes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>yuicompressor-maven-plugin</artifactId>
+				<version>1.1</version>
+				<executions>
+					<execution>
+						<id>compress-js</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>compress</goal>
+						</goals>
+						<configuration>
+							<warSourceDirectory>WebRoot</warSourceDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											net.alchim31.maven
+										</groupId>
+										<artifactId>
+											yuicompressor-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.1,)
+										</versionRange>
+										<goals>
+											<goal>compress</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore/>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>gr.abiss.mvn.plugins</groupId>
+				<artifactId>maven-jstools-plugin</artifactId>
+				<version>0.7</version>
+				<configuration>
+					<jsDir>src/main/javascript</jsDir>
+					<includePrivate>true</includePrivate>
+					<includeUndocumented>true</includeUndocumented>
+				</configuration>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>jslint</report>
+							<report>jsdoc</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.6</version>
+			</plugin>
+		</plugins>
+	</reporting>
+
+</project>
