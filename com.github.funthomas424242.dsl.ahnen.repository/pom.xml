@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.github.funthomas424242</groupId>
 		<artifactId>com.github.funthomas424242.dsl.ahnen.parent</artifactId>
-		<version>1.0.12-SNAPSHOT</version>
+		<version>1.0.13-SNAPSHOT</version>
 	</parent>
 	<artifactId>com.github.funthomas424242.dsl.ahnen.repository</artifactId>
 	<packaging>eclipse-repository</packaging>
@@ -13,11 +13,11 @@
 		<maven.install.skip>false</maven.install.skip>
 		<maven.deploy.skip>false</maven.deploy.skip>
 		<!-- Control of deployment and publishing to bintray -->
-        <groupId>${project.groupId}</groupId>
-        <artifactId>${project.artifactId}</artifactId>
-        <version>${project.version}</version>
-        <packaging>${project.packaging}</packaging>
-        <updateReleaseInfo>true</updateReleaseInfo>
+		<groupId>${project.groupId}</groupId>
+		<artifactId>${project.artifactId}</artifactId>
+		<version>${project.version}</version>
+		<packaging>${project.packaging}</packaging>
+		<updateReleaseInfo>true</updateReleaseInfo>
 	</properties>
 
 	<build>
@@ -39,7 +39,7 @@
                             </goal>
 						</goals>
 						<configuration>
-							<url>https://api.bintray.com/maven/funthomas424242/funthomas424242-p2-repositories/${project.artifactId}/;publish=0</url>
+							<url>https://api.bintray.com/maven/funthomas424242/funthomas424242-p2-repositories/ahnen.dsl/;publish=0</url>
 						</configuration>
 					</execution>
 				</executions>
