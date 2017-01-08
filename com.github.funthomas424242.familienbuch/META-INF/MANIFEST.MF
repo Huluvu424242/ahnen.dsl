@@ -14,5 +14,5 @@ Require-Bundle: javax.inject;bundle-version="0.0.0",
  org.eclipse.e4.core.di;bundle-version="0.0.0",
  org.eclipse.e4.ui.di;bundle-version="0.0.0",
  org.eclipse.e4.core.contexts;bundle-version="0.0.0",
- com.github.funthomas424242.dsl.ahnen;bundle-version="1.0.12"
+ com.github.funthomas424242.dsl.ahnen
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
