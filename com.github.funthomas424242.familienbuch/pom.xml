@@ -9,12 +9,10 @@
 	</parent>
 
 	<artifactId>com.github.funthomas424242.familienbuch</artifactId>
-	<packaging>eclipse-repository</packaging>
+	<packaging>eclipse-plugin</packaging>
 
 
 	<properties>
-		<!-- tycho build -->
-		<tycho.version>0.26.0</tycho.version>
 		<!-- Control of deployment and publishing to bintray -->
 		<groupId>${project.groupId}</groupId>
 		<artifactId>${project.artifactId}</artifactId>
@@ -22,136 +20,13 @@
 		<updateReleaseInfo>true</updateReleaseInfo>
 	</properties>
 
-	<!-- <scm>
-		<url>https://github.com/FunThomas424242/Familienbuch</url>
-		<connection>scm:git:https://github.com/FunThomas424242/Familienbuch.git</connection>
-		<developerConnection>scm:git:https://github.com/FunThomas424242/Familienbuch.git</developerConnection>
-		<tag>HEAD</tag>
-	</scm>
-
-	<ciManagement>
-		<system>Travis</system>
-		<url>https://travis-ci.org/FunThomas424242/Familienbuch</url>
-	</ciManagement>
-
-	<issueManagement>
-		<system>Issue</system>
-		<url>https://github.com/FunThomas424242/Familienbuch/issues</url>
-	</issueManagement>
- -->
-	<!-- <distributionManagement>
-		<snapshotRepository>
-			<id>bintray-funthomas424242-snapshots</id>
-			<name>oss-jfrog-artifactory-snapshots</name>
-			<url>https://oss.jfrog.org/artifactory/oss-snapshot-local</url>
-		</snapshotRepository>
-		<repository>
-			<id>bintray-funthomas424242-releases</id>
-			<name>oss-jfrog-artifactory-releases</name>
-			<url>https://oss.jfrog.org/artifactory/oss-release-local</url>
-		</repository>
-	</distributionManagement> -->
-
-	<repositories>
-		<repository>
-			<id>eclipse-mars</id>
-			<url>http://download.eclipse.org/releases/mars</url>
-			<layout>p2</layout>
-		</repository>
-		<!-- <repository>
-			<id>orbit-neon</id>
-			<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository</url>
-			<layout>p2</layout>
-		</repository> -->
-	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<id>bintray-enilink-maven</id>
-			<name>bintray-plugins</name>
-			<url>http://dl.bintray.com/enilink/maven</url>
-		</pluginRepository>
-	</pluginRepositories>
-
-	<dependencies>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/junit/junit -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-configuration2 -->
-		<!-- <dependency> <groupId>org.apache.commons</groupId> <artifactId>commons-configuration2</artifactId> 
-			<scope>test</scope> </dependency> -->
-		<!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
-		<!-- <dependency> <groupId>commons-beanutils</groupId> <artifactId>commons-beanutils</artifactId> 
-			<scope>test</scope> </dependency> -->
-	</dependencies>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>1.7.16</version>
-			</dependency>
-			<dependency>
-				<groupId>ch.qos.logback</groupId>
-				<artifactId>logback-classic</artifactId>
-				<version>1.1.7</version>
-			</dependency>
-			<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
-			<dependency>
-				<groupId>ch.qos.logback</groupId>
-				<artifactId>logback-core</artifactId>
-				<version>1.1.7</version>
-			</dependency>
-			<!-- https://mvnrepository.com/artifact/junit/junit -->
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.12</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
+	
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho.version}</version>
-				<extensions>true</extensions>
-			</plugin>
-			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-p2-repository-plugin</artifactId>
-				<version>${tycho.version}</version>
+				<version>${tycho-version}</version>
 				<configuration>
 					<includeAllDependencies>true</includeAllDependencies>
 				</configuration>
@@ -159,7 +34,7 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-p2-director-plugin</artifactId>
-				<version>${tycho.version}</version>
+				<version>${tycho-version}</version>
 				<executions>
 					<execution>
 						<id>materialize-products</id>
@@ -175,140 +50,9 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>target-platform-configuration</artifactId>
-				<version>${tycho.version}</version>
-				<configuration>
-					<environments>
-						<environment>
-							<os>linux</os>
-							<ws>gtk</ws>
-							<arch>x86</arch>
-						</environment>
-						<environment>
-							<os>linux</os>
-							<ws>gtk</ws>
-							<arch>x86_64</arch>
-						</environment>
-						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
-							<arch>x86</arch>
-						</environment>
-						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
-							<arch>x86_64</arch>
-						</environment>
-						<environment>
-							<os>macosx</os>
-							<ws>cocoa</ws>
-							<arch>x86_64</arch>
-						</environment>
-					</environments>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>report</id>
-						<phase>test</phase>
-						<goals>
-							<goal>report</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<!-- <plugin> <groupId>biz.aQute.bnd</groupId> <artifactId>bnd-maven-plugin</artifactId> 
-				<executions> <execution> <goals> <goal>bnd-process</goal> </goals> </execution> 
-				</executions> </plugin> -->
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-jar-plugin</artifactId> 
-				<configuration> <useDefaultManifestFile>true</useDefaultManifestFile> </configuration> 
-				</plugin> -->
-			<!-- <plugin> <groupId>org.reficio</groupId> <artifactId>p2-maven-plugin</artifactId> 
-				<executions> <execution> <id>generate-p2-site</id> <phase>compile</phase> 
-				<goals> <goal>site</goal> </goals> <configuration> <artifacts> specify your 
-				depencies here groupId:artifactId:version <artifact><id>com.github.funthomas424242:familienbuch:${project.version}</id></artifact> 
-				</artifacts> <p2> <artifact> <id>org.junit:4.11.0.v201303080030</id> </artifact> 
-				<artifact> <id>com.github.funthomas424242:familienbuch:${project.version}</id> 
-				</artifact> <artifact> <id>com.ibm.icu:56.1.0.v201601250100</id> </artifact> 
-				<artifact> <id>javax.annotation:1.2.0.v201602091430</id> </artifact> <artifact> 
-				<id>javax.inject:1.0.0.v20091030</id> </artifact> <artifact> <id>javax.xml:1.3.4.v201005080400</id> 
-				</artifact> <artifact> <id>org.apache.batik.css</id> </artifact> <artifact> 
-				<id>org.apache.batik.util</id> </artifact> <artifact> <id>org.apache.batik.util.gui</id> 
-				</artifact> <artifact> <id>org.apache.commons.jxpath</id> </artifact> <artifact> 
-				<id>org.apache.commons.logging</id> </artifact> <artifact> <id>org.eclipse.core.commands</id> 
-				</artifact> <artifact> <id>org.eclipse.core.contenttype</id> </artifact> 
-				<artifact> <id>org.eclipse.core.databinding</id> </artifact> <artifact> <id>org.eclipse.core.databinding.beans</id> 
-				</artifact> <artifact> <id>org.eclipse.core.databinding.observable</id> </artifact> 
-				<artifact> <id>org.eclipse.core.databinding.property</id> </artifact> <artifact> 
-				<id>org.eclipse.core.expressions</id> </artifact> <artifact> <id>org.eclipse.core.filesystem</id> 
-				</artifact> <artifact> <id>org.eclipse.core.filesystem.aix.ppc" fragment="true</id> 
-				</artifact> <artifact> <id>org.eclipse.core.filesystem.hpux.ia64_32" fragment="true</id> 
-				</artifact> <artifact> <id>org.eclipse.core.filesystem.linux.ppc" fragment="true</id> 
-				</artifact> <artifact> <id>org.eclipse.core.filesystem.linux.x86" fragment="true</id> 
-				</artifact> <artifact> <id>org.eclipse.core.filesystem.linux.x86_64" fragment="true</id> 
-				</artifact> <artifact> <id>org.eclipse.core.filesystem.macosx" fragment="true</id> 
-				</artifact> <artifact> <id>org.eclipse.core.filesystem.solaris.sparc" fragment="true</id> 
-				</artifact> <artifact> <id>org.eclipse.core.filesystem.win32.x86" fragment="true</id> 
-				</artifact> <artifact> <id>org.eclipse.core.filesystem.win32.x86_64" fragment="true</id> 
-				</artifact> <artifact> <id>org.eclipse.core.jobs</id> </artifact> <artifact> 
-				<id>org.eclipse.core.resources</id> </artifact> <artifact> <id>org.eclipse.core.resources.win32.x86" 
-				fragment="true</id> </artifact> <artifact> <id>org.eclipse.core.runtime</id> 
-				</artifact> <artifact> <id>org.eclipse.e4.core.commands</id> </artifact> 
-				<artifact> <id>org.eclipse.e4.core.contexts</id> </artifact> <artifact> <id>org.eclipse.e4.core.di</id> 
-				</artifact> <artifact> <id>org.eclipse.e4.core.di.annotations</id> </artifact> 
-				<artifact> <id>org.eclipse.e4.core.di.extensions</id> </artifact> <artifact> 
-				<id>org.eclipse.e4.core.services</id> </artifact> <artifact> <id>org.eclipse.e4.emf.xpath</id> 
-				</artifact> <artifact> <id>org.eclipse.e4.ui.bindings</id> </artifact> <artifact> 
-				<id>org.eclipse.e4.ui.css.core</id> </artifact> <artifact> <id>org.eclipse.e4.ui.css.swt</id> 
-				</artifact> <artifact> <id>org.eclipse.e4.ui.css.swt.theme</id> </artifact> 
-				<artifact> <id>org.eclipse.e4.ui.di</id> </artifact> <artifact> <id>org.eclipse.e4.ui.model.workbench</id> 
-				</artifact> <artifact> <id>org.eclipse.e4.ui.services</id> </artifact> <artifact> 
-				<id>org.eclipse.e4.ui.swt.gtk" fragment="true</id> </artifact> <artifact> 
-				<id>org.eclipse.e4.ui.widgets</id> </artifact> <artifact> <id>org.eclipse.e4.ui.workbench</id> 
-				</artifact> <artifact> <id>org.eclipse.e4.ui.workbench.renderers.swt</id> 
-				</artifact> <artifact> <id>org.eclipse.e4.ui.workbench.renderers.swt.cocoa" 
-				fragment="true</id> </artifact> <artifact> <id>org.eclipse.e4.ui.workbench.swt</id> 
-				</artifact> <artifact> <id>org.eclipse.e4.ui.workbench3</id> </artifact> 
-				<artifact> <id>org.eclipse.emf.common</id> </artifact> <artifact> <id>org.eclipse.emf.databinding</id> 
-				</artifact> <artifact> <id>org.eclipse.emf.ecore</id> </artifact> <artifact> 
-				<id>org.eclipse.emf.ecore.change</id> </artifact> <artifact> <id>org.eclipse.emf.ecore.xmi</id> 
-				</artifact> <artifact> <id>org.eclipse.equinox.app</id> </artifact> <artifact> 
-				<id>org.eclipse.equinox.common</id> </artifact> <artifact> <id>org.eclipse.equinox.concurrent</id> 
-				</artifact> <artifact> <id>org.eclipse.equinox.ds</id> </artifact> <artifact> 
-				<id>org.eclipse.equinox.event</id> </artifact> <artifact> <id>org.eclipse.equinox.preferences</id> 
-				</artifact> <artifact> <id>org.eclipse.equinox.registry</id> </artifact> 
-				<artifact> <id>org.eclipse.equinox.util</id> </artifact> <artifact> <id>org.eclipse.jface</id> 
-				</artifact> <artifact> <id>org.eclipse.jface.databinding</id> </artifact> 
-				<artifact> <id>org.eclipse.osgi</id> </artifact> <artifact> <id>org.eclipse.osgi.compatibility.state" 
-				fragment="true</id> </artifact> <artifact> <id>org.eclipse.osgi.services</id> 
-				</artifact> <artifact> <id>org.eclipse.swt</id> </artifact> <artifact> <id>org.eclipse.swt.cocoa.macosx.x86_64" 
-				fragment="true</id> </artifact> <artifact> <id>org.eclipse.swt.gtk.linux.ppc" 
-				fragment="true</id> </artifact> <artifact> <id>org.eclipse.swt.gtk.linux.ppc64" 
-				fragment="true</id> </artifact> <artifact> <id>org.eclipse.swt.gtk.linux.s390" 
-				fragment="true</id> </artifact> <artifact> <id>org.eclipse.swt.gtk.linux.s390x" 
-				fragment="true</id> </artifact> <artifact> <id>org.eclipse.swt.gtk.linux.x86" 
-				fragment="true</id> </artifact> <artifact> <id>org.eclipse.swt.gtk.linux.x86_64" 
-				fragment="true</id> </artifact> <artifact> <id>org.eclipse.swt.gtk.solaris.sparc" 
-				fragment="true</id> </artifact> <artifact> <id>org.eclipse.swt.gtk.solaris.x86" 
-				fragment="true</id> </artifact> <artifact> <id>org.eclipse.swt.win32.win32.x86" 
-				fragment="true</id> </artifact> <artifact> <id>org.eclipse.swt.win32.win32.x86_64" 
-				fragment="true</id> </artifact> <artifact> <id>org.w3c.css.sac</id> </artifact> 
-				<artifact> <id>org.w3c.dom.events</id> </artifact> <artifact> <id>org.w3c.dom.smil</id> 
-				</artifact> <artifact> <id>org.w3c.dom.svg</id> </artifact> </p2> </configuration> 
-				</execution> </executions> </plugin> -->
-			<plugin>
-				<!-- NOTE: We don't need a groupId specification because the group is 
-					org.apache.maven.plugins ...which is assumed by default. -->
+			<!-- <plugin>
+				NOTE: We don't need a groupId specification because the group is 
+					org.apache.maven.plugins ...which is assumed by default.
 				<artifactId>maven-assembly-plugin</artifactId>
 				<executions>
 					<execution>
@@ -322,22 +66,22 @@
 								because bnd plugin generated manifest
 								<manifestFile>target/classes/META-INF/MANIFEST.MF</manifestFile>
 							</archive>
-							<!-- <descriptorRefs> <descriptorRef>jar-with-dependencies</descriptorRef> 
-								<descriptorRef>src</descriptorRef> </descriptorRefs> -->
+							<descriptorRefs> <descriptorRef>jar-with-dependencies</descriptorRef> 
+								<descriptorRef>src</descriptorRef> </descriptorRefs>
 							<descriptors>
 								<descriptor>assembly/p2.xml</descriptor>
 							</descriptors>
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
+			</plugin> -->
+			<!-- <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 				<configuration>
 					<tagNameFormat>@{project.version}-RELEASE</tagNameFormat>
 				</configuration>
-			</plugin>
+			</plugin> -->
 			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-deploy-plugin</artifactId> 
 				<configuration> <file>${project.build.directory}/${project.build.finalName}.jar</file> 
 				<repositoryId>bintray-funthomas424242-releases</repositoryId> </configuration> 
@@ -346,75 +90,9 @@
 				<url>https://api.bintray.com/maven/funthomas424242/funthomas424242-p2-repositories/${project.artifactId}/;publish=0</url> 
 				</configuration> </execution> </executions> </plugin> -->
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.6.0</version>
-				</plugin>
-				<plugin>
-					<groupId>org.jacoco</groupId>
-					<artifactId>jacoco-maven-plugin</artifactId>
-					<version>0.7.7.201606060606</version>
-				</plugin>
-				<plugin>
-					<groupId>biz.aQute.bnd</groupId>
-					<artifactId>bnd-maven-plugin</artifactId>
-					<version>2.4.1</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jar-plugin</artifactId>
-					<version>2.4</version>
-				</plugin>
-				<plugin>
-					<groupId>org.reficio</groupId>
-					<artifactId>p2-maven-plugin</artifactId>
-					<version>1.2.1</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-assembly-plugin</artifactId>
-					<version>3.0.0</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-release-plugin</artifactId>
-					<version>2.5.3</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-source-plugin</artifactId>
-					<version>3.0.1</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>2.10.4</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<version>2.8.2</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
+		
 	</build>
-
-	<developers>
-		<developer>
-			<id>funthomas424242</id>
-			<name>Thomas Schubert</name>
-			<email>funthomas424242@googlemail.com</email>
-			<timezone>+1</timezone>
-			<organization>The world wide open source community</organization>
-			<roles>
-				<role>owner</role>
-				<role>developer</role>
-			</roles>
-		</developer>
-	</developers>
+	
 
 
 </project>
