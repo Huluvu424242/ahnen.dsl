@@ -20,17 +20,9 @@
 		<updateReleaseInfo>true</updateReleaseInfo>
 	</properties>
 
-	
+
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-p2-repository-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<includeAllDependencies>true</includeAllDependencies>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-p2-director-plugin</artifactId>
@@ -50,38 +42,17 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- <plugin>
-				NOTE: We don't need a groupId specification because the group is 
-					org.apache.maven.plugins ...which is assumed by default.
-				<artifactId>maven-assembly-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>package-assemblies</id>
-						<phase>install</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-						<configuration>
-							<archive>
-								because bnd plugin generated manifest
-								<manifestFile>target/classes/META-INF/MANIFEST.MF</manifestFile>
-							</archive>
-							<descriptorRefs> <descriptorRef>jar-with-dependencies</descriptorRef> 
-								<descriptorRef>src</descriptorRef> </descriptorRefs>
-							<descriptors>
-								<descriptor>assembly/p2.xml</descriptor>
-							</descriptors>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin> -->
-			<!-- <plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<configuration>
-					<tagNameFormat>@{project.version}-RELEASE</tagNameFormat>
-				</configuration>
-			</plugin> -->
+			<!-- <plugin> NOTE: We don't need a groupId specification because the 
+				group is org.apache.maven.plugins ...which is assumed by default. <artifactId>maven-assembly-plugin</artifactId> 
+				<executions> <execution> <id>package-assemblies</id> <phase>install</phase> 
+				<goals> <goal>single</goal> </goals> <configuration> <archive> because bnd 
+				plugin generated manifest <manifestFile>target/classes/META-INF/MANIFEST.MF</manifestFile> 
+				</archive> <descriptorRefs> <descriptorRef>jar-with-dependencies</descriptorRef> 
+				<descriptorRef>src</descriptorRef> </descriptorRefs> <descriptors> <descriptor>assembly/p2.xml</descriptor> 
+				</descriptors> </configuration> </execution> </executions> </plugin> -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-release-plugin</artifactId> 
+				<configuration> <tagNameFormat>@{project.version}-RELEASE</tagNameFormat> 
+				</configuration> </plugin> -->
 			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-deploy-plugin</artifactId> 
 				<configuration> <file>${project.build.directory}/${project.build.finalName}.jar</file> 
 				<repositoryId>bintray-funthomas424242-releases</repositoryId> </configuration> 
@@ -90,9 +61,9 @@
 				<url>https://api.bintray.com/maven/funthomas424242/funthomas424242-p2-repositories/${project.artifactId}/;publish=0</url> 
 				</configuration> </execution> </executions> </plugin> -->
 		</plugins>
-		
+
 	</build>
-	
+
 
 
 </project>
