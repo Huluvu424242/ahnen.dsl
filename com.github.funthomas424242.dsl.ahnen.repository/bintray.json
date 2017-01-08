@@ -1,0 +1,11 @@
+{
+  "desc": "Die Definition der DSL Ahnen - Einsatzgebiet Generalogie. version: ${project.version}",
+  "labels": ["ahnen.dsl", "eclipse-plugin", "editor"],
+  "licenses": ["EPL-1.0", "LGPL-2.1"],
+  "vcs_url": "https://github.com/FunThomas424242/ahnen.dsl.git",
+  "website_url": "https://github.com/FunThomas424242/ahnen.dsl",
+  "issue_tracker_url": "https://github.com/FunThomas424242/ahnen.dsl/issues",
+  "github_repo": "FunThomas424242/ahnen.dsl",
+  "github_release_notes_file": "CHANGES.md",
+  "public_download_numbers": false
+}
