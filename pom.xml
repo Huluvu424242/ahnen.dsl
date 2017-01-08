@@ -48,6 +48,7 @@
 		<module>com.github.funthomas424242.dsl.ahnen.tests</module>
 		<module>com.github.funthomas424242.dsl.ahnen.ui.tests</module>
 		<module>com.github.funthomas424242.dsl.ahnen.web</module>
+		<module>com.github.funthomas424242.familienbuch</module>
 	</modules>
 	<build>
 		<plugins>
