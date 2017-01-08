@@ -251,6 +251,11 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
+		<repository>
+			<id>orbit-mars</id>
+			<url>http://download.eclipse.org/tools/orbit/downloads/drops/R20151221205849/repository/</url>
+			<layout>p2</layout>
+		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
