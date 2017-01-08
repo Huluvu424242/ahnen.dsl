@@ -175,6 +175,8 @@
 					<artifactId>tycho-compiler-plugin</artifactId>
 					<version>${tycho-version}</version>
 					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
 						<compilerArgument>-err:-forbidden</compilerArgument>
 					</configuration>
 				</plugin>
@@ -245,7 +247,7 @@
 		<pluginRepository>
 			<id>bintray-funthomas424242-releases</id>
 			<name>bintray-plugins</name>
-			 <url>http://jcenter.bintray.com</url>
+			<url>http://jcenter.bintray.com</url>
 		</pluginRepository>
 		<pluginRepository>
 			<id>codehaus-snapshots</id>
