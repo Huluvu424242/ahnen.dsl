@@ -6,6 +6,11 @@ Die Definition der DSL Ahnen - Einsatzgebiet Generalogie.
 
 ## Developer Info
 
+### Version erhöhen
+```
+mvn tycho-versions:set-version -DnewVersion=0.0.13-SNAPSHOT
+```
+
 ### Release bauen
 
 ```shell
