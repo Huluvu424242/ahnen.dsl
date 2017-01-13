@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.funthomas424242</groupId>
-	<version>0.0.13-SNAPSHOT</version>
+	<version>1.0.12</version>
 	<artifactId>com.github.funthomas424242.dsl.ahnen.parent</artifactId>
 	<packaging>pom</packaging>
 
@@ -16,7 +16,17 @@
 
 		<maven.install.skip>true</maven.install.skip>
 		<maven.deploy.skip>true</maven.deploy.skip>
+		<unleash.workflow>${project.basedir}/src/main/resources/createRelease.workflow</unleash.workflow>
 	</properties>
+	
+	<profiles>
+	<profile>
+	<id>newDevVersion</id>
+    <properties>
+    <unleash.workflow>${project.basedir}/src/main/resources/createDevVersion.workflow</unleash.workflow>
+    </properties>
+	</profile>
+	</profiles>
 
 	<distributionManagement>
 		<snapshotRepository>
@@ -221,7 +231,7 @@
 					</dependencies>
 					<configuration>
 						<tagNamePattern>@{project.version}-RELEASE</tagNamePattern>
-						<workflowDescriptor>${project.basedir}/src/main/resources/unleash.workflow</workflowDescriptor>
+						<workflowDescriptor>${unleash.workflow}</workflowDescriptor>
 					</configuration>
 				</plugin>
 				<plugin>

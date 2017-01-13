@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.github.funthomas424242</groupId>
 		<artifactId>com.github.funthomas424242.dsl.ahnen.parent</artifactId>
-		<version>0.0.13-SNAPSHOT</version>
+		<version>1.0.12</version>
 	</parent>
 	<artifactId>com.github.funthomas424242.dsl.ahnen.feature</artifactId>
 	<packaging>eclipse-feature</packaging>
