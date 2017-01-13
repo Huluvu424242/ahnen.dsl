@@ -18,14 +18,14 @@
 		<maven.deploy.skip>true</maven.deploy.skip>
 		<unleash.workflow>${project.basedir}/src/main/resources/createRelease.workflow</unleash.workflow>
 	</properties>
-	
+
 	<profiles>
-	<profile>
-	<id>newDevVersion</id>
-    <properties>
-    <unleash.workflow>${project.basedir}/src/main/resources/createDevVersion.workflow</unleash.workflow>
-    </properties>
-	</profile>
+		<profile>
+			<id>newDevVersion</id>
+			<properties>
+				<unleash.workflow>${project.basedir}/src/main/resources/createDevVersion.workflow</unleash.workflow>
+			</properties>
+		</profile>
 	</profiles>
 
 	<distributionManagement>
@@ -123,16 +123,9 @@
 						</artifact>
 					</target>
 					<environments>
-						<!-- <environment>
-							<os>macosx</os>
-							<ws>cocoa</ws>
-							<arch>x86_64</arch>
-						</environment>
-						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
-							<arch>x86_64</arch>
-						</environment> -->
+						<!-- <environment> <os>macosx</os> <ws>cocoa</ws> <arch>x86_64</arch> 
+							</environment> <environment> <os>win32</os> <ws>win32</ws> <arch>x86_64</arch> 
+							</environment> -->
 						<environment>
 							<os>linux</os>
 							<ws>gtk</ws>
