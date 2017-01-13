@@ -3,12 +3,14 @@
 *.iml
 
 # Eclipse
-.settings
 .project
 .classpath
+.settings/
+bin/
 
 # Maven
 target/
+*.versionsBackup
 
 # Xtext
 src-gen/

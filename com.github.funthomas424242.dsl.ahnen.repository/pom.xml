@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.github.funthomas424242</groupId>
 		<artifactId>com.github.funthomas424242.dsl.ahnen.parent</artifactId>
-		<version>1.0.12</version>
+		<version>1.0.13</version>
 	</parent>
 	<artifactId>com.github.funthomas424242.dsl.ahnen.repository</artifactId>
 	<packaging>eclipse-repository</packaging>
@@ -44,6 +44,25 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- <plugin>
+				<groupId>com.github.cjnygard.mvn</groupId>
+				<artifactId>rest-maven-plugin</artifactId>
+				<version>0.1.4</version>
+				<configuration>
+					<endpoint>https://api.bintray.com</endpoint>
+					<resource>/packages/funthomas424242/funthomas424242-p2-repositories/ahnen.dsl</resource>
+					<method>PATCH</method>
+				</configuration>
+				<executions>
+					<execution>
+						<id>update-package</id>
+						<goals>
+							<goal>rest-request</goal>
+						</goals>
+						<phase>site</phase>
+					</execution>
+				</executions>
+			</plugin> -->
 		</plugins>
 	</build>
 

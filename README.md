@@ -6,7 +6,12 @@ Die Definition der DSL Ahnen - Einsatzgebiet Generalogie.
 
 ## Developer Info
 
-### Release bauen
+### Dev Version vom Release Stand erzeugen
+```
+mvn -B -PnewDevVersion unleash:perform-tycho
+```
+
+### Auf Snapshot Stand ein Release bauen 
 
 ```shell
 # start the ssh-agent in the background

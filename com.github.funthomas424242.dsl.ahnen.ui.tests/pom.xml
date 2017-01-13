@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.github.funthomas424242</groupId>
 		<artifactId>com.github.funthomas424242.dsl.ahnen.parent</artifactId>
-		<version>1.0.12</version>
+		<version>1.0.13</version>
 	</parent>
 	<artifactId>com.github.funthomas424242.dsl.ahnen.ui.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
@@ -29,15 +29,15 @@
 					<useUIHarness>true</useUIHarness>
 				</configuration>
 			</plugin>
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
 				<configuration>
 					<dependency-resolution>
 						<extraRequirements>
-							<!-- to get the org.eclipse.osgi.compatibility.state plugin if the 
+							to get the org.eclipse.osgi.compatibility.state plugin if the 
 								target platform is Luna or later. (backward compatible with kepler and previous 
-								versions) see https://bugs.eclipse.org/bugs/show_bug.cgi?id=492149 -->
+								versions) see https://bugs.eclipse.org/bugs/show_bug.cgi?id=492149
 							<requirement>
 								<type>eclipse-feature</type>
 								<id>org.eclipse.rcp</id>
@@ -46,7 +46,7 @@
 						</extraRequirements>
 					</dependency-resolution>
 				</configuration>
-			</plugin>
+			</plugin> -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>

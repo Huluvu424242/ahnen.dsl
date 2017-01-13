@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.github.funthomas424242</groupId>
+		<artifactId>com.github.funthomas424242.dsl.ahnen.parent</artifactId>
+		<version>1.0.13</version>
+	</parent>
+
+	<artifactId>com.github.funthomas424242.familienbuch.product</artifactId>
+	<packaging>eclipse-repository</packaging>
+
+
+	<properties>
+		<!-- Control of deployment and publishing to bintray -->
+		<groupId>${project.groupId}</groupId>
+		<artifactId>${project.artifactId}</artifactId>
+		<version>${project.version}</version>
+		<updateReleaseInfo>true</updateReleaseInfo>
+	</properties>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-director-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>materialize-products</id>
+						<goals>
+							<goal>materialize-products</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>archive-products</id>
+						<goals>
+							<goal>archive-products</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- <plugin> NOTE: We don't need a groupId specification because the 
+				group is org.apache.maven.plugins ...which is assumed by default. <artifactId>maven-assembly-plugin</artifactId> 
+				<executions> <execution> <id>package-assemblies</id> <phase>install</phase> 
+				<goals> <goal>single</goal> </goals> <configuration> <archive> because bnd 
+				plugin generated manifest <manifestFile>target/classes/META-INF/MANIFEST.MF</manifestFile> 
+				</archive> <descriptorRefs> <descriptorRef>jar-with-dependencies</descriptorRef> 
+				<descriptorRef>src</descriptorRef> </descriptorRefs> <descriptors> <descriptor>assembly/p2.xml</descriptor> 
+				</descriptors> </configuration> </execution> </executions> </plugin> -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-release-plugin</artifactId> 
+				<configuration> <tagNameFormat>@{project.version}-RELEASE</tagNameFormat> 
+				</configuration> </plugin> -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-deploy-plugin</artifactId> 
+				<configuration> <file>${project.build.directory}/${project.build.finalName}.jar</file> 
+				<repositoryId>bintray-funthomas424242-releases</repositoryId> </configuration> 
+				<executions> <execution> <id>funthomas424242-p2-repositories@bintray</id> 
+				<phase>deploy</phase> <goals> <goal> deploy-file </goal> </goals> <configuration> 
+				<url>https://api.bintray.com/maven/funthomas424242/funthomas424242-p2-repositories/${project.artifactId}/;publish=0</url> 
+				</configuration> </execution> </executions> </plugin> -->
+		</plugins>
+
+	</build>
+
+
+
+</project>
