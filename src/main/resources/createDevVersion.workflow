@@ -1,2 +1,14 @@
+storeScmRevision
+checkDependencies
+checkPlugins
+checkPluginDependencies
+prepareVersions
+checkAether
+
+addSpyPlugin
+
+removeSpyPlugin
+checkForScmChanges
+
 setDevVersionTycho
 
