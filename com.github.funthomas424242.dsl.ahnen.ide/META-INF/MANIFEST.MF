@@ -6,7 +6,8 @@ Bundle-Version: 1.0.14.qualifier
 Bundle-SymbolicName: com.github.funthomas424242.dsl.ahnen.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: com.github.funthomas424242.dsl.ahnen,
- org.eclipse.xtext.ide
+ org.eclipse.xtext.ide,
+ com.github.funthomas424242.files2gramps
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: com.github.funthomas424242.dsl.ide.contentassist.antlr.internal,
  com.github.funthomas424242.dsl.ide.contentassist.antlr
