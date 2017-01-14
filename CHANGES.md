@@ -1,3 +1,8 @@
+# 1.0.14
+
+* deployment of product added
+* 
+
 # 1.0.13
 
 * maven build sync with osgi build 
