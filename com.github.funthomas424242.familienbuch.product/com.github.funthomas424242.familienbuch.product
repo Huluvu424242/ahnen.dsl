@@ -28,7 +28,6 @@
    <vm>
    </vm>
 
-
    <plugins>
       <plugin id="com.github.funthomas424242.dsl.ahnen"/>
       <plugin id="com.github.funthomas424242.familienbuch"/>
@@ -173,6 +172,7 @@
    </preferencesInfo>
 
    <cssInfo>
+      <file path="/com.github.funthomas424242.familienbuch/css/default.css"/>
    </cssInfo>
 
 </product>
