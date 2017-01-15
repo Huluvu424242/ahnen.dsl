@@ -1,8 +1,10 @@
+[![Stories in Ready](https://badge.waffle.io/FunThomas424242/ahnen.dsl.png?label=ready&title=Ready)](http://waffle.io/FunThomas424242/ahnen.dsl)
+[![Build Status](https://travis-ci.org/FunThomas424242/ahnen.dsl.svg?branch=master)](https://travis-ci.org/FunThomas424242/ahnen.dsl)
+[![codecov](https://codecov.io/gh/FunThomas424242/ahnen.dsl/branch/master/graph/badge.svg)](https://codecov.io/gh/FunThomas424242/ahnen.dsl)
+
 # ahnen.dsl
 Die Definition der DSL Ahnen - Einsatzgebiet Generalogie.
 
-[![Build Status](https://travis-ci.org/FunThomas424242/ahnen.dsl.svg?branch=master)](https://travis-ci.org/FunThomas424242/ahnen.dsl)
-[![codecov](https://codecov.io/gh/FunThomas424242/ahnen.dsl/branch/master/graph/badge.svg)](https://codecov.io/gh/FunThomas424242/ahnen.dsl)
 
 ## Developer Info
 
