@@ -20,7 +20,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.xtext.util,
  org.eclipse.xtend.lib,
  org.eclipse.emf.common,
- org.eclipse.xtext
+ org.eclipse.xtext,
+ org.apache.commons.logging;bundle-version="1.1.1",
+ org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: com.github.funthomas424242.dsl;uses:="org.eclipse.xtext.nodemodel,org.eclipse.xtext.conversion.impl",
  com.github.funthomas424242.dsl.ahnen;uses:="org.eclipse.emf.ecore,org.eclipse.emf.common.util",
@@ -34,3 +36,4 @@ Export-Package: com.github.funthomas424242.dsl;uses:="org.eclipse.xtext.nodemode
  com.github.funthomas424242.dsl.serializer; uses:="org.eclipse.emf.ecore,  org.eclipse.xtext.nodemodel,  com.github.funthomas424242.dsl.services,  org.eclipse.xtext.serializer.analysis,  com.github.funthomas424242.dsl.ahnen,  org.eclipse.xtext.serializer.sequencer,  org.eclipse.xtext,  org.eclipse.xtext.serializer",
  com.github.funthomas424242.dsl.services;uses:="org.eclipse.xtext.common.services,org.eclipse.xtext.service,org.eclipse.xtext",
  com.github.funthomas424242.dsl.validation;uses:="com.github.funthomas424242.dsl.ahnen"
+Import-Package: org.apache.log4j
