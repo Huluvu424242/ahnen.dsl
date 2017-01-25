@@ -6,6 +6,10 @@
     complianceLevel="6.0" copyrightFields="false" runtimeVersion="2.12">
   <genPackages prefix="Ahnen" basePackage="com.github.funthomas424242.dsl" disposableProviderFactory="true"
       fileExtensions="ahnen" ecorePackage="Ahnen.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Ahnen.ecore#//ReportUsage">
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//ReportUsage/Exclude"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//ReportUsage/Include"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Ahnen.ecore#//Geschlecht">
       <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Geschlecht/U"/>
       <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Geschlecht/M"/>
@@ -99,6 +103,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familienbuch/titel"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familienbuch/vorwort"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Familienbuch/autor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familienbuch/includeMedia"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familienbuch/includeDocbook"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familienbuch/includeGramps"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familienbuch/includeGrampsArchive"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Familienbuch/familien"/>
     </genClasses>
     <genClasses ecoreClass="Ahnen.ecore#//FamilienImport">
