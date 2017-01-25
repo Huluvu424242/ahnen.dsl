@@ -78,6 +78,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="vorwort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="autor" eType="#//Autor"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="includeMedia" eType="#//ReportUsage"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="includeDocbook" eType="#//ReportUsage"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="includeGramps" eType="#//ReportUsage"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="includeGrampsArchive" eType="#//ReportUsage"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="familien" upperBound="-1"
         eType="#//FamilienImport" containment="true"/>
   </eClassifiers>
@@ -88,6 +92,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="vorname" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nachname" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="organisationsName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ReportUsage">
+    <eLiterals name="Exclude" literal="ausschließen"/>
+    <eLiterals name="Include" value="1" literal="einbeziehen"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Geschlecht">
     <eLiterals name="U" literal="unbekannt"/>

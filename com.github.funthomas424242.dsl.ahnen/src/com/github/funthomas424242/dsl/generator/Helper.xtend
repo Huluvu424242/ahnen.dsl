@@ -104,7 +104,9 @@ class Helper {
 
         logger.log(Level.INFO,"TargetFile: "+targetFile.getAbsolutePath());
         logger.log(Level.INFO,"GrampsFile: "+grampsDBFile.getAbsolutePath());
-        logger.log(Level.INFO,"MediaFolder: "+mediaFolderFile.getAbsolutePath());
+        if( mediaFolderFile != null){
+            logger.log(Level.INFO,"MediaFolder: "+mediaFolderFile.getAbsolutePath());
+        }
 
         var GrampsExporter exporter = new GrampsExporter("ahnen", grampsDBFile, targetFile, mediaFolderFile);
         exporter.createExportfile();

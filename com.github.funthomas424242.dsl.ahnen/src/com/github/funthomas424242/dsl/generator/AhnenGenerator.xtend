@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import com.github.funthomas424242.dsl.ahnen.ReportUsage
 
 /**
  * Generates code from your model files on save.
@@ -25,19 +26,31 @@ class AhnenGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		for (buch : resource.allContents.toIterable.filter(Familienbuch)) {
-		    // generate gramps database
-			fsa.generateFile(Helper.getGrampsDBFileName(buch),DataXMLGenerator.createGrampsDBContent(buch));
-			var URI grampsDbfileURI=fsa.getURI(Helper.getGrampsDBFileName(buch));
-			var File grampsDbfileFile = Helper.convertURI2File(buch,grampsDbfileURI);
-			var File mediaFolderFile = Helper.getMediaFolderFile(buch,fsa);
-			mediaFolderFile.mkdirs();
-			var File grampsArchiveFileTmp = Files.createTempFile("gramps",null).toFile();
-		    Helper.createTarGZ(grampsArchiveFileTmp, grampsDbfileFile ,mediaFolderFile);
-		    var FileInputStream fIn = new FileInputStream(grampsArchiveFileTmp);
-		    fsa.generateFile(Helper.getGrampsArchiveFileName(buch),fIn);
+		    // generate gramps database file
+		    var File grampsDbfileFile=null;
+		    if( buch.includeGramps == ReportUsage.INCLUDE || buch.includeGrampsArchive == ReportUsage.INCLUDE ){
+    			fsa.generateFile(Helper.getGrampsDBFileName(buch),DataXMLGenerator.createGrampsDBContent(buch));
+	       		var URI grampsDbfileURI=fsa.getURI(Helper.getGrampsDBFileName(buch));
+			    grampsDbfileFile = Helper.convertURI2File(buch,grampsDbfileURI);
+			}
+			// include media folder
+			var File mediaFolderFile = null;
+			if( buch.includeMedia == ReportUsage.INCLUDE){
+    			mediaFolderFile=Helper.getMediaFolderFile(buch,fsa);
+    			mediaFolderFile.mkdirs();
+			}
+			// generate gramps archive
+			if( buch.includeGrampsArchive == ReportUsage.INCLUDE){
+    			var File grampsArchiveFileTmp = Files.createTempFile("gramps",null).toFile();
+	       	    Helper.createTarGZ(grampsArchiveFileTmp, grampsDbfileFile ,mediaFolderFile);
+		        var FileInputStream fIn = new FileInputStream(grampsArchiveFileTmp);
+		        fsa.generateFile(Helper.getGrampsArchiveFileName(buch),fIn);
+		    }
 		    // generate docbook project
-			fsa.generateFile(Helper.getPOMFileName(buch), POMGenerator.createPOMContent(buch))
-			fsa.generateFile(Helper.getDbkFileName(buch, "book.dbk"), BookGenerator.createBookContent(fsa, buch))
+		    if( buch.includeDocbook == ReportUsage.INCLUDE){
+    			fsa.generateFile(Helper.getPOMFileName(buch), POMGenerator.createPOMContent(buch))
+	       		fsa.generateFile(Helper.getDbkFileName(buch, "book.dbk"), BookGenerator.createBookContent(fsa, buch))
+			}
 		}
 	}
 }
