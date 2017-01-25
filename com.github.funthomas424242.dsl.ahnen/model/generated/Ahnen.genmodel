@@ -53,7 +53,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familie/bisDatum"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Familie/kinder"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familie/hochzeitstag"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Familie/hochzeitsAdresse"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familie/scheidungstag"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Familie/scheidungsAdresse"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Familie/personen"/>
     </genClasses>
     <genClasses ecoreClass="Ahnen.ecore#//Person">
@@ -66,7 +68,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Person/rufname"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Person/geschlecht"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Person/geburtsDatum"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Person/geburtsAdresse"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Person/todesDatum"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Person/sterbeAdresse"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Person/vater"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Person/mutter"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Person/beziehungen"/>
@@ -82,7 +86,7 @@
     <genClasses ecoreClass="Ahnen.ecore#//Taetigkeit">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Taetigkeit/beruf"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Taetigkeit/arbeitgeber"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Taetigkeit/ort"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Taetigkeit/arbeitsAdresse"/>
     </genClasses>
     <genClasses ecoreClass="Ahnen.ecore#//Kinder">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Kinder/kind"/>
@@ -116,6 +120,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Autor/vorname"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Autor/nachname"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Autor/organisationsName"/>
+    </genClasses>
+    <genClasses ecoreClass="Ahnen.ecore#//Adresse">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Adresse/postleitzahl"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Adresse/ort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Adresse/strasse"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Adresse/hausnummer"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
