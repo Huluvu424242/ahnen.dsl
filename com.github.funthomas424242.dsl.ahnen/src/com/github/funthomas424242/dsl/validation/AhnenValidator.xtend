@@ -8,8 +8,9 @@ import com.github.funthomas424242.dsl.ahnen.Beziehung
 import com.github.funthomas424242.dsl.ahnen.Familie
 import com.github.funthomas424242.dsl.ahnen.Kinder
 import com.github.funthomas424242.dsl.ahnen.Person
-import org.eclipse.xtext.validation.Check
 import org.eclipse.emf.ecore.EReference
+import org.eclipse.xtext.validation.Check
+import com.github.funthomas424242.dsl.ahnen.Beziehungsrolle
 
 /**
  * This class contains custom validation rules. 
@@ -85,9 +86,59 @@ class AhnenValidator extends AbstractAhnenValidator {
     @Check
     def void checkPersonPflichtfelder(Person person) {
         if (person.geschlecht == null) {
-            error("Für Person " + person.name + " wurde keine Geschlecht ausgewählt.",
+            error("Für Person " + person.name + " wurde kein Geschlecht ausgewählt.",
                 AhnenPackage.Literals.PERSON__GESCHLECHT);
         }
+
+        // Check Vater in Familie auf anderen Vater in Familie
+        person.beziehungen.stream.filter[role.value == Beziehungsrolle.V_VALUE].forEach [
+            val Beziehung beziehung = it;
+            if (beziehung.beziehung != null && beziehung.beziehung instanceof Familie) {
+                var hasDifference = false;
+                if (beziehung.beziehung.vater == null) {
+                    hasDifference = true;
+                } else {
+                    val Familie vaterFamilie = beziehung.beziehung.vater.eContainer as Familie;
+                    val Familie personFamilie = person.eContainer as Familie;
+                    if (!personFamilie.name.equals(vaterFamilie.name) ||
+                        !person.name.equals(beziehung.beziehung.vater.name)) {
+                        hasDifference = true;
+                    }
+
+                }
+                if (hasDifference) {
+                    error("Für Person " + person.name + " wurde eine Vaterbeziehung zu " + beziehung.beziehung.name +
+                        " definiert, obgleich dort ein anderer Vater eingetragen ist.",
+                        AhnenPackage.Literals.PERSON__BEZIEHUNGEN);
+
+                }
+            }
+        ];
+
+        // Check Mutter in Familie auf andere Mutter in Familie
+        person.beziehungen.stream.filter[role.value == Beziehungsrolle.M_VALUE].forEach [
+            val Beziehung beziehung = it;
+            if (beziehung.beziehung != null && beziehung.beziehung instanceof Familie) {
+                var hasDifference = false;
+                if (beziehung.beziehung.mutter == null) {
+                    hasDifference = true;
+                } else {
+                    val Familie mutterFamilie = beziehung.beziehung.mutter.eContainer as Familie;
+                    val Familie personFamilie = person.eContainer as Familie;
+                    if (!personFamilie.name.equals(mutterFamilie.name) ||
+                        !person.name.equals(beziehung.beziehung.mutter.name)) {
+                        hasDifference = true;
+                    }
+
+                }
+                if (hasDifference) {
+                    error("Für Person " + person.name + " wurde eine Mutterbeziehung zu " + beziehung.beziehung.name +
+                        " definiert, obgleich dort eine andere Mutter eingetragen ist.",
+                        AhnenPackage.Literals.PERSON__BEZIEHUNGEN);
+
+                }
+            }
+        ];
 
     }
 
