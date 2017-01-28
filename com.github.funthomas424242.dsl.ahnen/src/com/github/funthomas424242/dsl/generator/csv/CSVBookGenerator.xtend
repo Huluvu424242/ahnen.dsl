@@ -78,7 +78,10 @@ class CSVBookGenerator {
         if( person == null || person.equals("")){
             return "";
         }
-        return convertStringValue(person.name);
+        var Familie familie=person.eContainer as Familie;
+        val String familienName = convertStringValue(familie.name);
+        val String personName =  convertStringValue(person.name);
+        return familienName + "."+personName;
     }
     
 
