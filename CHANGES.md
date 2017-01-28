@@ -4,6 +4,7 @@
 * issue#7 addresses added to dead, birth, married, working place
 * issue#13 report settings added to buch entity
 * issue#18 missing family reference
+* issue#17 csv export added
 
 # 1.0.13
 
