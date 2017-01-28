@@ -37,6 +37,10 @@ class Helper {
         return "familienbuch_" + buch.name;
     }
 
+    def static getCSVExportFileName(Familienbuch buch) {
+        return "familienbuch_" + buch.name + "/csv/familien-uebersicht.csv";
+    }
+
     def static getGrampsDBFileName(Familienbuch buch) {
         return "familienbuch_" + buch.name + "/gramps/data.xml";
     }

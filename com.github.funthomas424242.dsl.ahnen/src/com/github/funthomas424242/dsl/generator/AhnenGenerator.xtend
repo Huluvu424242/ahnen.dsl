@@ -16,6 +16,7 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import com.github.funthomas424242.dsl.ahnen.ReportUsage
+import com.github.funthomas424242.dsl.generator.csv.CSVBookGenerator
 
 /**
  * Generates code from your model files on save.
@@ -26,6 +27,9 @@ class AhnenGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		for (buch : resource.allContents.toIterable.filter(Familienbuch)) {
+		    // generate csv export
+		    fsa.generateFile(Helper.getCSVExportFileName(buch), CSVBookGenerator.createBookExport(fsa,buch));
+		    
 		    // generate gramps database file
 		    var File grampsDbfileFile=null;
 		    if( buch.includeGramps == ReportUsage.INCLUDE || buch.includeGrampsArchive == ReportUsage.INCLUDE ){
