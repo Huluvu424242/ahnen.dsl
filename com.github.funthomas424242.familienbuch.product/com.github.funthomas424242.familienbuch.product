@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="com.github.funthomas424242.familienbuch" uid="com.github.funthomas424242.familienbuch.product" id="com.github.funthomas424242.familienbuch.product" application="org.eclipse.e4.ui.workbench.swt.E4Application" version="1.0.15.qualifier" useFeatures="true" includeLaunchers="false">
+<product name="com.github.funthomas424242.familienbuch" uid="com.github.funthomas424242.familienbuch.product" id="com.github.funthomas424242.familienbuch.product" application="org.eclipse.e4.ui.workbench.swt.E4Application" version="1.0.16.qualifier" useFeatures="true" includeLaunchers="false">
 
 
    <configIni use="default">
