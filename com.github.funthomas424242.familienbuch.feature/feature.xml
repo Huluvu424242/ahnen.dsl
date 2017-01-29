@@ -2,7 +2,7 @@
 <feature
       id="com.github.funthomas424242.familienbuch.feature"
       label="Familienbuch Feature"
-      version="1.0.14.qualifier"
+      version="1.0.15.qualifier"
       provider-name="FunThomas424242">
 
    <description>
