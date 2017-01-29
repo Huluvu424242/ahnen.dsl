@@ -5,6 +5,7 @@
 * issue#13 report settings added to buch entity
 * issue#18 missing family reference
 * issue#17 csv export added
+* issue#4 type of family name is changed to STRING
 
 # 1.0.13
 
