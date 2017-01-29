@@ -1,4 +1,4 @@
-# 1.0.15
+# 1.0.14
 
 * deployment of product added
 * issue#7 addresses added to dead, birth, married, working place
