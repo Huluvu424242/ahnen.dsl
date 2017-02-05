@@ -6,6 +6,7 @@ import java.io.File
 import java.io.FileNotFoundException
 import java.io.IOException
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.logging.Level
 import java.util.logging.Logger
 import org.eclipse.core.resources.ResourcesPlugin
@@ -25,6 +26,13 @@ class Helper {
 
     var static Logger logger = Logger.getLogger("Helper");
 
+    def static getDatumString(){
+        
+        var Calendar cal = Calendar.getInstance();
+        var SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        return format.format(cal.getTime());
+    }
+
     def static getPOMFileName(Familienbuch buch) {
         return "familienbuch_" + buch.name + "/docbook/pom.xml";
     }
@@ -38,7 +46,8 @@ class Helper {
     }
 
     def static getCSVExportFileName(Familienbuch buch) {
-        return "familienbuch_" + buch.name + "/csv/familien-uebersicht.csv";
+        return "familienbuch_" + buch.name + "/csv/"+buch.name+
+        getDatumString()+"-familien-uebersicht.csv";
     }
 
     def static getGrampsDBFileName(Familienbuch buch) {
