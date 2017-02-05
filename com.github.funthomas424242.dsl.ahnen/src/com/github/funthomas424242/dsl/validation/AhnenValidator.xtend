@@ -90,6 +90,20 @@ class AhnenValidator extends AbstractAhnenValidator {
                 AhnenPackage.Literals.PERSON__GESCHLECHT);
         }
 
+        if (person.vater == null ) {
+            info(
+                "Person: " + person.name + " benötigt Nachforschungen zum Vater.",
+                AhnenPackage.Literals.PERSON__NAME
+            );
+        }
+
+        if (person.mutter == null ) {
+            info(
+                "Person: " + person.name + " benötigt Nachforschungen zur Mutter.",
+                AhnenPackage.Literals.PERSON__NAME
+            );
+        }
+
         // Check Vater in Familie auf anderen Vater in Familie
         person.beziehungen.stream.filter[role.value == Beziehungsrolle.V_VALUE].forEach [
             val Beziehung beziehung = it;

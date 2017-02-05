@@ -4,6 +4,7 @@ import com.github.funthomas424242.dsl.ahnen.Adresse
 import com.github.funthomas424242.dsl.ahnen.Familie
 import com.github.funthomas424242.dsl.ahnen.FamilienImport
 import com.github.funthomas424242.dsl.ahnen.Familienbuch
+import com.github.funthomas424242.dsl.ahnen.Geschlecht
 import com.github.funthomas424242.dsl.ahnen.Kinder
 import com.github.funthomas424242.dsl.ahnen.Person
 import org.eclipse.xtext.generator.IFileSystemAccess
@@ -21,7 +22,7 @@ class CSVBookGenerator {
     '''
 
     def static CharSequence createTitelspalten(IFileSystemAccess fsa, Familienbuch buch) '''
-"Beziehungsart";"Beziehung";"Rolle";"Person";"Geburtsname";"Name";"Vorname";"Geburt";"Geburtsort";"Tod";"Sterbeort";"Vater";"Mutter";        
+"Beziehungsart";"Beziehung";"Rolle";"Person";"Geschlecht";"Geburtsname";"Name";"Vorname";"Geburt";"Geburtsort";"Tod";"Sterbeort";"Vater";"Mutter";        
         
     '''
 
@@ -53,9 +54,10 @@ class CSVBookGenerator {
         textZeile += "\"" + convertStringValue(familie.name) + "\";";
         textZeile += "\""+role+"\";";
         textZeile += "\"" + convertStringValue(person.name) + "\";";
+        textZeile += "\"" + convertGeschlechtValue(person.geschlecht) + "\";";
         textZeile += "\"" + convertStringValue(person.geburtsname) + "\";";
         textZeile += "\"" + convertStringValue(person.nachname) + "\";";
-        textZeile += "\"" + convertStringValue(person.vorname) + "\";";
+        textZeile += "\"" + convertStringValue(person.vorname) +" "+ convertStringValue(person.mittelname) +  "\";";
         textZeile += "\"" + convertStringValue(person.geburtsDatum) + "\";";
         textZeile += "\"" + convertAdressValue(person.geburtsAdresse) + "\";";
         textZeile += "\"" + convertStringValue(person.todesDatum) + "\";";
@@ -72,6 +74,13 @@ class CSVBookGenerator {
             return "";
         }
         return value;
+    }
+    
+    def static String convertGeschlechtValue( Geschlecht geschlecht ){
+        if( geschlecht == null){
+            return "";
+        }
+        return convertStringValue(geschlecht.literal);
     }
 
     def static String convertPersonValue( Person person ){
