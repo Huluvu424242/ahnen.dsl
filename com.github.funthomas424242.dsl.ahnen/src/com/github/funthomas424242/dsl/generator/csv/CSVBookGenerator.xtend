@@ -22,7 +22,7 @@ class CSVBookGenerator {
     '''
 
     def static CharSequence createTitelspalten(IFileSystemAccess fsa, Familienbuch buch) '''
-"Beziehungsart";"Beziehung";"Rolle";"Person";"Geschlecht";"Geburtsname";"Name";"Vorname";"Geburt";"Geburtsort";"Tod";"Sterbeort";"Vater";"Mutter";        
+"Beziehungsart";"Beziehung";"Rolle";"Hochzeit am";"Hochzeit in";"Person";"Geschlecht";"Geburtsname";"Name";"Vorname";"Geburt";"Geburtsort";"Tod";"Sterbeort";"Vater";"Mutter";        
         
     '''
 
@@ -53,6 +53,13 @@ class CSVBookGenerator {
         textZeile += "\"" + convertStringValue(familie.rel.literal) + "\";";
         textZeile += "\"" + convertStringValue(familie.name) + "\";";
         textZeile += "\""+role+"\";";
+        if("Kind".equals(role)){
+            textZeile += "\"XXXXXXXXXX\";";
+            textZeile += "\"XXXXXXXXXX\";";
+        }else{
+            textZeile += "\"" + convertStringValue(familie.hochzeitstag) + "\";";
+            textZeile += "\"" + convertAdressValue(familie.hochzeitsAdresse) + "\";";
+        }
         textZeile += "\"" + convertStringValue(person.name) + "\";";
         textZeile += "\"" + convertGeschlechtValue(person.geschlecht) + "\";";
         textZeile += "\"" + convertStringValue(person.geburtsname) + "\";";
