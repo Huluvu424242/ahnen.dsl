@@ -6,6 +6,23 @@
     complianceLevel="6.0" copyrightFields="false" runtimeVersion="2.12">
   <genPackages prefix="Ahnen" basePackage="com.github.funthomas424242.dsl" disposableProviderFactory="true"
       fileExtensions="ahnen" ecorePackage="Ahnen.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Ahnen.ecore#//Religion">
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Religion/unerfasst"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Religion/unbekannt"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Religion/keine"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Religion/atheistisch"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Religion/agnostisch"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Religion/heidnisch"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Religion/evangelisch"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Religion/katholisch"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Religion/neuapostolisch"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Religion/reformiertapostolisch"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Religion/orthodox"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Religion/juedisch"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Religion/islamisch"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Religion/buddhistisch"/>
+      <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//Religion/keltisch"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Ahnen.ecore#//ReportUsage">
       <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//ReportUsage/Exclude"/>
       <genEnumLiterals ecoreEnumLiteral="Ahnen.ecore#//ReportUsage/Include"/>
@@ -54,6 +71,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Familie/kinder"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familie/hochzeitstag"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Familie/hochzeitsAdresse"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familie/religion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familie/kirchlichHochzeitstag"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Familie/kirchlichHochzeitsAdresse"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ahnen.ecore#//Familie/scheidungstag"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Familie/scheidungsAdresse"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ahnen.ecore#//Familie/personen"/>

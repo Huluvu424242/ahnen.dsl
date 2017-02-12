@@ -8,6 +8,7 @@ import com.github.funthomas424242.dsl.ahnen.Geschlecht
 import com.github.funthomas424242.dsl.ahnen.Kinder
 import com.github.funthomas424242.dsl.ahnen.Person
 import org.eclipse.xtext.generator.IFileSystemAccess
+import com.github.funthomas424242.dsl.ahnen.Religion
 
 /**
  * Generates code from your model files on save.
@@ -22,7 +23,7 @@ class CSVBookGenerator {
     '''
 
     def static CharSequence createTitelspalten(IFileSystemAccess fsa, Familienbuch buch) '''
-"Beziehungsart";"Beziehung";"Rolle";"Hochzeit am";"Hochzeit in";"Person";"Geschlecht";"Geburtsname";"Name";"Vorname";"Geburt";"Geburtsort";"Tod";"Sterbeort";"Vater";"Mutter";        
+"Beziehungsart";"Beziehung";"Rolle";"Hochzeit am";"Hochzeit in";"Kirchlich am";"Religion";"Kirchlich in";"Person";"Geschlecht";"Geburtsname";"Name";"Vorname";"Geburt";"Geburtsort";"Tod";"Sterbeort";"Vater";"Mutter";        
         
     '''
 
@@ -53,12 +54,23 @@ class CSVBookGenerator {
         textZeile += "\"" + convertStringValue(familie.rel.literal) + "\";";
         textZeile += "\"" + convertStringValue(familie.name) + "\";";
         textZeile += "\""+role+"\";";
+        // Standesamtliche Hochzeit
         if("Kind".equals(role)){
-            textZeile += "\"XXXXXXXXXX\";";
+            textZeile += "\"XXXXXXXXXX\";";            
             textZeile += "\"XXXXXXXXXX\";";
         }else{
             textZeile += "\"" + convertStringValue(familie.hochzeitstag) + "\";";
             textZeile += "\"" + convertAdressValue(familie.hochzeitsAdresse) + "\";";
+        }
+        // Kirchliche Hochzeit
+        if("Kind".equals(role)){
+            textZeile += "\"XXXXXXXXXX\";";
+            textZeile += "\"XXXXXXXXXX\";";
+            textZeile += "\"XXXXXXXXXX\";";
+        }else{
+            textZeile += "\"" + convertStringValue(familie.kirchlichHochzeitstag) + "\";";
+            textZeile += "\"" + convertReligionValue(familie.religion) + "\";";
+            textZeile += "\"" + convertAdressValue(familie.kirchlichHochzeitsAdresse) + "\";";
         }
         textZeile += "\"" + convertStringValue(person.name) + "\";";
         textZeile += "\"" + convertGeschlechtValue(person.geschlecht) + "\";";
@@ -82,6 +94,14 @@ class CSVBookGenerator {
         }
         return value;
     }
+    
+    def static String convertReligionValue( Religion religion ){
+        if( religion == null || Religion.UNERFASST == religion){
+            return "";
+        }
+        return convertStringValue(religion.literal);
+    }
+    
     
     def static String convertGeschlechtValue( Geschlecht geschlecht ){
         if( geschlecht == null){

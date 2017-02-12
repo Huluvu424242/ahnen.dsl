@@ -18,6 +18,7 @@ Familie:
 	"von:" (vonDatum=DATUM? | "unbekannt") "bis:" (bisDatum=DATUM? | "unbekannt" | "andauernd") "."
 	"Kinder:" (kinder=Kinder? | "keine") "."
     "Hochzeit:" (hochzeitstag=DATUM? | "unbekannt" | "-") ("in" hochzeitsAdresse=Adresse)? "." 
+    "Kirchliche-Hochzeit:" (religion=Religion)?   ("am" kirchlichHochzeitstag=DATUM)? ("in" kirchlichHochzeitsAdresse=Adresse)? "."
     "Scheidung:" (scheidungstag=DATUM? | "unbekannt" | "unabsehbar" | "demnächst" | "-") ("in" scheidungsAdresse=Adresse)? "."
 	"Familienangehörige" "{" (personen+=Person)* "}";
 
@@ -105,6 +106,25 @@ Adresse:
     (postleitzahl=PLZ)? ort=STRING 
     ("," strasse=STRING)?
     (hausnummer=STRING)?
+;
+
+// Religion
+enum Religion:
+    unerfasst = 'unerfasst'
+    | unbekannt = 'unbekannt'
+    | keine = '-'
+    | atheistisch = 'atheistisch'
+    | agnostisch = 'agnostisch'
+    | heidnisch = 'heidnisch'
+    | evangelisch = 'evangelisch'
+    | katholisch = 'katholisch'
+    | neuapostolisch = 'neuapostolisch'
+    | reformiertapostolisch = 'reformiertapostolisch'
+    | orthodox = 'orthodox'
+    | juedisch = 'jüdisch'
+    | islamisch = 'islamisch'
+    | buddhistisch ='buddhistisch'
+    | keltisch = 'keltisch'
 ;
 
 // Reporting einbeziehen | ausschließen
