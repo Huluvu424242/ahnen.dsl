@@ -55,7 +55,7 @@ class Helper {
     }
     
     def static getGrampsArchiveFileName(Familienbuch buch) {
-        return "familienbuch_" + buch.name + "/gramps/"+buch.name + ".gpkg";
+        return "familienbuch_" + buch.name + "/gramps/"+buch.name +getDatumString()+ ".gpkg";
     }
 
     def static File getMediaFolderFile(Familienbuch buch, IFileSystemAccess2 fsa) {
