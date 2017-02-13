@@ -6,6 +6,7 @@ import java.io.File
 import java.io.FileNotFoundException
 import java.io.IOException
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.logging.Level
 import java.util.logging.Logger
 import org.eclipse.core.resources.ResourcesPlugin
@@ -25,6 +26,13 @@ class Helper {
 
     var static Logger logger = Logger.getLogger("Helper");
 
+    def static getDatumString(){
+        
+        var Calendar cal = Calendar.getInstance();
+        var SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        return format.format(cal.getTime());
+    }
+
     def static getPOMFileName(Familienbuch buch) {
         return "familienbuch_" + buch.name + "/docbook/pom.xml";
     }
@@ -37,12 +45,17 @@ class Helper {
         return "familienbuch_" + buch.name;
     }
 
+    def static getCSVExportFileName(Familienbuch buch) {
+        return "familienbuch_" + buch.name + "/csv/"+buch.name+
+        getDatumString()+"-familien-uebersicht.csv";
+    }
+
     def static getGrampsDBFileName(Familienbuch buch) {
         return "familienbuch_" + buch.name + "/gramps/data.xml";
     }
     
     def static getGrampsArchiveFileName(Familienbuch buch) {
-        return "familienbuch_" + buch.name + "/gramps/"+buch.name + ".gpkg";
+        return "familienbuch_" + buch.name + "/gramps/"+buch.name +getDatumString()+ ".gpkg";
     }
 
     def static File getMediaFolderFile(Familienbuch buch, IFileSystemAccess2 fsa) {
@@ -104,7 +117,9 @@ class Helper {
 
         logger.log(Level.INFO,"TargetFile: "+targetFile.getAbsolutePath());
         logger.log(Level.INFO,"GrampsFile: "+grampsDBFile.getAbsolutePath());
-        logger.log(Level.INFO,"MediaFolder: "+mediaFolderFile.getAbsolutePath());
+        if( mediaFolderFile != null){
+            logger.log(Level.INFO,"MediaFolder: "+mediaFolderFile.getAbsolutePath());
+        }
 
         var GrampsExporter exporter = new GrampsExporter("ahnen", grampsDBFile, targetFile, mediaFolderFile);
         exporter.createExportfile();

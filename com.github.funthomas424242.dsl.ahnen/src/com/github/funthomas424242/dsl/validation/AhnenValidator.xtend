@@ -8,60 +8,154 @@ import com.github.funthomas424242.dsl.ahnen.Beziehung
 import com.github.funthomas424242.dsl.ahnen.Familie
 import com.github.funthomas424242.dsl.ahnen.Kinder
 import com.github.funthomas424242.dsl.ahnen.Person
+import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.validation.Check
+import com.github.funthomas424242.dsl.ahnen.Beziehungsrolle
 
 /**
  * This class contains custom validation rules. 
- *
+ * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 class AhnenValidator extends AbstractAhnenValidator {
-	
-	
-	@Check
-	def void checkFamilyConsistence(Familie familie){
-	    var Kinder kinder = familie.kinder;
-	    while(kinder.kind != null){
-	        checkKindBackRefToFamily(familie,kinder.kind);
-	        kinder=kinder.next;
-	    }
-	}
-	
-    def void checkKindBackRefToFamily(Familie familie, Person kind){
-        
-        if( kind.beziehungen == null || kind.beziehungen.empty){
-           warning("Person: "+kind.name+" benötigt eine Beziehung zur Familie: "+familie.name,
-                AhnenPackage.Literals.FAMILIE__KINDER
-           );
-         return;
+
+    @Check
+    def void checkFamilyConsistence(Familie familie) {
+        var Person vater = familie.vater;
+        checkPersonBackRefToFamily(familie, vater, AhnenPackage.Literals.FAMILIE__VATER);
+
+        var Person mutter = familie.mutter;
+        checkPersonBackRefToFamily(familie, mutter, AhnenPackage.Literals.FAMILIE__MUTTER);
+
+        var Kinder kinder = familie.kinder;
+        while (kinder != null && kinder.kind != null) {
+            checkPersonBackRefToFamily(familie, kinder.kind, AhnenPackage.Literals.FAMILIE__KINDER);
+            kinder = kinder.next;
+        }
+
+    }
+
+    def void checkPersonBackRefToFamily(Familie familie, Person person, EReference warningPlace) {
+
+        if (familie == null || person == null) {
+            return;
+        }
+
+        if (person.beziehungen == null || person.beziehungen.empty) {
+            warning(
+                "Person: " + person.name + " benötigt eine Beziehung zur Familie: " + familie.name,
+                warningPlace
+            );
+            return;
         }
         var boolean hasBackLink = false;
-        for( Beziehung beziehung: kind.beziehungen){
-            if( beziehung.beziehung != null &&
-                beziehung.beziehung instanceof Familie && 
-                beziehung.beziehung.name.equals(familie.name)
-            ){
+        for (Beziehung beziehung : person.beziehungen) {
+            if (beziehung.beziehung != null && beziehung.beziehung instanceof Familie &&
+                beziehung.beziehung.name.equals(familie.name)) {
                 hasBackLink = true;
-            } 
+            }
         }
-        
-        if( !hasBackLink ){
-          if( kind.beziehungen != null && !kind.beziehungen.empty ){
-             warning("Person: "+kind.name+" benötigt eine Beziehung zu "+familie.rel+": "+familie.name,
-                 AhnenPackage.Literals.FAMILIE__KINDER
-             );
-          }
+
+        if (!hasBackLink) {
+            if (person.beziehungen != null && !person.beziehungen.empty) {
+                warning(
+                    "Person: " + person.name + " benötigt eine Beziehung zu " + familie.rel + ": " + familie.name,
+                    warningPlace
+                );
+            }
         }
     }
-	
-	
-	@Check
-	def void checkPersonPflichtfelder(Person person){
-	    if( person.geschlecht == null){
-	        error("Für Person "+person.name+" wurde keine Geschlecht ausgewählt.",AhnenPackage.Literals.PERSON__GESCHLECHT);
-	    }
-	}
-	
+
+    @Check
+    def void calcTODOs(Familie familie) {
+
+        if (familie.vater == null) {
+            info(
+                "Familie: " + familie.name + " benötigt einen Vater.",
+                AhnenPackage.Literals.FAMILIE__NAME
+            );
+        }
+        if (familie.mutter == null) {
+            info(
+                "Familie: " + familie.name + " benötigt eine Mutter.",
+                AhnenPackage.Literals.FAMILIE__NAME
+            );
+        }
+    }
+
+    @Check
+    def void checkPersonPflichtfelder(Person person) {
+        if (person.geschlecht == null) {
+            error("Für Person " + person.name + " wurde kein Geschlecht ausgewählt.",
+                AhnenPackage.Literals.PERSON__GESCHLECHT);
+        }
+
+        if (person.vater == null ) {
+            info(
+                "Person: " + person.name + " benötigt Nachforschungen zum Vater.",
+                AhnenPackage.Literals.PERSON__NAME
+            );
+        }
+
+        if (person.mutter == null ) {
+            info(
+                "Person: " + person.name + " benötigt Nachforschungen zur Mutter.",
+                AhnenPackage.Literals.PERSON__NAME
+            );
+        }
+
+        // Check Vater in Familie auf anderen Vater in Familie
+        person.beziehungen.stream.filter[role.value == Beziehungsrolle.V_VALUE].forEach [
+            val Beziehung beziehung = it;
+            if (beziehung.beziehung != null && beziehung.beziehung instanceof Familie) {
+                var hasDifference = false;
+                if (beziehung.beziehung.vater == null) {
+                    hasDifference = true;
+                } else {
+                    val Familie vaterFamilie = beziehung.beziehung.vater.eContainer as Familie;
+                    val Familie personFamilie = person.eContainer as Familie;
+                    if (!personFamilie.name.equals(vaterFamilie.name) ||
+                        !person.name.equals(beziehung.beziehung.vater.name)) {
+                        hasDifference = true;
+                    }
+
+                }
+                if (hasDifference) {
+                    error("Für Person " + person.name + " wurde eine Vaterbeziehung zu " + beziehung.beziehung.name +
+                        " definiert, obgleich dort ein anderer Vater eingetragen ist.",
+                        AhnenPackage.Literals.PERSON__BEZIEHUNGEN);
+
+                }
+            }
+        ];
+
+        // Check Mutter in Familie auf andere Mutter in Familie
+        person.beziehungen.stream.filter[role.value == Beziehungsrolle.M_VALUE].forEach [
+            val Beziehung beziehung = it;
+            if (beziehung.beziehung != null && beziehung.beziehung instanceof Familie) {
+                var hasDifference = false;
+                if (beziehung.beziehung.mutter == null) {
+                    hasDifference = true;
+                } else {
+                    val Familie mutterFamilie = beziehung.beziehung.mutter.eContainer as Familie;
+                    val Familie personFamilie = person.eContainer as Familie;
+                    if (!personFamilie.name.equals(mutterFamilie.name) ||
+                        !person.name.equals(beziehung.beziehung.mutter.name)) {
+                        hasDifference = true;
+                    }
+
+                }
+                if (hasDifference) {
+                    error("Für Person " + person.name + " wurde eine Mutterbeziehung zu " + beziehung.beziehung.name +
+                        " definiert, obgleich dort eine andere Mutter eingetragen ist.",
+                        AhnenPackage.Literals.PERSON__BEZIEHUNGEN);
+
+                }
+            }
+        ];
+
+    }
+
 //	@Check
 //	def void checkBuch(Familienbuch buch){
 //	    // Alle im Buch bekannten Familien ermitteln
@@ -72,9 +166,4 @@ class AhnenValidator extends AbstractAhnenValidator {
 //	    // Im Buch fehlende Familien markieren
 //	    for( buch.)
 //	}
-	
-	
-
-	
-	
 }

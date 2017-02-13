@@ -2,36 +2,38 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: com.github.funthomas424242.dsl.ahnen
 Bundle-Vendor: FunThomas424242 (Thomas Schubert)
-Bundle-Version: 1.0.13
+Bundle-Version: 1.0.14
 Bundle-SymbolicName: com.github.funthomas424242.dsl.ahnen; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.eclipse.xtext,
- org.eclipse.xtext.xbase,
- org.eclipse.equinox.common,
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.apache.commons.compress,
+ com.github.funthomas424242.files2gramps,
+ org.eclipse.xtext.generator,
+ org.eclipse.emf.mwe2.launch,
+ org.eclipse.pde.core,
+ org.apache.log4j,
  org.eclipse.emf.ecore,
+ org.eclipse.xtext.common.types,
  org.eclipse.xtext.xbase.lib,
- org.antlr.runtime;bundle-version="3.2.0",
+ org.antlr.runtime,
  org.eclipse.xtext.util,
  org.eclipse.xtend.lib,
  org.eclipse.emf.common,
- org.apache.commons.compress,
- org.junit,
- com.github.funthomas424242.files2gramps,
- org.eclipse.core.resources,
- org.eclipse.core.runtime,
- org.eclipse.xtext.common.types,
- org.objectweb.asm;resolution:=optional
+ org.eclipse.xtext,
+ org.apache.commons.logging;bundle-version="1.1.1",
+ org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: com.github.funthomas424242.dsl.validation,
- com.github.funthomas424242.dsl.parser.antlr,
- com.github.funthomas424242.dsl.services,
- com.github.funthomas424242.dsl.ahnen,
- com.github.funthomas424242.dsl.ahnen.impl,
+Export-Package: com.github.funthomas424242.dsl;uses:="org.eclipse.xtext.nodemodel,org.eclipse.xtext.conversion.impl",
+ com.github.funthomas424242.dsl.ahnen;uses:="org.eclipse.emf.ecore,org.eclipse.emf.common.util",
+ com.github.funthomas424242.dsl.ahnen.impl; uses:="org.eclipse.emf.ecore,  org.eclipse.emf.ecore.impl,  org.eclipse.emf.common.util,  com.github.funthomas424242.dsl.ahnen,  org.eclipse.emf.common.notify",
+ com.github.funthomas424242.dsl.ahnen.util; uses:="org.eclipse.emf.ecore,  com.github.funthomas424242.dsl.ahnen,  org.eclipse.emf.common.notify,  org.eclipse.emf.common.notify.impl,  org.eclipse.emf.ecore.util",
+ com.github.funthomas424242.dsl.formatting2;uses:="com.github.funthomas424242.dsl.ahnen,org.eclipse.xtext.formatting2",
+ com.github.funthomas424242.dsl.generator; uses:="org.eclipse.emf.ecore,  org.eclipse.emf.common.util,  com.github.funthomas424242.dsl.ahnen,  org.eclipse.xtext.generator,  org.eclipse.emf.ecore.resource",
+ com.github.funthomas424242.dsl.parser.antlr;uses:="com.github.funthomas424242.dsl.services,org.eclipse.xtext.parser.antlr,com.github.funthomas424242.dsl.parser.antlr.internal",
  com.github.funthomas424242.dsl.parser.antlr.internal,
  com.github.funthomas424242.dsl.scoping,
- com.github.funthomas424242.dsl.ahnen.util,
- com.github.funthomas424242.dsl,
- com.github.funthomas424242.dsl.serializer,
- com.github.funthomas424242.dsl.generator,
- com.github.funthomas424242.dsl.formatting2
+ com.github.funthomas424242.dsl.serializer; uses:="org.eclipse.emf.ecore,  org.eclipse.xtext.nodemodel,  com.github.funthomas424242.dsl.services,  org.eclipse.xtext.serializer.analysis,  com.github.funthomas424242.dsl.ahnen,  org.eclipse.xtext.serializer.sequencer,  org.eclipse.xtext,  org.eclipse.xtext.serializer",
+ com.github.funthomas424242.dsl.services;uses:="org.eclipse.xtext.common.services,org.eclipse.xtext.service,org.eclipse.xtext",
+ com.github.funthomas424242.dsl.validation;uses:="com.github.funthomas424242.dsl.ahnen"
 Import-Package: org.apache.log4j

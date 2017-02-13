@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="com.github.funthomas424242.dsl.ahnen.feature"
-      label="Ahnen Feature "
+      id="com.github.funthomas424242.familienbuch.feature"
+      label="Familienbuch Feature"
       version="1.0.14"
       provider-name="FunThomas424242">
 
    <description>
-      DSL zur Beschreibung von Verwandtschaftsverhältnissen und ganzer
-Familien im Sinne der Generalogie.
+      Rich Client Editor zur Beschreibung von Familienbüchern.
    </description>
 
    <license url="LICENSE">
@@ -518,21 +517,7 @@ That&apos;s all there is to it!
    </license>
 
    <plugin
-         id="com.github.funthomas424242.dsl.ahnen"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="com.github.funthomas424242.dsl.ahnen.ide"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="com.github.funthomas424242.dsl.ahnen.ui"
+         id="com.github.funthomas424242.familienbuch"
          download-size="0"
          install-size="0"
          version="0.0.0"

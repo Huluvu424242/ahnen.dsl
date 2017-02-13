@@ -11,14 +11,15 @@ Dateiart:
 
 Familie:
 	{Familie}
-	(rel=RelationTyp) name=ID ";"
+	(rel=RelationTyp) name=STRING ";"
 	"Letzte" "Änderung:" letzteAenderung=DATUM "."
 	"Vater:" (vater=[Person|STRING]? | "unbekannt" | "unerfasst") "."
 	"Mutter:" (mutter=[Person|STRING]? | "unbekannt" | "unerfasst") "."
 	"von:" (vonDatum=DATUM? | "unbekannt") "bis:" (bisDatum=DATUM? | "unbekannt" | "andauernd") "."
 	"Kinder:" (kinder=Kinder? | "keine") "."
-    "Hochzeit:" (hochzeitstag=DATUM? | "unbekannt" | "-") "." 
-    "Scheidung:" (scheidungstag=DATUM? | "unbekannt" | "unabsehbar" | "demnächst" | "-") "."
+    "Hochzeit:" (hochzeitstag=DATUM? | "unbekannt" | "-") ("in" hochzeitsAdresse=Adresse)? "." 
+    "Kirchliche-Hochzeit:" (religion=Religion)?   ("am" kirchlichHochzeitstag=DATUM)? ("in" kirchlichHochzeitsAdresse=Adresse)? "."
+    "Scheidung:" (scheidungstag=DATUM? | "unbekannt" | "unabsehbar" | "demnächst" | "-") ("in" scheidungsAdresse=Adresse)? "."
 	"Familienangehörige" "{" (personen+=Person)* "}";
 
 Person:
@@ -31,8 +32,8 @@ Person:
 		"Geburtsname:" (geburtsname=STRING? | "unbekannt") "."
 		"Rufname:" (rufname=STRING? | "unbekannt") "."
 		"Geschlecht:" geschlecht=Geschlecht?  "."
-		"Geburtsdatum:" (geburtsDatum=DATUM? | "unbekannt" ) "."
-		"Todesdatum:" (todesDatum=DATUM? | "unbekannt" | "lebend" | "vermisst" )"."
+		"Geburtsdatum:" (geburtsDatum=DATUM? | "unbekannt" ) ("in" geburtsAdresse=Adresse)? "."
+		"Todesdatum:" (todesDatum=DATUM? | "unbekannt" | "lebend" | "vermisst" ) ("in" sterbeAdresse=Adresse)?"."
 		"Vater:" (vater=[Person|STRING]? | "unbekannt" | "unerfasst") "."
 		"Mutter:" (mutter=[Person|STRING]? | "unbekannt" | "unerfasst") "."
 		"Beziehungen:" "{"(beziehungen+=Beziehung+ | "keine") "}"
@@ -56,7 +57,7 @@ Taetigkeit:
 	{Taetigkeit}
 	"Tätigkeit:" "als" (beruf=STRING? | "unbekannt") 
 		"bei" (arbeitgeber=STRING? | "unbekannt")
-		"in" (ort=STRING? | "unbekannt")
+		"in" (arbeitsAdresse=Adresse? | "unbekannt")
 		"von" (von=DATUM? | "unbekannt") "bis" (bis=DATUM? | "unbekannt" ) "."
 ;
 
@@ -80,19 +81,56 @@ Familienbuch:
 	"Titel:" titel=STRING "."
 	"Vorwort:" "{" vorwort=STRING "}" 
 	"Autor:" "{" autor= Autor "}" 
+	"Reports" "{"
+	   "Medien:" includeMedia=ReportUsage
+	   "Docbook:" includeDocbook=ReportUsage
+	   "Gramps:" includeGramps=ReportUsage
+	   "GrampsArchive:" includeGrampsArchive=ReportUsage
+	"}"
 	"Familien:" "{"
 		familien+=FamilienImport+
 	"}"
 ;
 
 FamilienImport:
- 	"import" "lebensgemeinschaft" familie=[Familie|ID] '.'	
+ 	"import" "lebensgemeinschaft" familie=[Familie|STRING] '.'	
  ;
 
 Autor:
 	"Vorname:" vorname=STRING "."
 	"Name:" nachname=STRING "."
 	"Organisation" organisationsName=STRING? "."	
+;
+
+Adresse:
+    (postleitzahl=PLZ)? ort=STRING 
+    ("," strasse=STRING)?
+    (hausnummer=STRING)?
+;
+
+// Religion
+enum Religion:
+    unerfasst = 'unerfasst'
+    | unbekannt = 'unbekannt'
+    | keine = '-'
+    | atheistisch = 'atheistisch'
+    | agnostisch = 'agnostisch'
+    | heidnisch = 'heidnisch'
+    | evangelisch = 'evangelisch'
+    | katholisch = 'katholisch'
+    | neuapostolisch = 'neuapostolisch'
+    | reformiertapostolisch = 'reformiertapostolisch'
+    | orthodox = 'orthodox'
+    | juedisch = 'jüdisch'
+    | islamisch = 'islamisch'
+    | buddhistisch ='buddhistisch'
+    | keltisch = 'keltisch'
+;
+
+// Reporting einbeziehen | ausschließen
+enum ReportUsage:
+    Exclude = 'ausschließen'
+    | Include = 'einbeziehen'
 ;
 
 // U,M,F values of gramps database format
@@ -125,6 +163,10 @@ enum RelationTyp:
     | CivilUnion = "Gesetzliche Partnerschaft"
     | Unmarried = "Unverheiratet"
     | Married = "Familie"
+;
+
+PLZ:
+    INT INT INT INT
 ;
 
 VERSION:

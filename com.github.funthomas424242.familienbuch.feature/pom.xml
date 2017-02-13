@@ -5,7 +5,7 @@
 		<artifactId>com.github.funthomas424242.dsl.ahnen.parent</artifactId>
 		<version>1.0.14</version>
 	</parent>
-	<artifactId>com.github.funthomas424242.dsl.ahnen.feature</artifactId>
+	<artifactId>com.github.funthomas424242.familienbuch.feature</artifactId>
 	<packaging>eclipse-feature</packaging>
 
 	<properties>
