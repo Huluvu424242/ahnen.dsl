@@ -1,10 +1,10 @@
-
 language:
-    - java
-
-
+- java
 jdk:
-    - oraclejdk8
-
+- oraclejdk8
+deploy:
+  provider: rubygems
+  api_key:
+    secure: hOLh9vlN5goXzrrSpg4VpGoBoA8MUAruUy6wFklbt1ixnKRtjW2P6QizH8tohkPHBwOjHL2tFCWvsQv6HzSmNBr+6DRLlm05bQTZFnXA9/j0UszJZk7npDWPMw/+Zm7gFmqhCf97nwVew7VB78jaqjOw9Vk+AtII8evGgTwfTafcwMUm40L3Z65oZ5c/bWGs5WVt6Wvs3JKD2Q5hnsTz0InIapBpcPf9yVADfSDOvK2MQAOlSowLISlOpyf9GpHwiUYtRyInAaWFMteXFjGlAsapulyPUdr/VlUUuOWNVlwdoaiK6oKQDoZCjVHP+ba6uSmXUYlTB0P65wJTrq9XsHUv7jLxreeysElPZH1OPoRyWO7i7TnOnPG7oyp2Hi9YpWHlY3lnKd/cGsh/mMW7kXDaCpakvOEVp/YZ0tgNYt22Flt+m1GSZDAe5r2D3j7wgbD1oWzEJHQ0i1UF6QOMMa4//VekbHLCXyKPXvfkaswvz8g017FrQS1tliggTXP9cD2c7yUD3V9iF+OsAUUHj8tXW9jV2eH/2V42CD5RRIOGdUs2XYAK6PR7i79+CsE20JCvTkp6LUWHqGSFwONEp5kua83nrwM0AnLUFCQQo1fare1Gy0Wlp5kMxngvCBE3Ou92mAhl5GtCvRsQx+Tcr7UQW4FFITbAvlpIwhnKnAg=
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)
